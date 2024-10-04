@@ -1,8 +1,8 @@
-import * as React from "react";
-import { View, StyleSheet, Pressable, ScrollView, Text } from "react-native";
-import { Image } from "expo-image";
 import { useNavigation } from "@react-navigation/native";
-import { FontSize, FontFamily, Color } from "../GlobalStyles";
+import { Image } from "expo-image";
+import * as React from "react";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Color, FontFamily, FontSize } from "../GlobalStyles";
 
 const BundlesScreen = () => {
   const navigation = useNavigation();
@@ -15,7 +15,7 @@ const BundlesScreen = () => {
       >
         <Image
           style={styles.icon}
-          contentFit="cover"
+          contentFit="contain"
           source={require("../assets/frame-1.png")}
         />
       </Pressable>

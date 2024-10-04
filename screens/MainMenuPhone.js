@@ -1,8 +1,8 @@
-import * as React from "react";
-import { Image } from "expo-image";
-import { StyleSheet, View, Text, Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { FontSize, FontFamily, Color, Padding, Gap } from "../GlobalStyles";
+import { Image } from "expo-image";
+import * as React from "react";
+import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Color, FontFamily, FontSize, Gap, Padding } from "../GlobalStyles";
 
 const MainMenuPhone = () => {
   const navigation = useNavigation();
@@ -11,7 +11,7 @@ const MainMenuPhone = () => {
     <View style={styles.mainMenuPhone}>
       <Image
         style={styles.frameIcon}
-        contentFit="cover"
+        contentFit="contain"
         source={require("../assets/frame.png")}
       />
       <Pressable
@@ -23,7 +23,7 @@ const MainMenuPhone = () => {
         >{`MAIN MENU  `}</Text>
         <Image
           style={styles.menuChildLayout}
-          contentFit="cover"
+          contentFit="contain"
           source={require("../assets/frame-2.png")}
         />
         <Pressable
@@ -32,7 +32,7 @@ const MainMenuPhone = () => {
         >
           <Image
             style={styles.menuChildLayout}
-            contentFit="cover"
+            contentFit="contain"
             source={require("../assets/invetory.png")}
           />
         </Pressable>
@@ -42,7 +42,7 @@ const MainMenuPhone = () => {
         >
           <Image
             style={styles.menuChildLayout}
-            contentFit="cover"
+            contentFit="contain"
             source={require("../assets/bridal.png")}
           />
         </Pressable>
@@ -52,7 +52,7 @@ const MainMenuPhone = () => {
         >
           <Image
             style={styles.menuChildLayout}
-            contentFit="cover"
+            contentFit="contain"
             source={require("../assets/guidelines.png")}
           />
         </Pressable>
@@ -62,7 +62,7 @@ const MainMenuPhone = () => {
         >
           <Image
             style={styles.menuChildLayout}
-            contentFit="cover"
+            contentFit="contain"
             source={require("../assets/consult.png")}
           />
         </Pressable>

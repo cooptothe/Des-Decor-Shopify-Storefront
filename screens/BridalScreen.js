@@ -1,7 +1,7 @@
-import * as React from "react";
 import { Image } from "expo-image";
-import { StyleSheet, View, Text } from "react-native";
-import { FontSize, FontFamily, Color, Padding } from "../GlobalStyles";
+import * as React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
 
 const BridalScreen = () => {
   return (
@@ -9,7 +9,7 @@ const BridalScreen = () => {
       <View style={styles.logoWrapper}>
         <Image
           style={styles.logoIconLayout}
-          contentFit="cover"
+          contentFit="contain"
           source={require("../assets/logo1.png")}
         />
       </View>
@@ -25,7 +25,7 @@ const BridalScreen = () => {
         <View style={styles.menuFlexBox}>
           <Image
             style={styles.logoIconLayout}
-            contentFit="cover"
+            contentFit="contain"
             source={require("../assets/premi.png")}
           />
         </View>
