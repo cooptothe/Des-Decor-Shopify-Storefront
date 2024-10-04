@@ -1,129 +1,93 @@
 import { useNavigation } from "@react-navigation/native";
 import { Image } from "expo-image";
 import * as React from "react";
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
-import { Color, FontFamily, FontSize } from "../GlobalStyles";
+import { Image } from "expo-image";
+import { StyleSheet, Text, View } from "react-native";
+import { FontSize, FontFamily, Color, Padding, Gap } from "../GlobalStyles";
 
 const BundlesScreen = () => {
-  const navigation = useNavigation();
-
   return (
-    <View style={[styles.bundlesScreen, styles.decorToGoFlexBox]}>
-      <Pressable
-        style={styles.wrapper}
-        onPress={() => navigation.navigate("MainMenuPhone")}
-      >
-        <Image
-          style={styles.icon}
-          contentFit="contain"
-          source={require("../assets/frame-1.png")}
-        />
-      </Pressable>
-      <ScrollView
-        style={styles.menuFlexBox}
-        showsVerticalScrollIndicator={true}
-        showsHorizontalScrollIndicator={true}
-        contentContainerStyle={styles.menuScrollViewContent}
-      >
-        <Text style={[styles.decorToGo, styles.menuFlexBox]}>
+    <View style={styles.bundlesScreen}>
+      <Image
+        style={[styles.bundlesScreenChild, styles.childLayout]}
+        contentFit="cover"
+        source={require("../assets/frame-1.png")}
+      />
+      <View style={[styles.decorToGoBundlesWrapper, styles.decorFlexBox]}>
+        <Text style={[styles.decorToGo, styles.decorFlexBox]}>
           DECOR TO GO BUNDLES
         </Text>
+      </View>
+      <View style={[styles.menu, styles.decorFlexBox]} centerContent="true">
         <Image
-          style={[styles.sigCakeIcon, styles.iconLayout]}
+          style={[styles.menuChild, styles.childLayout]}
           contentFit="contain"
-          source={require("../assets/sig-cake.png")}
+          source={require("../assets/frame-25.png")}
         />
         <Image
-          style={[styles.mixTableIcon, styles.iconLayout]}
+          style={[styles.menuChild, styles.childLayout]}
           contentFit="contain"
-          source={require("../assets/mix-table.png")}
+          source={require("../assets/frame-26.png")}
         />
         <Image
-          style={[styles.dinnPartyIcon, styles.iconLayout]}
-          contentFit="contain"
-          source={require("../assets/dinn-party.png")}
+          style={[styles.menuChild, styles.childLayout]}
+          contentFit="cover"
+          source={require("../assets/frame-27.png")}
         />
         <Image
-          style={[styles.kidsPartyIcon, styles.iconLayout]}
-          contentFit="contain"
-          source={require("../assets/kids-party.png")}
+          style={[styles.menuChild, styles.childLayout]}
+          contentFit="cover"
+          source={require("../assets/frame-28.png")}
         />
         <Image
-          style={[styles.stndrdBundleIcon, styles.iconLayout]}
-          contentFit="contain"
-          source={require("../assets/stndrd-bundle.png")}
+          style={[styles.menuChild, styles.childLayout]}
+          contentFit="cover"
+          source={require("../assets/frame-29.png")}
         />
         <Image
-          style={[styles.premBundleIcon, styles.bundleIconLayout]}
-          contentFit="contain"
-          source={require("../assets/prem-bundle.png")}
+          style={[styles.menuChild, styles.childLayout]}
+          contentFit="cover"
+          source={require("../assets/frame-30.png")}
         />
         <Image
-          style={[styles.zodBundleIcon, styles.bundleIconLayout]}
-          contentFit="contain"
-          source={require("../assets/zod-bundle.png")}
+          style={[styles.menuChild, styles.childLayout]}
+          contentFit="cover"
+          source={require("../assets/frame-31.png")}
         />
         <Image
-          style={[styles.picBundleIcon, styles.bundleIconLayout]}
-          contentFit="contain"
-          source={require("../assets/pic-bundle.png")}
+          style={[styles.menuChild, styles.childLayout]}
+          contentFit="cover"
+          source={require("../assets/frame-32.png")}
         />
         <Image
-          style={[styles.holBundleIcon, styles.bundleIconLayout]}
-          contentFit="contain"
-          source={require("../assets/hol-bundle.png")}
+          style={[styles.menuChild, styles.childLayout]}
+          contentFit="cover"
+          source={require("../assets/frame-33.png")}
         />
         <Image
-          style={[styles.corpEventsIcon, styles.bundleIconLayout]}
-          contentFit="contain"
-          source={require("../assets/corp-events.png")}
+          style={[styles.menuChild, styles.childLayout]}
+          contentFit="cover"
+          source={require("../assets/frame-34.png")}
         />
-      </ScrollView>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  menuScrollViewContent: {
-    flexDirection: "column",
-    paddingHorizontal: 0,
-    paddingVertical: 5,
-    alignItems: "center",
-    justifyContent: "flex-start",
-    gap: 20,
+  childLayout: {
+    overflow: "hidden",
+    maxWidth: "100%",
+    alignSelf: "stretch",
+    width: "100%",
   },
-  decorToGoFlexBox: {
+  decorFlexBox: {
     justifyContent: "center",
+    alignSelf: "stretch",
     alignItems: "center",
   },
-  menuFlexBox: {
-    alignSelf: "stretch",
-    flex: 1,
-  },
-  iconLayout: {
-    height: 100,
-    width: 283,
-  },
-  bundleIconLayout: {
-    maxHeight: "100%",
-    left: "15.45%",
-    right: "14.2%",
-    width: "70.36%",
-    height: "14.7%",
-    position: "absolute",
-    overflow: "hidden",
-    maxWidth: "100%",
-  },
-  icon: {
-    height: "100%",
-    overflow: "hidden",
-    maxWidth: "100%",
-    alignSelf: "stretch",
-    width: "100%",
-  },
-  wrapper: {
-    height: 181,
-    width: "100%",
+  bundlesScreenChild: {
+    height: 193,
   },
   decorToGo: {
     fontSize: FontSize.size_lgi,
@@ -134,56 +98,28 @@ const styles = StyleSheet.create({
     color: Color.colorGray,
     textAlign: "center",
     display: "flex",
-    zIndex: 0,
-    justifyContent: "center",
-    alignItems: "center",
+    flex: 1,
   },
-  sigCakeIcon: {
-    zIndex: 1,
+  decorToGoBundlesWrapper: {
+    height: 1,
   },
-  mixTableIcon: {
-    zIndex: 2,
+  menuChild: {
+    maxHeight: "100%",
+    flex: 1,
   },
-  dinnPartyIcon: {
-    zIndex: 3,
-  },
-  kidsPartyIcon: {
-    zIndex: 4,
-  },
-  stndrdBundleIcon: {
-    zIndex: 5,
-  },
-  premBundleIcon: {
-    top: "182.36%",
-    bottom: "-97.06%",
-    zIndex: 6,
-  },
-  zodBundleIcon: {
-    top: "163.09%",
-    bottom: "-77.79%",
-    zIndex: 7,
-  },
-  picBundleIcon: {
-    top: "143.83%",
-    bottom: "-58.53%",
-    zIndex: 8,
-  },
-  holBundleIcon: {
-    top: "124.41%",
-    bottom: "-39.11%",
-    zIndex: 9,
-  },
-  corpEventsIcon: {
-    top: "105%",
-    bottom: "-19.7%",
-    zIndex: 10,
+  menu: {
+    height: 1398,
+    paddingHorizontal: Padding.p_xl,
+    paddingVertical: 0,
+    gap: Gap.gap_md,
   },
   bundlesScreen: {
     backgroundColor: Color.colorWhite,
     height: 852,
+    gap: 40,
+    alignItems: "center",
     width: "100%",
     flex: 1,
-    alignItems: "center",
   },
 });
 

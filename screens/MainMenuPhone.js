@@ -1,77 +1,59 @@
 import { useNavigation } from "@react-navigation/native";
 import { Image } from "expo-image";
 import * as React from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
-import { Color, FontFamily, FontSize, Gap, Padding } from "../GlobalStyles";
+import { Image } from "expo-image";
+import { StyleSheet, View, Text } from "react-native";
+import { FontSize, FontFamily, Color, Padding, Gap } from "../GlobalStyles";
 
 const MainMenuPhone = () => {
-  const navigation = useNavigation();
-
   return (
     <View style={styles.mainMenuPhone}>
       <Image
-        style={styles.frameIcon}
-        contentFit="contain"
+        style={[styles.frameIcon, styles.frameIconLayout]}
+        contentFit="cover"
         source={require("../assets/frame.png")}
       />
-      <Pressable
-        style={[styles.menu, styles.menuFlexBox]}
-        onPress={() => navigation.navigate("BundlesScreen")}
-      >
+      <View style={[styles.menu, styles.menuFlexBox]}>
         <Text
           style={[styles.mainMenu, styles.menuFlexBox]}
         >{`MAIN MENU  `}</Text>
         <Image
-          style={styles.menuChildLayout}
+          style={[styles.menuChild, styles.frameIconLayout]}
           contentFit="contain"
           source={require("../assets/frame-2.png")}
         />
-        <Pressable
-          style={[styles.invetoryWrapper, styles.menuFlexBox]}
-          onPress={() => navigation.navigate("InventoryScreen")}
-        >
-          <Image
-            style={styles.menuChildLayout}
-            contentFit="contain"
-            source={require("../assets/invetory.png")}
-          />
-        </Pressable>
-        <Pressable
-          style={[styles.invetoryWrapper, styles.menuFlexBox]}
-          onPress={() => navigation.navigate("BridalScreen")}
-        >
-          <Image
-            style={styles.menuChildLayout}
-            contentFit="contain"
-            source={require("../assets/bridal.png")}
-          />
-        </Pressable>
-        <Pressable
-          style={[styles.invetoryWrapper, styles.menuFlexBox]}
-          onPress={() => navigation.navigate("GuidelinesScreen")}
-        >
-          <Image
-            style={styles.menuChildLayout}
-            contentFit="contain"
-            source={require("../assets/guidelines.png")}
-          />
-        </Pressable>
-        <Pressable
-          style={[styles.invetoryWrapper, styles.menuFlexBox]}
-          onPress={() => navigation.navigate("ConsultationScreen")}
-        >
-          <Image
-            style={styles.menuChildLayout}
-            contentFit="contain"
-            source={require("../assets/consult.png")}
-          />
-        </Pressable>
-      </Pressable>
+        <Image
+          style={[styles.menuChild, styles.frameIconLayout]}
+          contentFit="contain"
+          source={require("../assets/frame-3.png")}
+        />
+        <Image
+          style={[styles.menuChild, styles.frameIconLayout]}
+          contentFit="contain"
+          source={require("../assets/frame-4.png")}
+        />
+        <Image
+          style={[styles.menuChild, styles.frameIconLayout]}
+          contentFit="contain"
+          source={require("../assets/frame-5.png")}
+        />
+        <Image
+          style={[styles.menuChild, styles.frameIconLayout]}
+          contentFit="contain"
+          source={require("../assets/frame-6.png")}
+        />
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  frameIconLayout: {
+    maxWidth: "100%",
+    alignSelf: "stretch",
+    overflow: "hidden",
+    width: "100%",
+  },
   menuFlexBox: {
     alignSelf: "stretch",
     alignItems: "center",
@@ -79,10 +61,6 @@ const styles = StyleSheet.create({
   },
   frameIcon: {
     height: 175,
-    maxWidth: "100%",
-    alignSelf: "stretch",
-    overflow: "hidden",
-    width: "100%",
   },
   mainMenu: {
     fontSize: FontSize.size_lgi,
@@ -93,18 +71,10 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
   },
-  menuChildLayout: {
+  menuChild: {
     maxHeight: "100%",
-    maxWidth: "100%",
-    alignSelf: "stretch",
-    overflow: "hidden",
-    width: "100%",
     flex: 1,
-  },
-  invetoryWrapper: {
-    paddingHorizontal: Padding.p_11xl,
-    paddingVertical: 0,
-    justifyContent: "center",
+    maxWidth: "100%",
   },
   menu: {
     justifyContent: "space-around",
@@ -113,7 +83,7 @@ const styles = StyleSheet.create({
   },
   mainMenuPhone: {
     backgroundColor: Color.colorWhite,
-    height: 774,
+    height: 852,
     justifyContent: "center",
     alignItems: "center",
     overflow: "hidden",

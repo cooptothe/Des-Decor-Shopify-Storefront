@@ -16,70 +16,63 @@ const GuidelinesScreen = () => {
   return (
     <View style={styles.guidelinesScreen}>
       <Pressable
-        style={[styles.logoWrapper, styles.wrapperFlexBox]}
+        style={[styles.logoWrapper, styles.menuFlexBox]}
         onPress={() => navigation.navigate("MainMenuPhone")}
       >
         <ImageBackground
-          style={styles.logoIcon}
+          style={[styles.logoIcon, styles.menuFlexBox1]}
           resizeMode="contain"
           source={require("../assets/logo.png")}
         />
       </Pressable>
-      <View style={[styles.menu, styles.wrapperFlexBox]}>
+      <View style={[styles.menu, styles.menuFlexBox]}>
         <Text
           style={styles.rentalGuidelinesAnd}
         >{`RENTAL GUIDELINES AND POLICIES  `}</Text>
-        <View style={[styles.rentWrapper, styles.wrapperFlexBox]}>
-          <Image
-            style={styles.rentIcon}
-            contentFit="contain"
-            source={require("../assets/rent.png")}
-          />
-        </View>
-        <View style={[styles.rentWrapper, styles.wrapperFlexBox]}>
-          <Image
-            style={styles.rentIcon}
-            contentFit="contain"
-            source={require("../assets/decor.png")}
-          />
-        </View>
-        <View style={[styles.rentWrapper, styles.wrapperFlexBox]}>
-          <Image
-            style={styles.rentIcon}
-            contentFit="contain"
-            source={require("../assets/deposits.png")}
-          />
-        </View>
-        <View style={[styles.rentWrapper, styles.wrapperFlexBox]}>
-          <Image
-            style={styles.rentIcon}
-            contentFit="contain"
-            source={require("../assets/contact.png")}
-          />
-        </View>
-        <View style={[styles.rentWrapper, styles.wrapperFlexBox]}>
-          <Image
-            style={styles.rentIcon}
-            contentFit="contain"
-            source={require("../assets/mission.png")}
-          />
-        </View>
+        <Image
+          style={styles.menuChild}
+          contentFit="cover"
+          source={require("../assets/frame-19.png")}
+        />
+        <Image
+          style={styles.menuChild}
+          contentFit="cover"
+          source={require("../assets/frame-20.png")}
+        />
+        <Image
+          style={styles.menuChild}
+          contentFit="cover"
+          source={require("../assets/frame-21.png")}
+        />
+        <Image
+          style={styles.menuChild}
+          contentFit="cover"
+          source={require("../assets/frame-22.png")}
+        />
+        <Image
+          style={styles.menuChild}
+          contentFit="cover"
+          source={require("../assets/frame-23.png")}
+        />
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  wrapperFlexBox: {
+  menuFlexBox: {
     justifyContent: "center",
-    alignSelf: "stretch",
     alignItems: "center",
+  },
+  menuFlexBox1: {
+    flex: 1,
+    alignSelf: "stretch",
   },
   logoIcon: {
     alignSelf: "stretch",
-    flex: 1,
   },
   logoWrapper: {
+    width: 402,
     height: 175,
   },
   rentalGuidelinesAnd: {
@@ -93,7 +86,7 @@ const styles = StyleSheet.create({
     height: 43,
     alignSelf: "stretch",
   },
-  rentIcon: {
+  menuChild: {
     maxWidth: "100%",
     overflow: "hidden",
     maxHeight: "100%",
@@ -101,12 +94,10 @@ const styles = StyleSheet.create({
     width: "100%",
     flex: 1,
   },
-  rentWrapper: {
-    flex: 1,
-  },
   menu: {
     padding: 25,
     gap: 27,
+    alignSelf: "stretch",
     flex: 1,
   },
   guidelinesScreen: {

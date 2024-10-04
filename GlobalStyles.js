@@ -18,5 +18,4 @@ export const Gap = {
 /* Paddings */
 export const Padding = {
   p_xl: 20,
-  p_11xl: 30,
 };

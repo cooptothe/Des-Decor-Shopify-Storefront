@@ -1,91 +1,62 @@
 import * as React from "react";
-import {
-  ImageBackground,
-  StyleSheet,
-  View,
-  Pressable,
-  Text,
-} from "react-native";
 import { Image } from "expo-image";
-import { useNavigation } from "@react-navigation/native";
+import { StyleSheet, View, Text } from "react-native";
 import { FontSize, FontFamily, Color, Padding, Gap } from "../GlobalStyles";
 
 const InventoryScreen = () => {
-  const navigation = useNavigation();
-
   return (
-    <View style={[styles.inventoryScreen, styles.wrapperFlexBox]}>
-      <Pressable
-        style={[styles.logoWrapper, styles.wrapperFlexBox]}
-        onPress={() => navigation.navigate("MainMenuPhone")}
-      >
-        <ImageBackground
-          style={[styles.logoIcon, styles.menuFlexBox]}
-          resizeMode="contain"
-          source={require("../assets/logo2.png")}
-        />
-      </Pressable>
-      <View style={[styles.menu, styles.wrapperFlexBox]}>
+    <View style={[styles.inventoryScreen, styles.menuFlexBox]}>
+      <Image
+        style={[styles.inventoryScreenChild, styles.childLayout]}
+        contentFit="cover"
+        source={require("../assets/frame-7.png")}
+      />
+      <View style={[styles.menu, styles.menuFlexBox]}>
         <Text style={styles.inventory}>{`INVENTORY  `}</Text>
-        <View style={[styles.wallsWrapper, styles.wrapperFlexBox]}>
-          <Image
-            style={[styles.wallsIcon, styles.wallsIconLayout]}
-            contentFit="contain"
-            source={require("../assets/walls.png")}
-          />
-        </View>
-        <View style={[styles.wallsWrapper, styles.wrapperFlexBox]}>
-          <Image
-            style={[styles.wallsIcon, styles.wallsIconLayout]}
-            contentFit="contain"
-            source={require("../assets/tables.png")}
-          />
-        </View>
-        <View style={[styles.wallsWrapper, styles.wrapperFlexBox]}>
-          <Image
-            style={[styles.wallsIcon, styles.wallsIconLayout]}
-            contentFit="contain"
-            source={require("../assets/acc.png")}
-          />
-        </View>
-        <View style={[styles.wallsWrapper, styles.wrapperFlexBox]}>
-          <Image
-            style={[styles.wallsIcon, styles.wallsIconLayout]}
-            contentFit="contain"
-            source={require("../assets/ball.png")}
-          />
-        </View>
-        <View style={[styles.wallsWrapper, styles.wrapperFlexBox]}>
-          <Image
-            style={[styles.wallsIcon, styles.wallsIconLayout]}
-            contentFit="contain"
-            source={require("../assets/cust.png")}
-          />
-        </View>
+        <Image
+          style={[styles.menuChild, styles.childLayout]}
+          contentFit="contain"
+          source={require("../assets/frame-8.png")}
+        />
+        <Image
+          style={[styles.menuChild, styles.childLayout]}
+          contentFit="cover"
+          source={require("../assets/frame-9.png")}
+        />
+        <Image
+          style={[styles.menuChild, styles.childLayout]}
+          contentFit="cover"
+          source={require("../assets/frame-10.png")}
+        />
+        <Image
+          style={[styles.menuChild, styles.childLayout]}
+          contentFit="cover"
+          source={require("../assets/frame-11.png")}
+        />
+        <Image
+          style={[styles.menuChild, styles.childLayout]}
+          contentFit="cover"
+          source={require("../assets/frame-12.png")}
+        />
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  wrapperFlexBox: {
+  menuFlexBox: {
     justifyContent: "center",
     alignItems: "center",
-  },
-  menuFlexBox: {
     flex: 1,
-    alignSelf: "stretch",
   },
-  wallsIconLayout: {
+  childLayout: {
+    overflow: "hidden",
+    maxWidth: "100%",
+    alignSelf: "stretch",
     width: "100%",
-    flex: 1,
   },
-  logoIcon: {
-    alignSelf: "stretch",
-  },
-  logoWrapper: {
+  inventoryScreenChild: {
     height: 175,
-    alignSelf: "stretch",
   },
   inventory: {
     fontSize: FontSize.size_lgi,
@@ -98,29 +69,21 @@ const styles = StyleSheet.create({
     height: 43,
     alignSelf: "stretch",
   },
-  wallsIcon: {
-    maxWidth: "100%",
-    overflow: "hidden",
+  menuChild: {
     maxHeight: "100%",
-    alignSelf: "stretch",
-  },
-  wallsWrapper: {
-    paddingHorizontal: Padding.p_11xl,
-    paddingVertical: 0,
-    alignSelf: "stretch",
     flex: 1,
+    maxWidth: "100%",
   },
   menu: {
     padding: Padding.p_xl,
     gap: Gap.gap_md,
     alignSelf: "stretch",
-    flex: 1,
   },
   inventoryScreen: {
     backgroundColor: Color.colorWhite,
     height: 874,
     width: "100%",
-    flex: 1,
+    alignItems: "center",
   },
 });
 

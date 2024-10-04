@@ -2,11 +2,11 @@ const Stack = createNativeStackNavigator();
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { useFonts } from "expo-font";
+import ConsultationScreen from "./screens/ConsultationScreen";
 import MainMenuPhone from "./screens/MainMenuPhone";
 import BundlesScreen from "./screens/BundlesScreen";
 import GuidelinesScreen from "./screens/GuidelinesScreen";
 import BridalScreen from "./screens/BridalScreen";
-import ConsultationScreen from "./screens/ConsultationScreen";
 import InventoryScreen from "./screens/InventoryScreen";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -32,6 +32,11 @@ const App = () => {
             screenOptions={{ headerShown: false }}
           >
             <Stack.Screen
+              name="ConsultationScreen"
+              component={ConsultationScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
               name="MainMenuPhone"
               component={MainMenuPhone}
               options={{ headerShown: false }}
@@ -49,11 +54,6 @@ const App = () => {
             <Stack.Screen
               name="BridalScreen"
               component={BridalScreen}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="ConsultationScreen"
-              component={ConsultationScreen}
               options={{ headerShown: false }}
             />
             <Stack.Screen

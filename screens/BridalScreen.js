@@ -1,53 +1,53 @@
 import { Image } from "expo-image";
 import * as React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
+import { Image } from "expo-image";
+import { StyleSheet, View, Pressable, Text } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { FontSize, FontFamily, Color, Padding, Gap } from "../GlobalStyles";
 
 const BridalScreen = () => {
+  const navigation = useNavigation();
+
   return (
-    <View style={styles.bridalScreen}>
-      <View style={styles.logoWrapper}>
+    <View style={[styles.bridalScreen, styles.menuFlexBox]}>
+      <Pressable
+        style={[styles.logoWrapper, styles.menuFlexBox]}
+        onPress={() => navigation.navigate("MainMenuPhone")}
+      >
         <Image
-          style={styles.logoIconLayout}
-          contentFit="contain"
+          style={styles.logoIcon}
+          contentFit="cover"
           source={require("../assets/logo1.png")}
         />
-      </View>
+      </Pressable>
       <View style={[styles.menu, styles.menuFlexBox]}>
         <Text style={styles.bridal}>{`BRIDAL  `}</Text>
-        <View style={styles.menuFlexBox}>
-          <Image
-            style={styles.logoIconLayout}
-            contentFit="contain"
-            source={require("../assets/bridal1.png")}
-          />
-        </View>
-        <View style={styles.menuFlexBox}>
-          <Image
-            style={styles.logoIconLayout}
-            contentFit="contain"
-            source={require("../assets/premi.png")}
-          />
-        </View>
-        <View style={styles.menuFlexBox}>
-          <Image
-            style={styles.logoIconLayout}
-            contentFit="contain"
-            source={require("../assets/store.png")}
-          />
-        </View>
+
         <Image
-          style={styles.logoIconLayout}
+          style={[styles.menuChild, styles.menuChildLayout]}
+          contentFit="contain"
+          source={require("../assets/frame-14.png")}
+        />
+        <Image
+          style={[styles.menuChild, styles.menuChildLayout]}
+          contentFit="cover"
+          source={require("../assets/frame-15.png")}
+        />
+        <Image
+          style={[styles.menuChild, styles.menuChildLayout]}
+          contentFit="cover"
+          source={require("../assets/frame-16.png")}
+        />
+        <Image
+          style={[styles.menuChild, styles.menuChildLayout]}
           contentFit="contain"
           source={require("../assets/frame-17.png")}
         />
-        <View style={styles.menuFlexBox}>
-          <Image
-            style={styles.logoIconLayout}
-            contentFit="contain"
-            source={require("../assets/galler.png")}
-          />
-        </View>
+        <Image
+          style={[styles.menuChild, styles.menuChildLayout]}
+          contentFit="cover"
+          source={require("../assets/frame-18.png")}
+        />
       </View>
     </View>
   );
@@ -56,21 +56,18 @@ const BridalScreen = () => {
 const styles = StyleSheet.create({
   menuFlexBox: {
     justifyContent: "center",
-    alignSelf: "stretch",
     alignItems: "center",
-    flex: 1,
   },
-  logoIconLayout: {
-    maxHeight: "100%",
-    overflow: "hidden",
-    maxWidth: "100%",
-    alignSelf: "stretch",
+  menuChildLayout: {
     width: "100%",
     flex: 1,
   },
-  logoWrapper: {
+  logoIcon: {
     height: 168,
-    alignSelf: "stretch",
+    width: 400,
+  },
+  logoWrapper: {
+    width: 400,
   },
   bridal: {
     fontSize: FontSize.size_lgi,
@@ -83,17 +80,25 @@ const styles = StyleSheet.create({
     height: 43,
     alignSelf: "stretch",
   },
+  menuChild: {
+    maxWidth: "100%",
+    overflow: "hidden",
+    maxHeight: "100%",
+    alignSelf: "stretch",
+  },
   menu: {
     padding: Padding.p_xl,
-    gap: 28,
+    gap: Gap.gap_md,
+    alignSelf: "stretch",
+    flex: 1,
+    alignItems: "center",
   },
   bridalScreen: {
     backgroundColor: Color.colorWhite,
     height: 874,
-    justifyContent: "space-between",
     paddingHorizontal: 11,
     paddingBottom: 52,
-    alignItems: "center",
+    gap: 28,
     width: "100%",
     flex: 1,
   },
