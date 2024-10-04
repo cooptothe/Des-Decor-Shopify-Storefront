@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "des_decor_shopify_storefront",
-    "slug": "des_decor_shopify_storefront",
+    "name": "DesDecorShopifyStorefront",
+    "slug": "DesDecorShopifyStorefront",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
