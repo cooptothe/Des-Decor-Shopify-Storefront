@@ -1,5 +1,3 @@
-import { useNavigation } from "@react-navigation/native";
-import { Image } from "expo-image";
 import * as React from "react";
 import { Image } from "expo-image";
 import { StyleSheet, Text, View } from "react-native";
@@ -10,7 +8,7 @@ const BundlesScreen = () => {
     <View style={styles.bundlesScreen}>
       <Image
         style={[styles.bundlesScreenChild, styles.childLayout]}
-        contentFit="cover"
+        contentFit="contain"
         source={require("../assets/frame-1.png")}
       />
       <View style={[styles.decorToGoBundlesWrapper, styles.decorFlexBox]}>
@@ -21,52 +19,62 @@ const BundlesScreen = () => {
       <View style={[styles.menu, styles.decorFlexBox]} centerContent="true">
         <Image
           style={[styles.menuChild, styles.childLayout]}
+          resizeMethod="scale"
           contentFit="contain"
           source={require("../assets/frame-25.png")}
         />
         <Image
           style={[styles.menuChild, styles.childLayout]}
+          resizeMethod="scale"
           contentFit="contain"
           source={require("../assets/frame-26.png")}
         />
         <Image
           style={[styles.menuChild, styles.childLayout]}
-          contentFit="cover"
+          resizeMethod="scale"
+          contentFit="contain"
           source={require("../assets/frame-27.png")}
         />
         <Image
           style={[styles.menuChild, styles.childLayout]}
-          contentFit="cover"
+          resizeMethod="scale"
+          contentFit="contain"
           source={require("../assets/frame-28.png")}
         />
         <Image
           style={[styles.menuChild, styles.childLayout]}
-          contentFit="cover"
+          resizeMethod="scale"
+          contentFit="contain"
           source={require("../assets/frame-29.png")}
         />
         <Image
           style={[styles.menuChild, styles.childLayout]}
-          contentFit="cover"
+          resizeMethod="scale"
+          contentFit="contain"
           source={require("../assets/frame-30.png")}
         />
         <Image
           style={[styles.menuChild, styles.childLayout]}
-          contentFit="cover"
+          resizeMethod="scale"
+          contentFit="contain"
           source={require("../assets/frame-31.png")}
         />
         <Image
           style={[styles.menuChild, styles.childLayout]}
-          contentFit="cover"
+          resizeMethod="scale"
+          contentFit="contain"
           source={require("../assets/frame-32.png")}
         />
         <Image
           style={[styles.menuChild, styles.childLayout]}
-          contentFit="cover"
+          resizeMethod="scale"
+          contentFit="contain"
           source={require("../assets/frame-33.png")}
         />
         <Image
           style={[styles.menuChild, styles.childLayout]}
-          contentFit="cover"
+          resizeMethod="scale"
+          contentFit="contain"
           source={require("../assets/frame-34.png")}
         />
       </View>

@@ -1,40 +1,27 @@
 import * as React from "react";
-import {
-  ImageBackground,
-  StyleSheet,
-  View,
-  Pressable,
-  Text,
-} from "react-native";
 import { Image } from "expo-image";
-import { useNavigation } from "@react-navigation/native";
+import { StyleSheet, View, Text, ImageBackground } from "react-native";
 import { FontSize, FontFamily, Color } from "../GlobalStyles";
 
 const ConsultationScreen = () => {
-  const navigation = useNavigation();
-
   return (
     <View style={[styles.consultationScreen, styles.menuFlexBox]}>
-      <Pressable
-        style={[styles.logoWrapper, styles.imgsFlexBox]}
-        onPress={() => navigation.navigate("MainMenuPhone")}
-      >
-        <ImageBackground
-          style={styles.logoIcon}
-          resizeMode="contain"
-          source={require("../assets/logo2.png")}
-        />
-      </Pressable>
+      <Image
+        style={[styles.consultationScreenChild, styles.bookingIconLayout]}
+        resizeMethod="scale"
+        contentFit="contain"
+        source={require("../assets/logo2.png")}
+      />
       <View style={[styles.menu, styles.menuFlexBox]}>
         <Text style={styles.bookAConsultation}>BOOK A CONSULTATION</Text>
         <View style={styles.bookingWrapper}>
           <Image
-            style={styles.bookingIcon}
+            style={[styles.bookingIcon, styles.bookingIconLayout]}
             contentFit="contain"
             source={require("../assets/booking.png")}
           />
         </View>
-        <View style={[styles.imgs, styles.imgsFlexBox]}>
+        <View style={styles.imgs}>
           <ImageBackground
             style={[styles.frameIcon, styles.frameIconFlexBox]}
             resizeMode="contain"
@@ -56,9 +43,11 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     flex: 1,
   },
-  imgsFlexBox: {
-    justifyContent: "center",
-    alignItems: "center",
+  bookingIconLayout: {
+    overflow: "hidden",
+    maxWidth: "100%",
+    alignSelf: "stretch",
+    width: "100%",
   },
   frameIconFlexBox: {
     height: 321,
@@ -66,13 +55,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flex: 1,
   },
-  logoIcon: {
-    alignSelf: "stretch",
-    flex: 1,
-  },
-  logoWrapper: {
+  consultationScreenChild: {
     height: 175,
-    alignSelf: "stretch",
   },
   bookAConsultation: {
     fontSize: FontSize.size_lgi,
@@ -86,12 +70,9 @@ const styles = StyleSheet.create({
     alignSelf: "stretch",
   },
   bookingIcon: {
-    maxWidth: "100%",
     maxHeight: "100%",
-    overflow: "hidden",
-    alignSelf: "stretch",
-    width: "100%",
     flex: 1,
+    maxWidth: "100%",
   },
   bookingWrapper: {
     height: 339,
@@ -105,7 +86,9 @@ const styles = StyleSheet.create({
   },
   imgs: {
     flexDirection: "row",
+    justifyContent: "center",
     width: 402,
+    alignItems: "center",
   },
   menu: {
     alignSelf: "stretch",

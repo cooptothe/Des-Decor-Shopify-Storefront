@@ -8,34 +8,38 @@ const InventoryScreen = () => {
     <View style={[styles.inventoryScreen, styles.menuFlexBox]}>
       <Image
         style={[styles.inventoryScreenChild, styles.childLayout]}
-        contentFit="cover"
+        resizeMethod="scale"
+        contentFit="contain"
         source={require("../assets/frame-7.png")}
       />
       <View style={[styles.menu, styles.menuFlexBox]}>
         <Text style={styles.inventory}>{`INVENTORY  `}</Text>
         <Image
           style={[styles.menuChild, styles.childLayout]}
+          resizeMethod="scale"
           contentFit="contain"
           source={require("../assets/frame-8.png")}
         />
         <Image
           style={[styles.menuChild, styles.childLayout]}
-          contentFit="cover"
+          resizeMethod="scale"
+          contentFit="contain"
           source={require("../assets/frame-9.png")}
         />
         <Image
           style={[styles.menuChild, styles.childLayout]}
-          contentFit="cover"
+          resizeMethod="scale"
+          contentFit="contain"
           source={require("../assets/frame-10.png")}
         />
         <Image
           style={[styles.menuChild, styles.childLayout]}
-          contentFit="cover"
+          contentFit="contain"
           source={require("../assets/frame-11.png")}
         />
         <Image
           style={[styles.menuChild, styles.childLayout]}
-          contentFit="cover"
+          contentFit="contain"
           source={require("../assets/frame-12.png")}
         />
       </View>

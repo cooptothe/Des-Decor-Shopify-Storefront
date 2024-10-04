@@ -1,5 +1,3 @@
-import { useNavigation } from "@react-navigation/native";
-import { Image } from "expo-image";
 import * as React from "react";
 import { Image } from "expo-image";
 import { StyleSheet, View, Text } from "react-native";
@@ -10,7 +8,8 @@ const MainMenuPhone = () => {
     <View style={styles.mainMenuPhone}>
       <Image
         style={[styles.frameIcon, styles.frameIconLayout]}
-        contentFit="cover"
+        resizeMethod="scale"
+        contentFit="contain"
         source={require("../assets/frame.png")}
       />
       <View style={[styles.menu, styles.menuFlexBox]}>
@@ -19,26 +18,31 @@ const MainMenuPhone = () => {
         >{`MAIN MENU  `}</Text>
         <Image
           style={[styles.menuChild, styles.frameIconLayout]}
+          resizeMethod="scale"
           contentFit="contain"
           source={require("../assets/frame-2.png")}
         />
         <Image
           style={[styles.menuChild, styles.frameIconLayout]}
+          resizeMethod="scale"
           contentFit="contain"
           source={require("../assets/frame-3.png")}
         />
         <Image
           style={[styles.menuChild, styles.frameIconLayout]}
+          resizeMethod="scale"
           contentFit="contain"
           source={require("../assets/frame-4.png")}
         />
         <Image
           style={[styles.menuChild, styles.frameIconLayout]}
+          resizeMethod="scale"
           contentFit="contain"
           source={require("../assets/frame-5.png")}
         />
         <Image
           style={[styles.menuChild, styles.frameIconLayout]}
+          resizeMethod="scale"
           contentFit="contain"
           source={require("../assets/frame-6.png")}
         />
