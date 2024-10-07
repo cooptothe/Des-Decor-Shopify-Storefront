@@ -20,7 +20,7 @@ const MainMenuPhone = () => {
           style={styles.logoIcon}
           resizeMethod="scale"
           resizeMode="contain"
-          source={require("../assets/logo.png")}
+          source={require("../assets/logo3x.png")}
         />
       </View>
       <Text style={styles.mainMenu}>{`MAIN MENU  `}</Text>
@@ -32,7 +32,7 @@ const MainMenuPhone = () => {
           style={styles.bundlesbIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/bundlesB.png")}
+          source={require("../assets/bundlesB3x.png")}
         />
       </Pressable>
       <Pressable
@@ -43,7 +43,7 @@ const MainMenuPhone = () => {
           style={styles.invetoryIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/invetory.png")}
+          source={require("../assets/invetory3x.png")}
         />
       </Pressable>
       <Pressable
@@ -54,7 +54,7 @@ const MainMenuPhone = () => {
           style={styles.invetoryIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/guidelines.png")}
+          source={require("../assets/guidelines3x.png")}
         />
       </Pressable>
       <Pressable
@@ -65,7 +65,7 @@ const MainMenuPhone = () => {
           style={styles.invetoryIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/bridal.png")}
+          source={require("../assets/bridal3x.png")}
         />
       </Pressable>
       <Pressable
@@ -76,7 +76,7 @@ const MainMenuPhone = () => {
           style={styles.invetoryIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/consult.png")}
+          source={require("../assets/consult3x.png")}
         />
       </Pressable>
     </View>
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   mainMenu: {
     fontSize: FontSize.size_lgi,
     fontWeight: "500",
-    fontFamily: FontFamily.inter,
+    fontFamily: FontFamily.interMedium,
     color: Color.colorGray,
     textAlign: "center",
   },

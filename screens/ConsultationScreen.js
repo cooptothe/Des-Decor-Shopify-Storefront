@@ -23,7 +23,7 @@ const ConsultationScreen = () => {
           style={styles.logoIcon}
           resizeMethod="scale"
           resizeMode="contain"
-          source={require("../assets/logo3.png")}
+          source={require("../assets/logo33x.png")}
         />
       </Pressable>
       <Text style={styles.bookAConsultation}>BOOK A CONSULTATION</Text>
@@ -31,19 +31,19 @@ const ConsultationScreen = () => {
         <Image
           style={styles.bookingIcon}
           contentFit="contain"
-          source={require("../assets/booking.png")}
+          source={require("../assets/booking1x.png")}
         />
       </View>
       <View style={styles.imgs}>
         <ImageBackground
           style={[styles.frameIcon, styles.frameIconFlexBox]}
           resizeMode="contain"
-          source={require("../assets/frame.png")}
+          source={require("../assets/frame1x.png")}
         />
         <ImageBackground
           style={[styles.frameIcon1, styles.frameIconFlexBox]}
           resizeMode="contain"
-          source={require("../assets/frame1.png")}
+          source={require("../assets/frame11x.png")}
         />
       </View>
     </View>
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     letterSpacing: -0.2,
     lineHeight: 37,
     fontWeight: "500",
-    fontFamily: FontFamily.inter,
+    fontFamily: FontFamily.interMedium,
     color: Color.colorGray,
     textAlign: "center",
     alignSelf: "stretch",

@@ -23,7 +23,7 @@ const GuidelinesScreen = () => {
           style={styles.logoIcon}
           resizeMethod="scale"
           resizeMode="contain"
-          source={require("../assets/logo1.png")}
+          source={require("../assets/logo13x.png")}
         />
       </Pressable>
       <Text
@@ -34,22 +34,14 @@ const GuidelinesScreen = () => {
           style={styles.rentIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/rent.png")}
+          source={require("../assets/rent3x.png")}
         />
       </View>
       <View style={[styles.rentButton, styles.logoFlexBox]}>
         <Image
           style={styles.rentIcon}
           contentFit="contain"
-          source={require("../assets/decor.png")}
-        />
-      </View>
-      <View style={[styles.rentButton, styles.logoFlexBox]}>
-        <Image
-          style={styles.rentIcon}
-          resizeMethod="scale"
-          contentFit="contain"
-          source={require("../assets/deposits.png")}
+          source={require("../assets/decor3x.png")}
         />
       </View>
       <View style={[styles.rentButton, styles.logoFlexBox]}>
@@ -57,7 +49,7 @@ const GuidelinesScreen = () => {
           style={styles.rentIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/contact.png")}
+          source={require("../assets/deposits3x.png")}
         />
       </View>
       <View style={[styles.rentButton, styles.logoFlexBox]}>
@@ -65,7 +57,15 @@ const GuidelinesScreen = () => {
           style={styles.rentIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/mission.png")}
+          source={require("../assets/contact3x.png")}
+        />
+      </View>
+      <View style={[styles.rentButton, styles.logoFlexBox]}>
+        <Image
+          style={styles.rentIcon}
+          resizeMethod="scale"
+          contentFit="contain"
+          source={require("../assets/mission3x.png")}
         />
       </View>
     </View>
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     letterSpacing: -0.2,
     lineHeight: 50,
     fontWeight: "500",
-    fontFamily: FontFamily.inter,
+    fontFamily: FontFamily.interMedium,
     color: Color.colorGray,
     textAlign: "center",
   },

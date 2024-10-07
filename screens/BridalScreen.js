@@ -23,7 +23,7 @@ const BridalScreen = () => {
           style={styles.logoIcon}
           resizeMethod="scale"
           resizeMode="contain"
-          source={require("../assets/logo2.png")}
+          source={require("../assets/logo23x.png")}
         />
       </Pressable>
       <Text style={styles.bridal}>{`BRIDAL  `}</Text>
@@ -32,7 +32,7 @@ const BridalScreen = () => {
           style={styles.bridalIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/bridal1.png")}
+          source={require("../assets/bridal13x.png")}
         />
       </View>
       <View style={[styles.bridalButton, styles.logoFlexBox]}>
@@ -40,7 +40,7 @@ const BridalScreen = () => {
           style={styles.bridalIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/premi.png")}
+          source={require("../assets/premi3x.png")}
         />
       </View>
       <View style={[styles.bridalButton, styles.logoFlexBox]}>
@@ -48,7 +48,7 @@ const BridalScreen = () => {
           style={styles.bridalIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/store.png")}
+          source={require("../assets/store3x.png")}
         />
       </View>
       <View style={[styles.bridalButton, styles.logoFlexBox]}>
@@ -56,14 +56,14 @@ const BridalScreen = () => {
           style={styles.bridalIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/fronts.png")}
+          source={require("../assets/fronts3x.png")}
         />
       </View>
       <View style={[styles.bridalButton, styles.logoFlexBox]}>
         <Image
           style={styles.bridalIcon}
           contentFit="contain"
-          source={require("../assets/galler.png")}
+          source={require("../assets/galler3x.png")}
         />
       </View>
     </View>
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     letterSpacing: -0.2,
     lineHeight: 49,
     fontWeight: "500",
-    fontFamily: FontFamily.inter,
+    fontFamily: FontFamily.interMedium,
     color: Color.colorGray,
     textAlign: "center",
   },

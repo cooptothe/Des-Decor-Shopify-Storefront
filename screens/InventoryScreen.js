@@ -22,7 +22,7 @@ const InventoryScreen = () => {
         <ImageBackground
           style={styles.logoIcon}
           resizeMode="contain"
-          source={require("../assets/logo21.png")}
+          source={require("../assets/logo211x.png")}
         />
       </Pressable>
       <Text style={styles.inventory}>{`INVENTORY  `}</Text>
@@ -31,7 +31,7 @@ const InventoryScreen = () => {
           style={styles.wallsIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/walls.png")}
+          source={require("../assets/walls3x.png")}
         />
       </View>
       <View style={[styles.wallButton, styles.logoFlexBox]}>
@@ -39,21 +39,21 @@ const InventoryScreen = () => {
           style={styles.wallsIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/tables.png")}
+          source={require("../assets/tables3x.png")}
         />
       </View>
       <View style={[styles.wallButton, styles.logoFlexBox]}>
         <Image
           style={styles.wallsIcon}
           contentFit="contain"
-          source={require("../assets/acc.png")}
+          source={require("../assets/acc3x.png")}
         />
       </View>
       <View style={[styles.wallButton, styles.logoFlexBox]}>
         <Image
           style={styles.wallsIcon}
           contentFit="contain"
-          source={require("../assets/ball.png")}
+          source={require("../assets/ball3x.png")}
         />
       </View>
       <View style={[styles.wallButton, styles.logoFlexBox]}>
@@ -61,7 +61,7 @@ const InventoryScreen = () => {
           style={styles.wallsIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/cust.png")}
+          source={require("../assets/cust3x.png")}
         />
       </View>
     </View>
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     letterSpacing: -0.2,
     lineHeight: 76,
     fontWeight: "500",
-    fontFamily: FontFamily.inter,
+    fontFamily: FontFamily.interMedium,
     color: Color.colorGray,
     textAlign: "center",
   },

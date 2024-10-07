@@ -1,6 +1,6 @@
 /* fonts */
 export const FontFamily = {
-  inter: "Inter",
+  interMedium: "Inter-Medium",
 };
 /* font sizes */
 export const FontSize = {

@@ -27,7 +27,7 @@ const BundlesScreen = () => {
           style={styles.sigCakeIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/sig-cake.png")}
+          source={require("../assets/sig-cake3x.png")}
         />
       </View>
       <View style={[styles.signButton, styles.logoFlexBox]}>
@@ -35,7 +35,7 @@ const BundlesScreen = () => {
           style={styles.sigCakeIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/mix-table.png")}
+          source={require("../assets/mix-table3x.png")}
         />
       </View>
       <View style={[styles.signButton, styles.logoFlexBox]}>
@@ -43,7 +43,7 @@ const BundlesScreen = () => {
           style={styles.sigCakeIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/dinn-party.png")}
+          source={require("../assets/dinn-party3x.png")}
         />
       </View>
       <View style={[styles.signButton, styles.logoFlexBox]}>
@@ -51,7 +51,7 @@ const BundlesScreen = () => {
           style={styles.sigCakeIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/kids-party.png")}
+          source={require("../assets/kids-party3x.png")}
         />
       </View>
       <View style={[styles.signButton, styles.logoFlexBox]}>
@@ -59,7 +59,7 @@ const BundlesScreen = () => {
           style={styles.sigCakeIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/stndrd-bundle.png")}
+          source={require("../assets/stndrd-bundle3x.png")}
         />
       </View>
       <View style={[styles.signButton, styles.logoFlexBox]}>
@@ -67,7 +67,7 @@ const BundlesScreen = () => {
           style={styles.sigCakeIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/corp-events.png")}
+          source={require("../assets/corp-events3x.png")}
         />
       </View>
       <View style={[styles.signButton, styles.logoFlexBox]}>
@@ -75,7 +75,7 @@ const BundlesScreen = () => {
           style={styles.holBundleIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/hol-bundle.png")}
+          source={require("../assets/hol-bundle3x.png")}
         />
       </View>
       <View style={[styles.signButton, styles.logoFlexBox]}>
@@ -83,7 +83,7 @@ const BundlesScreen = () => {
           style={styles.sigCakeIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/pic-bundle.png")}
+          source={require("../assets/pic-bundle3x.png")}
         />
       </View>
       <View style={[styles.signButton, styles.logoFlexBox]}>
@@ -91,7 +91,7 @@ const BundlesScreen = () => {
           style={styles.sigCakeIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/zod-bundle.png")}
+          source={require("../assets/zod-bundle3x.png")}
         />
       </View>
       <View style={[styles.signButton, styles.logoFlexBox]}>
@@ -99,7 +99,7 @@ const BundlesScreen = () => {
           style={styles.sigCakeIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/prem-bundle.png")}
+          source={require("../assets/prem-bundle3x.png")}
         />
       </View>
     </View>
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     letterSpacing: -0.2,
     lineHeight: 76,
     fontWeight: "500",
-    fontFamily: FontFamily.inter,
+    fontFamily: FontFamily.interMedium,
     color: Color.colorGray,
     textAlign: "center",
   },
