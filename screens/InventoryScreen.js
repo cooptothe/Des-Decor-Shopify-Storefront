@@ -1,46 +1,67 @@
 import * as React from "react";
+import {
+  View,
+  ImageBackground,
+  StyleSheet,
+  Pressable,
+  Text,
+} from "react-native";
 import { Image } from "expo-image";
-import { StyleSheet, View, Text } from "react-native";
-import { FontSize, FontFamily, Color, Padding, Gap } from "../GlobalStyles";
+import { useNavigation } from "@react-navigation/native";
+import { FontSize, FontFamily, Color, Padding } from "../GlobalStyles";
 
 const InventoryScreen = () => {
+  const navigation = useNavigation();
+
   return (
-    <View style={[styles.inventoryScreen, styles.menuFlexBox]}>
-      <Image
-        style={[styles.inventoryScreenChild, styles.childLayout]}
-        resizeMethod="scale"
-        contentFit="contain"
-        source={require("../assets/frame-7.png")}
-      />
-      <View style={[styles.menu, styles.menuFlexBox]}>
-        <Text style={styles.inventory}>{`INVENTORY  `}</Text>
+    <View style={styles.inventoryScreen}>
+      <Pressable
+        style={styles.logoFlexBox}
+        onPress={() => navigation.navigate("MainMenuPhone")}
+      >
+        <ImageBackground
+          style={styles.logoIcon}
+          resizeMode="contain"
+          source={require("../assets/logo21.png")}
+        />
+      </Pressable>
+      <Text style={styles.inventory}>{`INVENTORY  `}</Text>
+      <View style={[styles.wallButton, styles.logoFlexBox]}>
         <Image
-          style={[styles.menuChild, styles.childLayout]}
+          style={styles.wallsIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/frame-8.png")}
+          source={require("../assets/walls.png")}
         />
+      </View>
+      <View style={[styles.wallButton, styles.logoFlexBox]}>
         <Image
-          style={[styles.menuChild, styles.childLayout]}
+          style={styles.wallsIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/frame-9.png")}
+          source={require("../assets/tables.png")}
         />
+      </View>
+      <View style={[styles.wallButton, styles.logoFlexBox]}>
         <Image
-          style={[styles.menuChild, styles.childLayout]}
+          style={styles.wallsIcon}
+          contentFit="contain"
+          source={require("../assets/acc.png")}
+        />
+      </View>
+      <View style={[styles.wallButton, styles.logoFlexBox]}>
+        <Image
+          style={styles.wallsIcon}
+          contentFit="contain"
+          source={require("../assets/ball.png")}
+        />
+      </View>
+      <View style={[styles.wallButton, styles.logoFlexBox]}>
+        <Image
+          style={styles.wallsIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/frame-10.png")}
-        />
-        <Image
-          style={[styles.menuChild, styles.childLayout]}
-          contentFit="contain"
-          source={require("../assets/frame-11.png")}
-        />
-        <Image
-          style={[styles.menuChild, styles.childLayout]}
-          contentFit="contain"
-          source={require("../assets/frame-12.png")}
+          source={require("../assets/cust.png")}
         />
       </View>
     </View>
@@ -48,18 +69,12 @@ const InventoryScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  menuFlexBox: {
+  logoFlexBox: {
     justifyContent: "center",
     alignItems: "center",
-    flex: 1,
   },
-  childLayout: {
-    overflow: "hidden",
-    maxWidth: "100%",
-    alignSelf: "stretch",
-    width: "100%",
-  },
-  inventoryScreenChild: {
+  logoIcon: {
+    width: 402,
     height: 175,
   },
   inventory: {
@@ -67,26 +82,26 @@ const styles = StyleSheet.create({
     letterSpacing: -0.2,
     lineHeight: 76,
     fontWeight: "500",
-    fontFamily: FontFamily.interMedium,
+    fontFamily: FontFamily.inter,
     color: Color.colorGray,
     textAlign: "center",
-    height: 43,
-    alignSelf: "stretch",
   },
-  menuChild: {
-    maxHeight: "100%",
-    flex: 1,
-    maxWidth: "100%",
+  wallsIcon: {
+    width: 342,
+    height: 93,
   },
-  menu: {
-    padding: Padding.p_xl,
-    gap: Gap.gap_md,
-    alignSelf: "stretch",
+  wallButton: {
+    paddingHorizontal: Padding.p_11xl,
+    paddingVertical: 0,
   },
   inventoryScreen: {
     backgroundColor: Color.colorWhite,
-    height: 874,
+    flex: 1,
     width: "100%",
+    height: 874,
+    justifyContent: "space-between",
+    paddingHorizontal: 0,
+    paddingVertical: Padding.p_xl,
     alignItems: "center",
   },
 });

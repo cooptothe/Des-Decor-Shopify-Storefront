@@ -1,50 +1,71 @@
 import * as React from "react";
+import {
+  View,
+  ImageBackground,
+  StyleSheet,
+  Pressable,
+  Text,
+} from "react-native";
 import { Image } from "expo-image";
-import { StyleSheet, Text, View } from "react-native";
-import { FontSize, FontFamily, Color } from "../GlobalStyles";
+import { useNavigation } from "@react-navigation/native";
+import { FontSize, FontFamily, Color, Padding } from "../GlobalStyles";
 
 const GuidelinesScreen = () => {
+  const navigation = useNavigation();
+
   return (
-    <View style={[styles.guidelinesScreen, styles.menuFlexBox]}>
-      <Image
-        style={styles.guidelinesScreenChild}
-        resizeMethod="scale"
-        contentFit="contain"
-        source={require("../assets/logo2.png")}
-      />
-      <View style={[styles.menu, styles.menuFlexBox]}>
-        <Text
-          style={styles.rentalGuidelinesAnd}
-        >{`RENTAL GUIDELINES AND POLICIES  `}</Text>
-        <Image
-          style={styles.menuChild}
+    <View style={styles.guidelinesScreen}>
+      <Pressable
+        style={[styles.logo, styles.logoFlexBox]}
+        onPress={() => navigation.navigate("MainMenuPhone")}
+      >
+        <ImageBackground
+          style={styles.logoIcon}
           resizeMethod="scale"
-          contentFit="contain"
-          source={require("../assets/frame-19.png")}
+          resizeMode="contain"
+          source={require("../assets/logo1.png")}
         />
+      </Pressable>
+      <Text
+        style={styles.rentalGuidelinesAnd}
+      >{`RENTAL GUIDELINES AND POLICIES  `}</Text>
+      <View style={[styles.rentButton, styles.logoFlexBox]}>
         <Image
-          style={styles.menuChild}
+          style={styles.rentIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/frame-20.png")}
+          source={require("../assets/rent.png")}
         />
+      </View>
+      <View style={[styles.rentButton, styles.logoFlexBox]}>
         <Image
-          style={styles.menuChild}
-          resizeMethod="scale"
+          style={styles.rentIcon}
           contentFit="contain"
-          source={require("../assets/frame-21.png")}
+          source={require("../assets/decor.png")}
         />
+      </View>
+      <View style={[styles.rentButton, styles.logoFlexBox]}>
         <Image
-          style={styles.menuChild}
+          style={styles.rentIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/frame-22.png")}
+          source={require("../assets/deposits.png")}
         />
+      </View>
+      <View style={[styles.rentButton, styles.logoFlexBox]}>
         <Image
-          style={styles.menuChild}
+          style={styles.rentIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/frame-23.png")}
+          source={require("../assets/contact.png")}
+        />
+      </View>
+      <View style={[styles.rentButton, styles.logoFlexBox]}>
+        <Image
+          style={styles.rentIcon}
+          resizeMethod="scale"
+          contentFit="contain"
+          source={require("../assets/mission.png")}
         />
       </View>
     </View>
@@ -52,11 +73,15 @@ const GuidelinesScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  menuFlexBox: {
+  logoFlexBox: {
+    justifyContent: "center",
     alignItems: "center",
+  },
+  logoIcon: {
+    alignSelf: "stretch",
     flex: 1,
   },
-  guidelinesScreenChild: {
+  logo: {
     width: 402,
     height: 175,
   },
@@ -65,33 +90,27 @@ const styles = StyleSheet.create({
     letterSpacing: -0.2,
     lineHeight: 50,
     fontWeight: "500",
-    fontFamily: FontFamily.interMedium,
+    fontFamily: FontFamily.inter,
     color: Color.colorGray,
     textAlign: "center",
-    height: 43,
-    alignSelf: "stretch",
   },
-  menuChild: {
-    maxWidth: "100%",
-    overflow: "hidden",
-    maxHeight: "100%",
-    alignSelf: "stretch",
-    width: "100%",
-    flex: 1,
+  rentIcon: {
+    width: 342,
+    height: 98,
   },
-  menu: {
-    justifyContent: "center",
-    padding: 25,
-    gap: 27,
-    alignSelf: "stretch",
+  rentButton: {
+    paddingHorizontal: Padding.p_11xl,
+    paddingVertical: 0,
   },
   guidelinesScreen: {
     backgroundColor: Color.colorWhite,
+    width: "100%",
     height: 874,
     justifyContent: "space-between",
-    paddingHorizontal: 7,
-    paddingVertical: 0,
-    width: "100%",
+    paddingHorizontal: 0,
+    paddingVertical: Padding.p_xl,
+    alignItems: "center",
+    flex: 1,
   },
 });
 

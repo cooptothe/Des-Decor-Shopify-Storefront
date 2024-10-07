@@ -1,81 +1,105 @@
 import * as React from "react";
+import {
+  View,
+  ImageBackground,
+  StyleSheet,
+  Pressable,
+  Text,
+} from "react-native";
 import { Image } from "expo-image";
-import { StyleSheet, Text, View } from "react-native";
-import { FontSize, FontFamily, Color, Padding, Gap } from "../GlobalStyles";
+import { useNavigation } from "@react-navigation/native";
+import { FontSize, FontFamily, Color, Padding } from "../GlobalStyles";
 
 const BundlesScreen = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.bundlesScreen}>
-      <Image
-        style={[styles.bundlesScreenChild, styles.childLayout]}
-        contentFit="contain"
-        source={require("../assets/frame-1.png")}
-      />
-      <View style={[styles.decorToGoBundlesWrapper, styles.decorFlexBox]}>
-        <Text style={[styles.decorToGo, styles.decorFlexBox]}>
-          DECOR TO GO BUNDLES
-        </Text>
+      <Pressable
+        style={[styles.logo, styles.logoFlexBox]}
+        onPress={() => navigation.navigate("MainMenuPhone")}
+      >
+        <ImageBackground style={styles.logoIcon} resizeMode="contain" />
+      </Pressable>
+      <Text style={styles.decorToGo}>DECOR TO GO BUNDLES</Text>
+      <View style={[styles.signButton, styles.logoFlexBox]}>
+        <Image
+          style={styles.sigCakeIcon}
+          resizeMethod="scale"
+          contentFit="contain"
+          source={require("../assets/sig-cake.png")}
+        />
       </View>
-      <View style={[styles.menu, styles.decorFlexBox]} centerContent="true">
+      <View style={[styles.signButton, styles.logoFlexBox]}>
         <Image
-          style={[styles.menuChild, styles.childLayout]}
+          style={styles.sigCakeIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/frame-25.png")}
+          source={require("../assets/mix-table.png")}
         />
+      </View>
+      <View style={[styles.signButton, styles.logoFlexBox]}>
         <Image
-          style={[styles.menuChild, styles.childLayout]}
+          style={styles.sigCakeIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/frame-26.png")}
+          source={require("../assets/dinn-party.png")}
         />
+      </View>
+      <View style={[styles.signButton, styles.logoFlexBox]}>
         <Image
-          style={[styles.menuChild, styles.childLayout]}
+          style={styles.sigCakeIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/frame-27.png")}
+          source={require("../assets/kids-party.png")}
         />
+      </View>
+      <View style={[styles.signButton, styles.logoFlexBox]}>
         <Image
-          style={[styles.menuChild, styles.childLayout]}
+          style={styles.sigCakeIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/frame-28.png")}
+          source={require("../assets/stndrd-bundle.png")}
         />
+      </View>
+      <View style={[styles.signButton, styles.logoFlexBox]}>
         <Image
-          style={[styles.menuChild, styles.childLayout]}
+          style={styles.sigCakeIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/frame-29.png")}
+          source={require("../assets/corp-events.png")}
         />
+      </View>
+      <View style={[styles.signButton, styles.logoFlexBox]}>
         <Image
-          style={[styles.menuChild, styles.childLayout]}
+          style={styles.holBundleIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/frame-30.png")}
+          source={require("../assets/hol-bundle.png")}
         />
+      </View>
+      <View style={[styles.signButton, styles.logoFlexBox]}>
         <Image
-          style={[styles.menuChild, styles.childLayout]}
+          style={styles.sigCakeIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/frame-31.png")}
+          source={require("../assets/pic-bundle.png")}
         />
+      </View>
+      <View style={[styles.signButton, styles.logoFlexBox]}>
         <Image
-          style={[styles.menuChild, styles.childLayout]}
+          style={styles.sigCakeIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/frame-32.png")}
+          source={require("../assets/zod-bundle.png")}
         />
+      </View>
+      <View style={[styles.signButton, styles.logoFlexBox]}>
         <Image
-          style={[styles.menuChild, styles.childLayout]}
+          style={styles.sigCakeIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/frame-33.png")}
-        />
-        <Image
-          style={[styles.menuChild, styles.childLayout]}
-          resizeMethod="scale"
-          contentFit="contain"
-          source={require("../assets/frame-34.png")}
+          source={require("../assets/prem-bundle.png")}
         />
       </View>
     </View>
@@ -83,51 +107,48 @@ const BundlesScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  childLayout: {
-    overflow: "hidden",
-    maxWidth: "100%",
-    alignSelf: "stretch",
-    width: "100%",
-  },
-  decorFlexBox: {
+  logoFlexBox: {
     justifyContent: "center",
-    alignSelf: "stretch",
     alignItems: "center",
   },
-  bundlesScreenChild: {
+  logoIcon: {
+    width: 393,
     height: 193,
+  },
+  logo: {
+    alignSelf: "stretch",
   },
   decorToGo: {
     fontSize: FontSize.size_lgi,
     letterSpacing: -0.2,
     lineHeight: 76,
     fontWeight: "500",
-    fontFamily: FontFamily.interMedium,
+    fontFamily: FontFamily.inter,
     color: Color.colorGray,
     textAlign: "center",
-    display: "flex",
-    flex: 1,
   },
-  decorToGoBundlesWrapper: {
-    height: 1,
+  sigCakeIcon: {
+    width: 333,
+    height: 122,
   },
-  menuChild: {
-    maxHeight: "100%",
-    flex: 1,
-  },
-  menu: {
-    height: 1398,
-    paddingHorizontal: Padding.p_xl,
+  signButton: {
+    paddingHorizontal: Padding.p_11xl,
     paddingVertical: 0,
-    gap: Gap.gap_md,
+  },
+  holBundleIcon: {
+    maxWidth: "100%",
+    overflow: "hidden",
+    height: 122,
+    alignSelf: "stretch",
+    width: "100%",
   },
   bundlesScreen: {
     backgroundColor: Color.colorWhite,
+    flex: 1,
     height: 852,
-    gap: 40,
+    gap: 42,
     alignItems: "center",
     width: "100%",
-    flex: 1,
   },
 });
 

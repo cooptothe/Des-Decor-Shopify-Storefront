@@ -1,48 +1,69 @@
 import * as React from "react";
+import {
+  View,
+  ImageBackground,
+  StyleSheet,
+  Pressable,
+  Text,
+} from "react-native";
 import { Image } from "expo-image";
-import { StyleSheet, View, Text } from "react-native";
-import { FontSize, FontFamily, Color, Padding, Gap } from "../GlobalStyles";
+import { useNavigation } from "@react-navigation/native";
+import { FontSize, FontFamily, Color, Padding } from "../GlobalStyles";
 
 const BridalScreen = () => {
+  const navigation = useNavigation();
+
   return (
-    <View style={[styles.bridalScreen, styles.menuFlexBox]}>
-      <Image
-        style={styles.bridalScreenChild}
-        resizeMethod="scale"
-        contentFit="contain"
-        source={require("../assets/frame-13.png")}
-      />
-      <View style={[styles.menu, styles.menuFlexBox]}>
-        <Text style={styles.bridal}>{`BRIDAL  `}</Text>
-        <Image
-          style={styles.menuChild}
+    <View style={styles.bridalScreen}>
+      <Pressable
+        style={styles.logoFlexBox}
+        onPress={() => navigation.navigate("MainMenuPhone")}
+      >
+        <ImageBackground
+          style={styles.logoIcon}
           resizeMethod="scale"
-          contentFit="contain"
-          source={require("../assets/frame-14.png")}
+          resizeMode="contain"
+          source={require("../assets/logo2.png")}
         />
+      </Pressable>
+      <Text style={styles.bridal}>{`BRIDAL  `}</Text>
+      <View style={[styles.bridalButton, styles.logoFlexBox]}>
         <Image
-          style={styles.menuChild}
+          style={styles.bridalIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/frame-15.png")}
+          source={require("../assets/bridal1.png")}
         />
+      </View>
+      <View style={[styles.bridalButton, styles.logoFlexBox]}>
         <Image
-          style={styles.menuChild}
+          style={styles.bridalIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/frame-16.png")}
+          source={require("../assets/premi.png")}
         />
+      </View>
+      <View style={[styles.bridalButton, styles.logoFlexBox]}>
         <Image
-          style={styles.menuChild}
+          style={styles.bridalIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/frame-17.png")}
+          source={require("../assets/store.png")}
         />
+      </View>
+      <View style={[styles.bridalButton, styles.logoFlexBox]}>
         <Image
-          style={styles.menuChild}
+          style={styles.bridalIcon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/frame-18.png")}
+          source={require("../assets/fronts.png")}
+        />
+      </View>
+      <View style={[styles.bridalButton, styles.logoFlexBox]}>
+        <Image
+          style={styles.bridalIcon}
+          contentFit="contain"
+          source={require("../assets/galler.png")}
         />
       </View>
     </View>
@@ -50,12 +71,11 @@ const BridalScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  menuFlexBox: {
+  logoFlexBox: {
     justifyContent: "center",
     alignItems: "center",
-    flex: 1,
   },
-  bridalScreenChild: {
+  logoIcon: {
     width: 400,
     height: 168,
   },
@@ -64,32 +84,27 @@ const styles = StyleSheet.create({
     letterSpacing: -0.2,
     lineHeight: 49,
     fontWeight: "500",
-    fontFamily: FontFamily.interMedium,
+    fontFamily: FontFamily.inter,
     color: Color.colorGray,
     textAlign: "center",
-    height: 43,
-    alignSelf: "stretch",
   },
-  menuChild: {
-    maxWidth: "100%",
-    overflow: "hidden",
-    maxHeight: "100%",
-    alignSelf: "stretch",
-    width: "100%",
-    flex: 1,
+  bridalIcon: {
+    width: 342,
+    height: 101,
   },
-  menu: {
-    padding: Padding.p_xl,
-    gap: Gap.gap_md,
-    alignSelf: "stretch",
+  bridalButton: {
+    paddingHorizontal: Padding.p_11xl,
+    paddingVertical: 0,
   },
   bridalScreen: {
     backgroundColor: Color.colorWhite,
-    height: 874,
-    paddingHorizontal: 11,
-    paddingBottom: 52,
-    gap: 28,
+    flex: 1,
     width: "100%",
+    height: 874,
+    justifyContent: "space-between",
+    paddingHorizontal: 0,
+    paddingVertical: Padding.p_xl,
+    alignItems: "center",
   },
 });
 

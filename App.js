@@ -1,7 +1,7 @@
 const Stack = createNativeStackNavigator();
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { useFonts } from "expo-font";
+
 import MainMenuPhone from "./screens/MainMenuPhone";
 import BundlesScreen from "./screens/BundlesScreen";
 import GuidelinesScreen from "./screens/GuidelinesScreen";
@@ -15,22 +15,11 @@ import { View, Text, Pressable, TouchableOpacity } from "react-native";
 const App = () => {
   const [hideSplashScreen, setHideSplashScreen] = React.useState(true);
 
-  const [fontsLoaded, error] = useFonts({
-    "Inter-Medium": require("./assets/fonts/Inter-Medium.ttf"),
-  });
-
-  if (!fontsLoaded && !error) {
-    return null;
-  }
-
   return (
     <>
       <NavigationContainer>
         {hideSplashScreen ? (
-          <Stack.Navigator
-            initialRouteName="MainMenuPhone"
-            screenOptions={{ headerShown: false }}
-          >
+          <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen
               name="MainMenuPhone"
               component={MainMenuPhone}

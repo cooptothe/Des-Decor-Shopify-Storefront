@@ -1,6 +1,6 @@
 /* fonts */
 export const FontFamily = {
-  interMedium: "Inter-Medium",
+  inter: "Inter",
 };
 /* font sizes */
 export const FontSize = {
@@ -11,11 +11,8 @@ export const Color = {
   colorWhite: "#fff",
   colorGray: "#1a1e29",
 };
-/* Gaps */
-export const Gap = {
-  gap_md: 20,
-};
 /* Paddings */
 export const Padding = {
+  p_11xl: 30,
   p_xl: 20,
 };

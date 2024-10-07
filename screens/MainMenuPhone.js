@@ -1,98 +1,128 @@
 import * as React from "react";
+import {
+  View,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  Pressable,
+} from "react-native";
 import { Image } from "expo-image";
-import { StyleSheet, View, Text } from "react-native";
-import { FontSize, FontFamily, Color, Padding, Gap } from "../GlobalStyles";
+import { useNavigation } from "@react-navigation/native";
+import { FontSize, FontFamily, Color, Padding } from "../GlobalStyles";
 
 const MainMenuPhone = () => {
+  const navigation = useNavigation();
+
   return (
-    <View style={styles.mainMenuPhone}>
-      <Image
-        style={[styles.frameIcon, styles.frameIconLayout]}
-        resizeMethod="scale"
-        contentFit="contain"
-        source={require("../assets/frame.png")}
-      />
-      <View style={[styles.menu, styles.menuFlexBox]}>
-        <Text
-          style={[styles.mainMenu, styles.menuFlexBox]}
-        >{`MAIN MENU  `}</Text>
-        <Image
-          style={[styles.menuChild, styles.frameIconLayout]}
+    <View style={[styles.mainMenuPhone, styles.logoFlexBox]}>
+      <View style={[styles.logo, styles.logoFlexBox]}>
+        <ImageBackground
+          style={styles.logoIcon}
           resizeMethod="scale"
-          contentFit="contain"
-          source={require("../assets/frame-2.png")}
-        />
-        <Image
-          style={[styles.menuChild, styles.frameIconLayout]}
-          resizeMethod="scale"
-          contentFit="contain"
-          source={require("../assets/frame-3.png")}
-        />
-        <Image
-          style={[styles.menuChild, styles.frameIconLayout]}
-          resizeMethod="scale"
-          contentFit="contain"
-          source={require("../assets/frame-4.png")}
-        />
-        <Image
-          style={[styles.menuChild, styles.frameIconLayout]}
-          resizeMethod="scale"
-          contentFit="contain"
-          source={require("../assets/frame-5.png")}
-        />
-        <Image
-          style={[styles.menuChild, styles.frameIconLayout]}
-          resizeMethod="scale"
-          contentFit="contain"
-          source={require("../assets/frame-6.png")}
+          resizeMode="contain"
+          source={require("../assets/logo.png")}
         />
       </View>
+      <Text style={styles.mainMenu}>{`MAIN MENU  `}</Text>
+      <Pressable
+        style={styles.bundleButton}
+        onPress={() => navigation.navigate("BundlesScreen")}
+      >
+        <Image
+          style={styles.bundlesbIcon}
+          resizeMethod="scale"
+          contentFit="contain"
+          source={require("../assets/bundlesB.png")}
+        />
+      </Pressable>
+      <Pressable
+        style={styles.bundleButton}
+        onPress={() => navigation.navigate("InventoryScreen")}
+      >
+        <Image
+          style={styles.invetoryIcon}
+          resizeMethod="scale"
+          contentFit="contain"
+          source={require("../assets/invetory.png")}
+        />
+      </Pressable>
+      <Pressable
+        style={styles.bundleButton}
+        onPress={() => navigation.navigate("GuidelinesScreen")}
+      >
+        <Image
+          style={styles.invetoryIcon}
+          resizeMethod="scale"
+          contentFit="contain"
+          source={require("../assets/guidelines.png")}
+        />
+      </Pressable>
+      <Pressable
+        style={styles.bundleButton}
+        onPress={() => navigation.navigate("BridalScreen")}
+      >
+        <Image
+          style={styles.invetoryIcon}
+          resizeMethod="scale"
+          contentFit="contain"
+          source={require("../assets/bridal.png")}
+        />
+      </Pressable>
+      <Pressable
+        style={styles.bundleButton}
+        onPress={() => navigation.navigate("ConsultationScreen")}
+      >
+        <Image
+          style={styles.invetoryIcon}
+          resizeMethod="scale"
+          contentFit="contain"
+          source={require("../assets/consult.png")}
+        />
+      </Pressable>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  frameIconLayout: {
-    maxWidth: "100%",
-    alignSelf: "stretch",
+  logoFlexBox: {
     overflow: "hidden",
-    width: "100%",
-  },
-  menuFlexBox: {
-    alignSelf: "stretch",
     alignItems: "center",
-    flex: 1,
   },
-  frameIcon: {
-    height: 175,
+  logoIcon: {
+    width: 393,
+    height: 261,
+  },
+  logo: {
+    alignItems: "center",
   },
   mainMenu: {
     fontSize: FontSize.size_lgi,
     fontWeight: "500",
-    fontFamily: FontFamily.interMedium,
+    fontFamily: FontFamily.inter,
     color: Color.colorGray,
     textAlign: "center",
-    display: "flex",
+  },
+  bundlesbIcon: {
+    width: 340,
+    height: 86,
+  },
+  bundleButton: {
     justifyContent: "center",
+    paddingHorizontal: Padding.p_11xl,
+    paddingVertical: 0,
+    alignItems: "center",
   },
-  menuChild: {
-    maxHeight: "100%",
-    flex: 1,
-    maxWidth: "100%",
-  },
-  menu: {
-    justifyContent: "space-around",
-    padding: Padding.p_xl,
-    gap: Gap.gap_md,
+  invetoryIcon: {
+    width: 333,
+    height: 86,
   },
   mainMenuPhone: {
     backgroundColor: Color.colorWhite,
-    height: 852,
-    justifyContent: "center",
-    alignItems: "center",
-    overflow: "hidden",
-    width: "100%",
     flex: 1,
+    width: "100%",
+    height: 852,
+    justifyContent: "space-between",
+    alignItems: "center",
   },
 });
 
