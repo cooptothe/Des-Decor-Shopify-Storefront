@@ -5,21 +5,25 @@ import {
   StyleSheet,
   Pressable,
   Text,
+  ScrollView
 } from "react-native";
 import { Image } from "expo-image";
 import { useNavigation } from "@react-navigation/native";
 import { FontSize, FontFamily, Color, Padding } from "../GlobalStyles";
+import { useState, useEffect } from 'react';
 
 const BundlesScreen = () => {
   const navigation = useNavigation();
+  // create state for product handle
+  const [handle, setHandle] = useState("");
 
   return (
-    <View style={styles.bundlesScreen}>
+    <ScrollView style={styles.bundlesScreen}>
       <Pressable
         style={[styles.logo, styles.logoFlexBox]}
         onPress={() => navigation.navigate("MainMenuPhone")}
       >
-        <ImageBackground style={styles.logoIcon} resizeMode="contain" />
+        <ImageBackground style={styles.logoIcon} resizeMode="contain" source={require("../assets/logo3x.png")} />
       </Pressable>
       <Text style={styles.decorToGo}>DECOR TO GO BUNDLES</Text>
       <View style={[styles.signButton, styles.logoFlexBox]}>
@@ -102,7 +106,7 @@ const BundlesScreen = () => {
           source={require("../assets/prem-bundle3x.png")}
         />
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -112,8 +116,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   logoIcon: {
-    width: 393,
-    height: 193,
+    width: 380,
+    height: 300,
   },
   logo: {
     alignSelf: "stretch",
@@ -146,8 +150,7 @@ const styles = StyleSheet.create({
     backgroundColor: Color.colorWhite,
     flex: 1,
     height: 852,
-    gap: 42,
-    alignItems: "center",
+    gap: 45,
     width: "100%",
   },
 });

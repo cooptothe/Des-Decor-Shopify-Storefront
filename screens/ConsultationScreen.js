@@ -23,7 +23,7 @@ const ConsultationScreen = () => {
           style={styles.logoIcon}
           resizeMethod="scale"
           resizeMode="contain"
-          source={require("../assets/logo33x.png")}
+          source={require("../assets/logo3x.png")}
         />
       </Pressable>
       <Text style={styles.bookAConsultation}>BOOK A CONSULTATION</Text>
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   logo: {
-    height: 177,
+    height: 300,
     justifyContent: "center",
     alignSelf: "stretch",
     alignItems: "center",

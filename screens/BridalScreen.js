@@ -23,10 +23,10 @@ const BridalScreen = () => {
           style={styles.logoIcon}
           resizeMethod="scale"
           resizeMode="contain"
-          source={require("../assets/logo23x.png")}
+          source={require("../assets/logo3x.png")}
         />
       </Pressable>
-      <Text style={styles.bridal}>{`BRIDAL  `}</Text>
+      <Text style={styles.bridal}>{`BRIDAL`}</Text>
       <View style={[styles.bridalButton, styles.logoFlexBox]}>
         <Image
           style={styles.bridalIcon}
@@ -76,8 +76,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   logoIcon: {
-    width: 400,
-    height: 168,
+    width: 380,
+    height: 300,
   },
   bridal: {
     fontSize: FontSize.size_lgi,

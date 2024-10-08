@@ -22,10 +22,10 @@ const InventoryScreen = () => {
         <ImageBackground
           style={styles.logoIcon}
           resizeMode="contain"
-          source={require("../assets/logo211x.png")}
+          source={require("../assets/logo3x.png")}
         />
       </Pressable>
-      <Text style={styles.inventory}>{`INVENTORY  `}</Text>
+      <Text style={styles.inventory}>{`INVENTORY`}</Text>
       <View style={[styles.wallButton, styles.logoFlexBox]}>
         <Image
           style={styles.wallsIcon}
@@ -74,8 +74,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   logoIcon: {
-    width: 402,
-    height: 175,
+    width: 380,
+    height: 300,
   },
   inventory: {
     fontSize: FontSize.size_lgi,

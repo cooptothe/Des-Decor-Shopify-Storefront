@@ -23,12 +23,12 @@ const GuidelinesScreen = () => {
           style={styles.logoIcon}
           resizeMethod="scale"
           resizeMode="contain"
-          source={require("../assets/logo13x.png")}
+          source={require("../assets/logo3x.png")}
         />
       </Pressable>
       <Text
         style={styles.rentalGuidelinesAnd}
-      >{`RENTAL GUIDELINES AND POLICIES  `}</Text>
+      >{`RENTAL GUIDELINES AND POLICIES`}</Text>
       <View style={[styles.rentButton, styles.logoFlexBox]}>
         <Image
           style={styles.rentIcon}
@@ -82,8 +82,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   logo: {
-    width: 402,
-    height: 175,
+    width: 380,
+    height: 300,
   },
   rentalGuidelinesAnd: {
     fontSize: FontSize.size_lgi,
