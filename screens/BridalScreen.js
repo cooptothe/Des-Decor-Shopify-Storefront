@@ -1,21 +1,21 @@
+import { useNavigation } from "@react-navigation/native";
+import { Image } from "expo-image";
 import * as React from "react";
 import {
-  View,
   ImageBackground,
   StyleSheet,
-  Pressable,
   Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
-import { Image } from "expo-image";
-import { useNavigation } from "@react-navigation/native";
-import { FontSize, FontFamily, Color, Padding } from "../GlobalStyles";
+import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
 
 const BridalScreen = () => {
   const navigation = useNavigation();
 
   return (
     <View style={styles.bridalScreen}>
-      <Pressable
+      <TouchableOpacity
         style={styles.logoFlexBox}
         onPress={() => navigation.navigate("MainMenuPhone")}
       >
@@ -25,7 +25,7 @@ const BridalScreen = () => {
           resizeMode="contain"
           source={require("../assets/logo3x.png")}
         />
-      </Pressable>
+      </TouchableOpacity>
       <Text style={styles.bridal}>{`BRIDAL`}</Text>
       <View style={[styles.bridalButton, styles.logoFlexBox]}>
         <Image

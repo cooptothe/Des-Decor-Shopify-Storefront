@@ -1,21 +1,21 @@
+import { useNavigation } from "@react-navigation/native";
+import { Image } from "expo-image";
 import * as React from "react";
 import {
-  View,
   ImageBackground,
   StyleSheet,
-  Pressable,
   Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
-import { Image } from "expo-image";
-import { useNavigation } from "@react-navigation/native";
-import { FontSize, FontFamily, Color, Padding } from "../GlobalStyles";
+import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
 
 const ConsultationScreen = () => {
   const navigation = useNavigation();
 
   return (
     <View style={styles.consultationScreen}>
-      <Pressable
+      <TouchableOpacity
         style={styles.logo}
         onPress={() => navigation.navigate("MainMenuPhone")}
       >
@@ -25,7 +25,7 @@ const ConsultationScreen = () => {
           resizeMode="contain"
           source={require("../assets/logo3x.png")}
         />
-      </Pressable>
+      </TouchableOpacity>
       <Text style={styles.bookAConsultation}>BOOK A CONSULTATION</Text>
       <View style={styles.bookingView}>
         <Image

@@ -1,14 +1,14 @@
+import { useNavigation } from "@react-navigation/native";
+import { Image } from "expo-image";
 import * as React from "react";
 import {
-  View,
   ImageBackground,
   StyleSheet,
   Text,
-  Pressable,
+  TouchableOpacity,
+  View,
 } from "react-native";
-import { Image } from "expo-image";
-import { useNavigation } from "@react-navigation/native";
-import { FontSize, FontFamily, Color, Padding } from "../GlobalStyles";
+import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
 
 const MainMenuPhone = () => {
   const navigation = useNavigation();
@@ -24,7 +24,7 @@ const MainMenuPhone = () => {
         />
       </View>
       <Text style={styles.mainMenu}>{`MAIN MENU  `}</Text>
-      <Pressable
+      <TouchableOpacity
         style={styles.bundleButton}
         onPress={() => navigation.navigate("BundlesScreen")}
       >
@@ -34,8 +34,8 @@ const MainMenuPhone = () => {
           contentFit="contain"
           source={require("../assets/bundlesB3x.png")}
         />
-      </Pressable>
-      <Pressable
+      </TouchableOpacity>
+      <TouchableOpacity
         style={styles.bundleButton}
         onPress={() => navigation.navigate("InventoryScreen")}
       >
@@ -45,8 +45,8 @@ const MainMenuPhone = () => {
           contentFit="contain"
           source={require("../assets/invetory3x.png")}
         />
-      </Pressable>
-      <Pressable
+      </TouchableOpacity>
+      <TouchableOpacity
         style={styles.bundleButton}
         onPress={() => navigation.navigate("GuidelinesScreen")}
       >
@@ -56,8 +56,8 @@ const MainMenuPhone = () => {
           contentFit="contain"
           source={require("../assets/guidelines3x.png")}
         />
-      </Pressable>
-      <Pressable
+      </TouchableOpacity>
+      <TouchableOpacity
         style={styles.bundleButton}
         onPress={() => navigation.navigate("BridalScreen")}
       >
@@ -67,8 +67,8 @@ const MainMenuPhone = () => {
           contentFit="contain"
           source={require("../assets/bridal3x.png")}
         />
-      </Pressable>
-      <Pressable
+      </TouchableOpacity>
+      <TouchableOpacity
         style={styles.bundleButton}
         onPress={() => navigation.navigate("ConsultationScreen")}
       >
@@ -78,7 +78,7 @@ const MainMenuPhone = () => {
           contentFit="contain"
           source={require("../assets/consult3x.png")}
         />
-      </Pressable>
+      </TouchableOpacity>
     </View>
   );
 };

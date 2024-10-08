@@ -1,21 +1,21 @@
+import { useNavigation } from "@react-navigation/native";
+import { Image } from "expo-image";
 import * as React from "react";
 import {
-  View,
   ImageBackground,
   StyleSheet,
-  Pressable,
   Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
-import { Image } from "expo-image";
-import { useNavigation } from "@react-navigation/native";
-import { FontSize, FontFamily, Color, Padding } from "../GlobalStyles";
+import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
 
 const InventoryScreen = () => {
   const navigation = useNavigation();
 
   return (
     <View style={styles.inventoryScreen}>
-      <Pressable
+      <TouchableOpacity
         style={styles.logoFlexBox}
         onPress={() => navigation.navigate("MainMenuPhone")}
       >
@@ -24,7 +24,7 @@ const InventoryScreen = () => {
           resizeMode="contain"
           source={require("../assets/logo3x.png")}
         />
-      </Pressable>
+      </TouchableOpacity>
       <Text style={styles.inventory}>{`INVENTORY`}</Text>
       <View style={[styles.wallButton, styles.logoFlexBox]}>
         <Image

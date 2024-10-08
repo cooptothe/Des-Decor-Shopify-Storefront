@@ -1,16 +1,16 @@
-import * as React from "react";
-import {
-  View,
-  ImageBackground,
-  StyleSheet,
-  Pressable,
-  Text,
-  ScrollView
-} from "react-native";
-import { Image } from "expo-image";
 import { useNavigation } from "@react-navigation/native";
-import { FontSize, FontFamily, Color, Padding } from "../GlobalStyles";
-import { useState, useEffect } from 'react';
+import { Image } from "expo-image";
+import * as React from "react";
+import { useState } from 'react';
+import {
+  ImageBackground,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
+} from "react-native";
+import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
 
 const BundlesScreen = () => {
   const navigation = useNavigation();
@@ -19,12 +19,12 @@ const BundlesScreen = () => {
 
   return (
     <ScrollView style={styles.bundlesScreen}>
-      <Pressable
+      <TouchableOpacity
         style={[styles.logo, styles.logoFlexBox]}
         onPress={() => navigation.navigate("MainMenuPhone")}
       >
         <ImageBackground style={styles.logoIcon} resizeMode="contain" source={require("../assets/logo3x.png")} />
-      </Pressable>
+      </TouchableOpacity>
       <Text style={styles.decorToGo}>DECOR TO GO BUNDLES</Text>
       <View style={[styles.signButton, styles.logoFlexBox]}>
         <Image
