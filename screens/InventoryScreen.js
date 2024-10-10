@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   logoIcon: {
-    width: 380,
+    width: 400,
     height: 300,
   },
   inventory: {

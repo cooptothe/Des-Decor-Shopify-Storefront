@@ -1,18 +1,19 @@
 import { useNavigation } from "@react-navigation/native";
 import { Image } from "expo-image";
 import * as React from "react";
-import { useState } from 'react';
+import { useState } from "react";
 import {
   ImageBackground,
   ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View
+  View,
 } from "react-native";
 import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
 
 const BundlesScreen = () => {
+
   const navigation = useNavigation();
   // create state for product handle
   const [handle, setHandle] = useState("");
@@ -23,89 +24,142 @@ const BundlesScreen = () => {
         style={[styles.logo, styles.logoFlexBox]}
         onPress={() => navigation.navigate("MainMenuPhone")}
       >
-        <ImageBackground style={styles.logoIcon} resizeMode="contain" source={require("../assets/logo3x.png")} />
+        <ImageBackground
+          style={styles.logoIcon}
+          resizeMode="contain"
+          source={require("../assets/logo3x.png")}
+        />
       </TouchableOpacity>
       <Text style={styles.decorToGo}>DECOR TO GO BUNDLES</Text>
-      <View style={[styles.signButton, styles.logoFlexBox]}>
-        <Image
-          style={styles.sigCakeIcon}
-          resizeMethod="scale"
-          contentFit="contain"
-          source={require("../assets/sig-cake3x.png")}
-        />
-      </View>
-      <View style={[styles.signButton, styles.logoFlexBox]}>
-        <Image
-          style={styles.sigCakeIcon}
-          resizeMethod="scale"
-          contentFit="contain"
-          source={require("../assets/mix-table3x.png")}
-        />
-      </View>
-      <View style={[styles.signButton, styles.logoFlexBox]}>
-        <Image
-          style={styles.sigCakeIcon}
-          resizeMethod="scale"
-          contentFit="contain"
-          source={require("../assets/dinn-party3x.png")}
-        />
-      </View>
-      <View style={[styles.signButton, styles.logoFlexBox]}>
-        <Image
-          style={styles.sigCakeIcon}
-          resizeMethod="scale"
-          contentFit="contain"
-          source={require("../assets/kids-party3x.png")}
-        />
-      </View>
-      <View style={[styles.signButton, styles.logoFlexBox]}>
-        <Image
-          style={styles.sigCakeIcon}
-          resizeMethod="scale"
-          contentFit="contain"
-          source={require("../assets/stndrd-bundle3x.png")}
-        />
-      </View>
-      <View style={[styles.signButton, styles.logoFlexBox]}>
-        <Image
-          style={styles.sigCakeIcon}
-          resizeMethod="scale"
-          contentFit="contain"
-          source={require("../assets/corp-events3x.png")}
-        />
-      </View>
-      <View style={[styles.signButton, styles.logoFlexBox]}>
-        <Image
-          style={styles.holBundleIcon}
-          resizeMethod="scale"
-          contentFit="contain"
-          source={require("../assets/hol-bundle3x.png")}
-        />
-      </View>
-      <View style={[styles.signButton, styles.logoFlexBox]}>
-        <Image
-          style={styles.sigCakeIcon}
-          resizeMethod="scale"
-          contentFit="contain"
-          source={require("../assets/pic-bundle3x.png")}
-        />
-      </View>
-      <View style={[styles.signButton, styles.logoFlexBox]}>
-        <Image
-          style={styles.sigCakeIcon}
-          resizeMethod="scale"
-          contentFit="contain"
-          source={require("../assets/zod-bundle3x.png")}
-        />
-      </View>
-      <View style={[styles.signButton, styles.logoFlexBox]}>
-        <Image
-          style={styles.sigCakeIcon}
-          resizeMethod="scale"
-          contentFit="contain"
-          source={require("../assets/prem-bundle3x.png")}
-        />
-      </View>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("ProductScreen") && setHandle("")}
+      >
+        <View style={[styles.signButton, styles.logoFlexBox]}>
+          <Image
+            style={styles.sigCakeIcon}
+            resizeMethod="scale"
+            contentFit="contain"
+            source={require("../assets/sig-cake3x.png")}
+          />
+        </View>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={() => navigation.navigate("ProductScreen") && setHandle("")}
+      >
+        <View style={[styles.signButton, styles.logoFlexBox]}>
+          <Image
+            style={styles.sigCakeIcon}
+            resizeMethod="scale"
+            contentFit="contain"
+            source={require("../assets/mix-table3x.png")}
+          />
+        </View>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={() => navigation.navigate("ProductScreen") && setHandle("")}
+      >
+        <View style={[styles.signButton, styles.logoFlexBox]}>
+          <Image
+            style={styles.sigCakeIcon}
+            resizeMethod="scale"
+            contentFit="contain"
+            source={require("../assets/dinn-party3x.png")}
+          />
+        </View>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={() => navigation.navigate("ProductScreen") && setHandle("")}
+      >
+        <View style={[styles.signButton, styles.logoFlexBox]}>
+          <Image
+            style={styles.sigCakeIcon}
+            resizeMethod="scale"
+            contentFit="contain"
+            source={require("../assets/kids-party3x.png")}
+          />
+        </View>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={() => navigation.navigate("ProductScreen") && setHandle("")}
+      >
+        <View style={[styles.signButton, styles.logoFlexBox]}>
+          <Image
+            style={styles.sigCakeIcon}
+            resizeMethod="scale"
+            contentFit="contain"
+            source={require("../assets/stndrd-bundle3x.png")}
+          />
+        </View>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={() => navigation.navigate("ProductScreen") && setHandle("")}
+      >
+        <View style={[styles.signButton, styles.logoFlexBox]}>
+          <Image
+            style={styles.sigCakeIcon}
+            resizeMethod="scale"
+            contentFit="contain"
+            source={require("../assets/corp-events3x.png")}
+          />
+        </View>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={() => navigation.navigate("ProductScreen") && setHandle("")}
+      >
+        <View style={[styles.signButton, styles.logoFlexBox]}>
+          <Image
+            style={styles.holBundleIcon}
+            resizeMethod="scale"
+            contentFit="contain"
+            source={require("../assets/hol-bundle3x.png")}
+          />
+        </View>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={() => navigation.navigate("ProductScreen") && setHandle("")}
+      >
+        <View style={[styles.signButton, styles.logoFlexBox]}>
+          <Image
+            style={styles.sigCakeIcon}
+            resizeMethod="scale"
+            contentFit="contain"
+            source={require("../assets/pic-bundle3x.png")}
+          />
+        </View>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={() => navigation.navigate("ProductScreen") && setHandle("")}
+      >
+        <View style={[styles.signButton, styles.logoFlexBox]}>
+          <Image
+            style={styles.sigCakeIcon}
+            resizeMethod="scale"
+            contentFit="contain"
+            source={require("../assets/zod-bundle3x.png")}
+          />
+        </View>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={() => navigation.navigate("ProductScreen") && setHandle("")}
+      >
+        <View style={[styles.signButton, styles.logoFlexBox]}>
+          <Image
+            style={styles.sigCakeIcon}
+            resizeMethod="scale"
+            contentFit="contain"
+            source={require("../assets/prem-bundle3x.png")}
+          />
+        </View>
+      </TouchableOpacity>
     </ScrollView>
   );
 };
@@ -116,7 +170,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   logoIcon: {
-    width: 380,
+    width: 400,
     height: 300,
   },
   logo: {
@@ -156,3 +210,5 @@ const styles = StyleSheet.create({
 });
 
 export default BundlesScreen;
+
+

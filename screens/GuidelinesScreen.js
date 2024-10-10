@@ -78,11 +78,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   logoIcon: {
-    alignSelf: "stretch",
-    flex: 1,
-  },
-  logo: {
-    width: 380,
+    width: 400,
     height: 300,
   },
   rentalGuidelinesAnd: {

@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   logoIcon: {
-    width: 380,
+    width: 400,
     height: 300,
   },
   logo: {
@@ -120,9 +120,9 @@ const styles = StyleSheet.create({
     backgroundColor: Color.colorWhite,
     flex: 1,
     width: "100%",
-    height: 852,
     justifyContent: "space-between",
     alignItems: "center",
+    paddingBottom: "10%"
   },
 });
 
