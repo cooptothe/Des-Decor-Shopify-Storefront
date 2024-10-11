@@ -14,8 +14,8 @@ const InventoryScreen = () => {
   const navigation = useNavigation();
 
   // handle method to navigate to collectionScreen with a handle
-  const onHandle = (str) => {
-    navigation.navigate("CollectionScreen", { handle: str });
+  const onHandle2 = (str) => {
+    navigation.navigate("ProductsScreen", { handle: str });
   };
 
   return (
@@ -31,7 +31,7 @@ const InventoryScreen = () => {
         />
       </TouchableOpacity>
       <Text style={styles.inventory}>{`INVENTORY`}</Text>
-      <TouchableOpacity onPress={() => onHandle("walls")} >
+      <TouchableOpacity onPress={() => onHandle2("walls")} >
         <View style={[styles.wallButton, styles.logoFlexBox]}>
           <Image
             style={styles.wallsIcon}
@@ -41,7 +41,7 @@ const InventoryScreen = () => {
           />
         </View>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => onHandle("tables")}>
+      <TouchableOpacity onPress={() => onHandle2("tables")}>
         <View style={[styles.wallButton, styles.logoFlexBox]}>
           <Image
             style={styles.wallsIcon}
@@ -51,7 +51,7 @@ const InventoryScreen = () => {
           />
         </View>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => onHandle("centerpieces")}>
+      <TouchableOpacity onPress={() => onHandle2("centerpieces")}>
         <View style={[styles.wallButton, styles.logoFlexBox]}>
           <Image
             style={styles.wallsIcon}
@@ -60,7 +60,7 @@ const InventoryScreen = () => {
           />
         </View>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => onHandle("balloons")}>
+      <TouchableOpacity onPress={() => onHandle2("balloons")}>
         <View style={[styles.wallButton, styles.logoFlexBox]}>
           <Image
             style={styles.wallsIcon}
@@ -69,7 +69,7 @@ const InventoryScreen = () => {
           />
         </View>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => onHandle("walls")}>
+      <TouchableOpacity onPress={() => onHandle2("customs")}>
         <View style={[styles.wallButton, styles.logoFlexBox]}>
           <Image
             style={styles.wallsIcon}
