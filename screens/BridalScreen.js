@@ -13,6 +13,11 @@ import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
 const BridalScreen = () => {
   const navigation = useNavigation();
 
+    // handle method to navigate to ProductScreen with a handle
+    const onHandle = (str) => {
+      navigation.navigate("ProductScreen", { handle: str });
+    };
+
   return (
     <View style={styles.bridalScreen}>
       <TouchableOpacity
@@ -27,6 +32,7 @@ const BridalScreen = () => {
         />
       </TouchableOpacity>
       <Text style={styles.bridal}>{`BRIDAL`}</Text>
+      <TouchableOpacity onPress={() => onHandle("bridal-bundle")}>
       <View style={[styles.bridalButton, styles.logoFlexBox]}>
         <Image
           style={styles.bridalIcon}
@@ -35,6 +41,8 @@ const BridalScreen = () => {
           source={require("../assets/bridal13x.png")}
         />
       </View>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => onHandle("premium-bridal-bundle")}>
       <View style={[styles.bridalButton, styles.logoFlexBox]}>
         <Image
           style={styles.bridalIcon}
@@ -43,6 +51,8 @@ const BridalScreen = () => {
           source={require("../assets/premi3x.png")}
         />
       </View>
+      </TouchableOpacity>
+
       <View style={[styles.bridalButton, styles.logoFlexBox]}>
         <Image
           style={styles.bridalIcon}
