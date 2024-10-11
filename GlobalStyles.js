@@ -14,5 +14,5 @@ export const Color = {
 /* Paddings */
 export const Padding = {
   p_11xl: 30,
-  p_xl: 20,
+  p_xl: 50,
 };

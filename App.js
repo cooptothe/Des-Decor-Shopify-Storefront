@@ -9,6 +9,7 @@ import GuidelinesScreen from "./screens/GuidelinesScreen";
 import InventoryScreen from "./screens/InventoryScreen";
 import MainMenuPhone from "./screens/MainMenuPhone";
 import ProductScreen from "./screens/ProductScreen";
+import collectionScreen from "./screens/collectionScreen";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -64,6 +65,11 @@ const App = () => {
             <Stack.Screen
               name="ProductScreen"
               component={ProductScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="collectionScreen"
+              component={collectionScreen}
               options={{ headerShown: false }}
             />
           </Stack.Navigator>
