@@ -1,17 +1,18 @@
 import { useNavigation } from "@react-navigation/native";
 import { Image } from "expo-image";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   ImageBackground,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
+  Button,
 } from "react-native";
 import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
 import { storefront } from "../api";
 
-const ProductScreen = () => {
+const ProductScreen = ({ route }) => {
   const navigation = useNavigation();
   const [product, setProduct] = useState(null);
 
@@ -24,8 +25,16 @@ const ProductScreen = () => {
     fetchProduct();
   }, []);
 
-  console.log(product);
-  
+  const addToCart = () => {
+    // Implement Add to Cart functionality
+    alert("Product added to cart!");
+  };
+
+  // set handle
+  const { handle } = route.params;
+
+  console.log(handle)
+
   return (
     <View style={styles.consultationScreen}>
       <TouchableOpacity
@@ -45,36 +54,27 @@ const ProductScreen = () => {
           <Image
             style={styles.ProductIcon}
             contentFit="contain"
-            source={"https://cdn.shopify.com/s/files/1/0652/0311/0145/files/05E6F951-EF47-47AE-884C-C37F003F4CDA.png?v=1715650845"} // Replace with dynamic image if available in product data
+            source={product.variants.edges[0]?.node.image.url}
           />
           <Text style={styles.productTitle}>{product.title}</Text>
           <Text style={styles.productDescription}>{product.description}</Text>
+          <Text style={styles.productPrice}>
+          Price:  {`${product.variants.edges[0].node.price.amount} ${product.variants.edges[0].node.price.currencyCode}`}
+          </Text>
+
+          {/* Add to Cart Button */}
+          <TouchableOpacity style={styles.addToCartButton} onPress={addToCart}>
+            <Text style={styles.addToCartButtonText}>Add to Cart</Text>
+          </TouchableOpacity>
         </View>
       ) : (
         <Text>Loading...</Text>
       )}
-
-      {/* <View style={styles.imgs}>
-        <ImageBackground
-          style={[styles.frameIcon, styles.frameIconFlexBox]}
-          resizeMode="contain"
-          source={require("../assets/frame1x.png")}
-        />
-        <ImageBackground
-          style={[styles.frameIcon1, styles.frameIconFlexBox]}
-          resizeMode="contain"
-          source={require("../assets/frame11x.png")}
-        />
-      </View> */}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  frameIconFlexBox: {
-    overflow: "hidden",
-    alignItems: "center",
-  },
   logoIcon: {
     alignSelf: "stretch",
     flex: 1,
@@ -85,16 +85,6 @@ const styles = StyleSheet.create({
     alignSelf: "stretch",
     alignItems: "center",
   },
-  bookAConsultation: {
-    fontSize: FontSize.size_lgi,
-    letterSpacing: -0.2,
-    lineHeight: 37,
-    fontWeight: "500",
-    fontFamily: FontFamily.interMedium,
-    color: Color.colorGray,
-    textAlign: "center",
-    alignSelf: "stretch",
-  },
   ProductIcon: {
     width: 402,
     height: 361,
@@ -102,27 +92,24 @@ const styles = StyleSheet.create({
   productTitle: {
     fontSize: 24,
     fontWeight: "bold",
+    padding: "2%",
   },
   productDescription: {
     fontSize: 16,
     color: Color.colorGray,
+    padding: "3%",
+    textAlign: "center",
+  },
+  productPrice: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: Color.colorBlack,
+    marginTop: 10,
   },
   ProductView: {
     justifyContent: "center",
     alignItems: "center",
-  },
-  frameIcon: {
-    width: 175,
-    height: 188,
-    justifyContent: "flex-end",
-  },
-  frameIcon1: {
-    width: 187,
-    height: 183,
-  },
-  imgs: {
-    flexDirection: "row",
-    justifyContent: "center",
+    paddingBottom: "20%",
   },
   consultationScreen: {
     backgroundColor: Color.colorWhite,
@@ -133,6 +120,18 @@ const styles = StyleSheet.create({
     paddingVertical: Padding.p_xl,
     alignItems: "center",
     flex: 1,
+  },
+  addToCartButton: {
+    backgroundColor: Color.colorBlack,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    marginTop: 20,
+  },
+  addToCartButtonText: {
+    color: Color.colorBlack,
+    fontSize: 16,
+    fontWeight: "bold",
   },
 });
 
@@ -152,21 +151,15 @@ const productQuery = gql`
       id
       title
       description
-      media(first: 10) {
-        edges {
-          node {
-            previewImage {
-              url
-            }
-          }
-        }
-      }
       variants(first: 3) {
         edges {
           cursor
           node {
             id
             title
+            image {
+              url
+            }
             quantityAvailable
             price {
               amount

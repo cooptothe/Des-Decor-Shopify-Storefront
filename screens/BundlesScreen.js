@@ -13,10 +13,12 @@ import {
 import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
 
 const BundlesScreen = () => {
-
   const navigation = useNavigation();
-  // create state for product handle
-  const [handle, setHandle] = useState("");
+  
+  // handle method to navigate to ProductScreen with a handle
+  const onHandle = (str) => {
+    navigation.navigate("ProductScreen", { handle: str });
+  };
 
   return (
     <ScrollView style={styles.bundlesScreen}>
@@ -30,10 +32,10 @@ const BundlesScreen = () => {
           source={require("../assets/logo3x.png")}
         />
       </TouchableOpacity>
+
       <Text style={styles.decorToGo}>DECOR TO GO BUNDLES</Text>
-      <TouchableOpacity
-        onPress={() => navigation.navigate("ProductScreen") && setHandle("")}
-      >
+
+      <TouchableOpacity onPress={() => onHandle("signature-cake-table-bundle")}>
         <View style={[styles.signButton, styles.logoFlexBox]}>
           <Image
             style={styles.sigCakeIcon}
@@ -44,9 +46,7 @@ const BundlesScreen = () => {
         </View>
       </TouchableOpacity>
 
-      <TouchableOpacity
-        onPress={() => navigation.navigate("ProductScreen") && setHandle("")}
-      >
+      <TouchableOpacity onPress={() => onHandle("mix-table-bundle")}>
         <View style={[styles.signButton, styles.logoFlexBox]}>
           <Image
             style={styles.sigCakeIcon}
@@ -57,9 +57,7 @@ const BundlesScreen = () => {
         </View>
       </TouchableOpacity>
 
-      <TouchableOpacity
-        onPress={() => navigation.navigate("ProductScreen") && setHandle("")}
-      >
+      <TouchableOpacity onPress={() => onHandle("dinner-party-bundle")}>
         <View style={[styles.signButton, styles.logoFlexBox]}>
           <Image
             style={styles.sigCakeIcon}
@@ -70,9 +68,7 @@ const BundlesScreen = () => {
         </View>
       </TouchableOpacity>
 
-      <TouchableOpacity
-        onPress={() => navigation.navigate("ProductScreen") && setHandle("")}
-      >
+      <TouchableOpacity onPress={() => onHandle("kids-party-bundle")}>
         <View style={[styles.signButton, styles.logoFlexBox]}>
           <Image
             style={styles.sigCakeIcon}
@@ -83,9 +79,7 @@ const BundlesScreen = () => {
         </View>
       </TouchableOpacity>
 
-      <TouchableOpacity
-        onPress={() => navigation.navigate("ProductScreen") && setHandle("")}
-      >
+      <TouchableOpacity onPress={() => onHandle("standard-bundle")}>
         <View style={[styles.signButton, styles.logoFlexBox]}>
           <Image
             style={styles.sigCakeIcon}
@@ -96,9 +90,7 @@ const BundlesScreen = () => {
         </View>
       </TouchableOpacity>
 
-      <TouchableOpacity
-        onPress={() => navigation.navigate("ProductScreen") && setHandle("")}
-      >
+      <TouchableOpacity onPress={() => onHandle("corporate-events-bundle")}>
         <View style={[styles.signButton, styles.logoFlexBox]}>
           <Image
             style={styles.sigCakeIcon}
@@ -109,12 +101,10 @@ const BundlesScreen = () => {
         </View>
       </TouchableOpacity>
 
-      <TouchableOpacity
-        onPress={() => navigation.navigate("ProductScreen") && setHandle("")}
-      >
+      <TouchableOpacity onPress={() => onHandle("holiday-bundle")}>
         <View style={[styles.signButton, styles.logoFlexBox]}>
           <Image
-            style={styles.holBundleIcon}
+            style={styles.sigCakeIcon}
             resizeMethod="scale"
             contentFit="contain"
             source={require("../assets/hol-bundle3x.png")}
@@ -122,9 +112,7 @@ const BundlesScreen = () => {
         </View>
       </TouchableOpacity>
 
-      <TouchableOpacity
-        onPress={() => navigation.navigate("ProductScreen") && setHandle("")}
-      >
+      <TouchableOpacity onPress={() => onHandle("picnic-bundle")}>
         <View style={[styles.signButton, styles.logoFlexBox]}>
           <Image
             style={styles.sigCakeIcon}
@@ -135,9 +123,7 @@ const BundlesScreen = () => {
         </View>
       </TouchableOpacity>
 
-      <TouchableOpacity
-        onPress={() => navigation.navigate("ProductScreen") && setHandle("")}
-      >
+      <TouchableOpacity onPress={() => onHandle("zodiac-bundle")}>
         <View style={[styles.signButton, styles.logoFlexBox]}>
           <Image
             style={styles.sigCakeIcon}
@@ -148,9 +134,7 @@ const BundlesScreen = () => {
         </View>
       </TouchableOpacity>
 
-      <TouchableOpacity
-        onPress={() => navigation.navigate("ProductScreen") && setHandle("")}
-      >
+      <TouchableOpacity onPress={() => onHandle("premium-bundle")}>
         <View style={[styles.signButton, styles.logoFlexBox]}>
           <Image
             style={styles.sigCakeIcon}
@@ -191,14 +175,7 @@ const styles = StyleSheet.create({
   },
   signButton: {
     paddingHorizontal: Padding.p_11xl,
-    paddingVertical: 0,
-  },
-  holBundleIcon: {
-    maxWidth: "100%",
-    overflow: "hidden",
-    height: 122,
-    alignSelf: "stretch",
-    width: "100%",
+    paddingVertical: 10,
   },
   bundlesScreen: {
     backgroundColor: Color.colorWhite,
@@ -210,5 +187,3 @@ const styles = StyleSheet.create({
 });
 
 export default BundlesScreen;
-
-

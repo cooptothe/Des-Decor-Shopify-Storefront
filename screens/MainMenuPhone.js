@@ -25,55 +25,55 @@ const MainMenuPhone = () => {
       </View>
       <Text style={styles.mainMenu}>{`MAIN MENU  `}</Text>
       <TouchableOpacity
-        style={styles.bundleButton}
+        style={styles.button}
         onPress={() => navigation.navigate("BundlesScreen")}
       >
         <Image
-          style={styles.bundlesbIcon}
+          style={styles.icon}
           resizeMethod="scale"
           contentFit="contain"
           source={require("../assets/bundlesB3x.png")}
         />
       </TouchableOpacity>
       <TouchableOpacity
-        style={styles.bundleButton}
+        style={styles.button}
         onPress={() => navigation.navigate("InventoryScreen")}
       >
         <Image
-          style={styles.invetoryIcon}
+          style={styles.icon}
           resizeMethod="scale"
           contentFit="contain"
           source={require("../assets/invetory3x.png")}
         />
       </TouchableOpacity>
       <TouchableOpacity
-        style={styles.bundleButton}
+        style={styles.button}
         onPress={() => navigation.navigate("GuidelinesScreen")}
       >
         <Image
-          style={styles.invetoryIcon}
+          style={styles.icon}
           resizeMethod="scale"
           contentFit="contain"
           source={require("../assets/guidelines3x.png")}
         />
       </TouchableOpacity>
       <TouchableOpacity
-        style={styles.bundleButton}
+        style={styles.button}
         onPress={() => navigation.navigate("BridalScreen")}
       >
         <Image
-          style={styles.invetoryIcon}
+          style={styles.icon}
           resizeMethod="scale"
           contentFit="contain"
           source={require("../assets/bridal3x.png")}
         />
       </TouchableOpacity>
       <TouchableOpacity
-        style={styles.bundleButton}
+        style={styles.button}
         onPress={() => navigation.navigate("ConsultationScreen")}
       >
         <Image
-          style={styles.invetoryIcon}
+          style={styles.icon}
           resizeMethod="scale"
           contentFit="contain"
           source={require("../assets/consult3x.png")}
@@ -102,19 +102,15 @@ const styles = StyleSheet.create({
     color: Color.colorGray,
     textAlign: "center",
   },
-  bundlesbIcon: {
-    width: 340,
-    height: 86,
-  },
-  bundleButton: {
+  button: {
     justifyContent: "center",
     paddingHorizontal: Padding.p_11xl,
     paddingVertical: 0,
     alignItems: "center",
   },
-  invetoryIcon: {
+  icon: {
     width: 333,
-    height: 86,
+    height: 80,
   },
   mainMenuPhone: {
     backgroundColor: Color.colorWhite,
