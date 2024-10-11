@@ -47,8 +47,7 @@ const ProductScreen = ({ route }) => {
         <View style={styles.ProductView}>
           <Text style={styles.productTitle}>{product.title}</Text>
           <Text style={styles.productPrice}>
-            Price:{" "}
-            {`${product.variants.edges[0].node.price.amount} ${product.variants.edges[0].node.price.currencyCode}`}
+            {`$${product.variants.edges[0].node.price.amount}0 ${product.variants.edges[0].node.price.currencyCode}`}
           </Text>
           <Image
             style={styles.ProductIcon}
@@ -87,7 +86,7 @@ const styles = StyleSheet.create({
   productTitle: {
     fontSize: 34,
     fontWeight: "bold",
-    paddingLeft: "3%",
+    paddingLeft: "4%",
     alignSelf: 'flex-start'
   },
   productDescription: {
@@ -98,11 +97,12 @@ const styles = StyleSheet.create({
   },
   productPrice: {
     fontSize: 20,
-    fontWeight: "bold",
+    fontWeight: '500',
     color: Color.colorBlack,
-    paddingRight: 40,
+    paddingLeft: 60,
     paddingBottom: 20,
-    alignSelf: 'flex-end'
+    paddingTop: 5,
+    alignSelf: 'flex-start'
   },
   ProductView: {
     justifyContent: "center",
