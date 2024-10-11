@@ -7,7 +7,6 @@ import {
   Text,
   TouchableOpacity,
   View,
-  Button,
 } from "react-native";
 import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
 import { storefront } from "../api";
@@ -15,25 +14,20 @@ import { storefront } from "../api";
 const ProductScreen = ({ route }) => {
   const navigation = useNavigation();
   const [product, setProduct] = useState(null);
+  const { handle } = route.params;  // Get handle from route params
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const fetchedProduct = await getProduct();
+      const fetchedProduct = await getProduct(handle);  // Pass handle to getProduct
       setProduct(fetchedProduct);
     };
 
     fetchProduct();
-  }, []);
+  }, [handle]);
 
   const addToCart = () => {
-    // Implement Add to Cart functionality
     alert("Product added to cart!");
   };
-
-  // set handle
-  const { handle } = route.params;
-
-  console.log(handle);
 
   return (
     <View style={styles.consultationScreen}>
@@ -59,7 +53,7 @@ const ProductScreen = ({ route }) => {
           <Image
             style={styles.ProductIcon}
             contentFit="contain"
-            source={product.variants.edges[0]?.node.image.url}
+            source={{ uri: product.variants.edges[0]?.node.image.url }}
           />
           <Text style={styles.productDescription}>{product.description}</Text>
 
@@ -140,42 +134,39 @@ const styles = StyleSheet.create({
 
 export default ProductScreen;
 
-export async function getProduct() {
-  const { data } = await storefront(productQuery);
-  const product = data.product;
-  return product;
-}
 
 const gql = String.raw;
-
-const productQuery = gql`
-query getProductByHandle {
-  product(handle: "mix-and-match-cake-table-bundle") {
-    id
-    title
-    description
-		tags
-		options(first: 10) {
-			id
-			name
-		}
-    variants(first: 10) {
-      edges {
-        cursor
-        node {
-          id
-          title
-					image {
-						url
-					}
-          quantityAvailable
-          price {
-            amount
-            currencyCode
+export async function getProduct(handle) {
+  const productQuery = gql`
+    query getProductByHandle($handle: String!) {
+      product(handle: $handle) {
+        id
+        title
+        description
+        tags
+        variants(first: 10) {
+          edges {
+            cursor
+            node {
+              id
+              title
+              image {
+                url
+              }
+              quantityAvailable
+              price {
+                amount
+                currencyCode
+              }
+            }
           }
         }
       }
     }
-  }
+  `;
+
+  const { data } = await storefront(productQuery, { handle });  // Pass handle as a query variable
+  const product = data.product;
+  return product;
 }
-`;
+
