@@ -46,7 +46,7 @@ const BundlesScreen = () => {
         </View>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => onHandle("mix-table-bundle")}>
+      <TouchableOpacity onPress={() => onHandle("mix-and-match-cake-table-bundle")}>
         <View style={[styles.signButton, styles.logoFlexBox]}>
           <Image
             style={styles.sigCakeIcon}
@@ -57,7 +57,7 @@ const BundlesScreen = () => {
         </View>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => onHandle("dinner-party-bundle")}>
+      <TouchableOpacity onPress={() => onHandle("dinner-bundle")}>
         <View style={[styles.signButton, styles.logoFlexBox]}>
           <Image
             style={styles.sigCakeIcon}
@@ -79,7 +79,7 @@ const BundlesScreen = () => {
         </View>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => onHandle("standard-bundle")}>
+      <TouchableOpacity onPress={() => onHandle("bridal-bundle")}>
         <View style={[styles.signButton, styles.logoFlexBox]}>
           <Image
             style={styles.sigCakeIcon}
@@ -112,7 +112,7 @@ const BundlesScreen = () => {
         </View>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => onHandle("picnic-bundle")}>
+      <TouchableOpacity onPress={() => onHandle("picnic-table")}>
         <View style={[styles.signButton, styles.logoFlexBox]}>
           <Image
             style={styles.sigCakeIcon}
@@ -134,7 +134,7 @@ const BundlesScreen = () => {
         </View>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => onHandle("premium-bundle")}>
+      <TouchableOpacity onPress={() => onHandle("premium-bridal-bundle")}>
         <View style={[styles.signButton, styles.logoFlexBox]}>
           <Image
             style={styles.sigCakeIcon}

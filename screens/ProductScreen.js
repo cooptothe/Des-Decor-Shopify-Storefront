@@ -33,7 +33,7 @@ const ProductScreen = ({ route }) => {
   // set handle
   const { handle } = route.params;
 
-  console.log(handle)
+  console.log(handle);
 
   return (
     <View style={styles.consultationScreen}>
@@ -51,16 +51,17 @@ const ProductScreen = ({ route }) => {
 
       {product ? (
         <View style={styles.ProductView}>
+          <Text style={styles.productTitle}>{product.title}</Text>
+          <Text style={styles.productPrice}>
+            Price:{" "}
+            {`${product.variants.edges[0].node.price.amount} ${product.variants.edges[0].node.price.currencyCode}`}
+          </Text>
           <Image
             style={styles.ProductIcon}
             contentFit="contain"
             source={product.variants.edges[0]?.node.image.url}
           />
-          <Text style={styles.productTitle}>{product.title}</Text>
           <Text style={styles.productDescription}>{product.description}</Text>
-          <Text style={styles.productPrice}>
-          Price:  {`${product.variants.edges[0].node.price.amount} ${product.variants.edges[0].node.price.currencyCode}`}
-          </Text>
 
           {/* Add to Cart Button */}
           <TouchableOpacity style={styles.addToCartButton} onPress={addToCart}>
@@ -90,21 +91,24 @@ const styles = StyleSheet.create({
     height: 361,
   },
   productTitle: {
-    fontSize: 24,
+    fontSize: 34,
     fontWeight: "bold",
-    padding: "2%",
+    paddingLeft: "3%",
+    alignSelf: 'flex-start'
   },
   productDescription: {
     fontSize: 16,
     color: Color.colorGray,
-    padding: "3%",
+    padding: "5%",
     textAlign: "center",
   },
   productPrice: {
     fontSize: 20,
     fontWeight: "bold",
     color: Color.colorBlack,
-    marginTop: 10,
+    paddingRight: 40,
+    paddingBottom: 20,
+    alignSelf: 'flex-end'
   },
   ProductView: {
     justifyContent: "center",
@@ -122,7 +126,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   addToCartButton: {
-    backgroundColor: Color.colorBlack,
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,
@@ -146,28 +149,33 @@ export async function getProduct() {
 const gql = String.raw;
 
 const productQuery = gql`
-  query getProductByHandle {
-    product(handle: "signature-cake-table-bundle") {
-      id
-      title
-      description
-      variants(first: 3) {
-        edges {
-          cursor
-          node {
-            id
-            title
-            image {
-              url
-            }
-            quantityAvailable
-            price {
-              amount
-              currencyCode
-            }
+query getProductByHandle {
+  product(handle: "mix-and-match-cake-table-bundle") {
+    id
+    title
+    description
+		tags
+		options(first: 10) {
+			id
+			name
+		}
+    variants(first: 10) {
+      edges {
+        cursor
+        node {
+          id
+          title
+					image {
+						url
+					}
+          quantityAvailable
+          price {
+            amount
+            currencyCode
           }
         }
       }
     }
   }
+}
 `;
