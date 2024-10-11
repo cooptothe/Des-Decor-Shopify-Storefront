@@ -15,7 +15,7 @@ const InventoryScreen = () => {
 
   // handle method to navigate to collectionScreen with a handle
   const onHandle = (str) => {
-    navigation.navigate("collectionScreen", { handle: str });
+    navigation.navigate("CollectionScreen", { handle: str });
   };
 
   return (
