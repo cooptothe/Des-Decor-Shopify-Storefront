@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { Image } from "expo-image";
-import * as React from "react";
+import React, { Component } from "react";
 import {
   ImageBackground,
   StyleSheet,
@@ -9,12 +9,14 @@ import {
   View,
 } from "react-native";
 import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
+import { WebView } from "react-native-webview";
 
 const ConsultationScreen = () => {
   const navigation = useNavigation();
 
   return (
     <View style={styles.consultationScreen}>
+      {/* Logo */}
       <TouchableOpacity
         style={styles.logo}
         onPress={() => navigation.navigate("MainMenuPhone")}
@@ -26,14 +28,20 @@ const ConsultationScreen = () => {
           source={require("../assets/logo3x.png")}
         />
       </TouchableOpacity>
+
+      {/* Title */}
       <Text style={styles.bookAConsultation}>BOOK A CONSULTATION</Text>
-      <View style={styles.bookingView}>
-        <Image
-          style={styles.bookingIcon}
-          contentFit="contain"
-          source={require("../assets/booking1x.png")}
-        />
-      </View>
+
+      {/* Calendly WebView */}
+
+      <WebView
+        style={styles.bookingView}
+        source={{
+          uri: "https://calendly.com/d/y7c-k84-q9w/",
+        }}
+      />
+
+      {/* Decorative Images */}
       <View style={styles.imgs}>
         <ImageBackground
           style={[styles.frameIcon, styles.frameIconFlexBox]}
@@ -75,11 +83,9 @@ const styles = StyleSheet.create({
     textAlign: "center",
     alignSelf: "stretch",
   },
-  bookingIcon: {
-    width: 402,
-    height: 361,
-  },
   bookingView: {
+    flex: 1,
+    width: "100%",
     justifyContent: "center",
     alignItems: "center",
   },
@@ -99,7 +105,7 @@ const styles = StyleSheet.create({
   consultationScreen: {
     backgroundColor: Color.colorWhite,
     width: "100%",
-    height: 874,
+    height: "100%",
     justifyContent: "space-between",
     paddingHorizontal: 0,
     paddingVertical: Padding.p_xl,
