@@ -1,4 +1,3 @@
-const Stack = createNativeStackNavigator();
 import { NavigationContainer } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import * as React from "react";
@@ -11,13 +10,70 @@ import MainMenuPhone from "./screens/MainMenuPhone";
 import ProductScreen from "./screens/ProductScreen";
 import ProductsScreen from "./screens/ProductsScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import AsyncStorage from '@react-native-async-storage/async-storage'; // For saving cart ID locally
+import { useEffect, useState } from "react";
+import { storefront } from "./api";  // Import storefront function
+
+const Stack = createNativeStackNavigator();
+
+// Define the cart creation mutation
+const createCartMutation = `
+  mutation createCart($cartInput: CartInput) {
+    cartCreate(input: $cartInput) {
+      cart {
+        id
+        createdAt
+        updatedAt
+        checkoutUrl
+        cost {
+          totalAmount {
+            amount
+            currencyCode
+          }
+        }
+      }
+    }
+  }
+`;
 
 const App = () => {
+  const [cartId, setCartId] = useState(null);
   const [hideSplashScreen, setHideSplashScreen] = React.useState(true);
-
   const [fontsLoaded, error] = useFonts({
     "Inter-Medium": require("./assets/fonts/Inter-Medium.ttf"),
   });
+
+  // Function to create a new cart
+  const createCart = async () => {
+    try {
+      // Use the imported storefront function here
+      const { data } = await storefront(createCartMutation, { cartInput: {} });
+      const cart = data?.cartCreate?.cart;
+      if (cart) {
+        // Store the cart ID in AsyncStorage for persistent storage
+        await AsyncStorage.setItem("cartId", cart.id);
+        setCartId(cart.id);
+        console.log("Cart created:", cart);
+      }
+    } catch (error) {
+      console.error("Error creating cart:", error);
+    }
+  };
+
+  // Load cart on app startup
+  useEffect(() => {
+    const initializeCart = async () => {
+      const storedCartId = await AsyncStorage.getItem("cartId");
+      if (!storedCartId) {
+        await createCart(); // Create a new cart if none exists
+      } else {
+        setCartId(storedCartId); // Use the existing cart
+        console.log("Cart loaded from storage:", storedCartId);
+      }
+    };
+
+    initializeCart();
+  }, []);
 
   if (!fontsLoaded && !error) {
     return null;
@@ -77,4 +133,5 @@ const App = () => {
     </>
   );
 };
+
 export default App;
