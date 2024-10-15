@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '500',
     color: Color.colorBlack,
-    paddingLeft: 60,
+    paddingLeft: 40,
     paddingBottom: 20,
     paddingTop: 5,
     alignSelf: 'flex-start'
@@ -120,10 +120,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   addToCartButton: {
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 5,
-    marginTop: 20,
+    padding: 10,
+    borderRadius: 15,
+    borderWidth: 2,
+    alignContent: 'space-around'
   },
   addToCartButtonText: {
     color: Color.colorBlack,
