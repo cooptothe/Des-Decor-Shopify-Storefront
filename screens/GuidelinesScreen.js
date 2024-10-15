@@ -13,6 +13,10 @@ import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
 const GuidelinesScreen = () => {
   const navigation = useNavigation();
 
+  const message = (msg) => {
+    alert(msg);
+  };
+
   return (
     <View style={styles.guidelinesScreen}>
       <TouchableOpacity
@@ -29,45 +33,74 @@ const GuidelinesScreen = () => {
       <Text
         style={styles.rentalGuidelinesAnd}
       >{`RENTAL GUIDELINES AND POLICIES`}</Text>
-      <View style={[styles.rentButton, styles.logoFlexBox]}>
-        <Image
-          style={styles.rentIcon}
-          resizeMethod="scale"
-          contentFit="contain"
-          source={require("../assets/rent3x.png")}
-        />
-      </View>
-      <View style={[styles.rentButton, styles.logoFlexBox]}>
-        <Image
-          style={styles.rentIcon}
-          contentFit="contain"
-          source={require("../assets/decor3x.png")}
-        />
-      </View>
-      <View style={[styles.rentButton, styles.logoFlexBox]}>
-        <Image
-          style={styles.rentIcon}
-          resizeMethod="scale"
-          contentFit="contain"
-          source={require("../assets/deposits3x.png")}
-        />
-      </View>
-      <View style={[styles.rentButton, styles.logoFlexBox]}>
-        <Image
-          style={styles.rentIcon}
-          resizeMethod="scale"
-          contentFit="contain"
-          source={require("../assets/contact3x.png")}
-        />
-      </View>
-      <View style={[styles.rentButton, styles.logoFlexBox]}>
-        <Image
-          style={styles.rentIcon}
-          resizeMethod="scale"
-          contentFit="contain"
-          source={require("../assets/mission3x.png")}
-        />
-      </View>
+      <TouchableOpacity
+        onPress={() =>
+          message(
+            `Single Item renting: $300
+Bundle Order: $400 
+NJ Resident/Pick up orders: $200 
+(A damage fee of $50-$100 is charged and then refunded once all items are returned in the form they were rented!)`
+          )
+        }
+      >
+        <View style={[styles.rentButton, styles.logoFlexBox]}>
+          <Image
+            style={styles.rentIcon}
+            resizeMethod="scale"
+            contentFit="contain"
+            source={require("../assets/rent3x.png")}
+          />
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() =>
+          message(
+            `Single Item renting - $300
+Bundle Order - $400 
+NJ Resident/Pick up orders: $200 
+(A damage fee of $50-$100 is charged and then refunded once all items are returned in the form they were rented!)`
+          )
+        }
+      >
+        <View style={[styles.rentButton, styles.logoFlexBox]}>
+          <Image
+            style={styles.rentIcon}
+            contentFit="contain"
+            source={require("../assets/decor3x.png")}
+          />
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity>
+        <View style={[styles.rentButton, styles.logoFlexBox]}>
+          <Image
+            style={styles.rentIcon}
+            resizeMethod="scale"
+            contentFit="contain"
+            source={require("../assets/deposits3x.png")}
+          />
+        </View>
+      </TouchableOpacity>
+
+      <TouchableOpacity>
+        <View style={[styles.rentButton, styles.logoFlexBox]}>
+          <Image
+            style={styles.rentIcon}
+            resizeMethod="scale"
+            contentFit="contain"
+            source={require("../assets/contact3x.png")}
+          />
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity>
+        <View style={[styles.rentButton, styles.logoFlexBox]}>
+          <Image
+            style={styles.rentIcon}
+            resizeMethod="scale"
+            contentFit="contain"
+            source={require("../assets/mission3x.png")}
+          />
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };

@@ -1,19 +1,37 @@
 import { useNavigation } from "@react-navigation/native";
-import { Image } from "expo-image";
-import React, { Component } from "react";
+import React from "react";
 import {
   ImageBackground,
+  SafeAreaView,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
-  SafeAreaView
+  View
 } from "react-native";
-import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
 import { WebView } from "react-native-webview";
+import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
 
 const ConsultationScreen = () => {
   const navigation = useNavigation();
+
+  // HTML and JavaScript to inject into WebView
+  const calendlyHtml = `
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"></script>
+      </head>
+      <body style="margin:0;padding:0;overflow:hidden;">
+        <div class="calendly-inline-widget" style="width: 100%; height:100%;" data-auto-load="true"></div>
+        <script type="text/javascript">
+          Calendly.initInlineWidget({
+            url: "https://calendly.com/d/y7c-k84-q9w/30min?month=2024-10",
+            parentElement: document.querySelector('.calendly-inline-widget')
+          });
+        </script>
+      </body>
+    </html>
+  `;
 
   return (
     <View style={styles.consultationScreen}>
@@ -34,13 +52,11 @@ const ConsultationScreen = () => {
       <Text style={styles.bookAConsultation}>BOOK A CONSULTATION</Text>
 
       {/* Calendly WebView */}
-      <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView style={styles.bookingView}>
         <WebView
           style={{ flex: 1 }}
           originWhitelist={["*"]}
-          source={{
-            html: '<h1>jvwjijeivjijeiji</h1>'
-          }}
+          source={{ html: calendlyHtml }}
         />
       </SafeAreaView>
 
