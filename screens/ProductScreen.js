@@ -14,11 +14,11 @@ import { storefront } from "../api";
 const ProductScreen = ({ route }) => {
   const navigation = useNavigation();
   const [product, setProduct] = useState(null);
-  const { handle } = route.params;  // Get handle from route params
+  const { handle } = route.params; // Get handle from route params
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const fetchedProduct = await getProduct(handle);  // Pass handle to getProduct
+      const fetchedProduct = await getProduct(handle); // Pass handle to getProduct
       setProduct(fetchedProduct);
     };
 
@@ -28,6 +28,8 @@ const ProductScreen = ({ route }) => {
   const addToCart = () => {
     alert("Product added to cart!");
   };
+
+  console.log(product);
 
   return (
     <View style={styles.consultationScreen}>
@@ -87,7 +89,7 @@ const styles = StyleSheet.create({
     fontSize: 34,
     fontWeight: "bold",
     paddingLeft: "4%",
-    alignSelf: 'flex-start'
+    alignSelf: "flex-start",
   },
   productDescription: {
     fontSize: 16,
@@ -97,21 +99,21 @@ const styles = StyleSheet.create({
   },
   productPrice: {
     fontSize: 20,
-    fontWeight: '500',
+    fontWeight: "500",
     color: Color.colorBlack,
     paddingLeft: 40,
     paddingBottom: 20,
     paddingTop: 5,
-    alignSelf: 'flex-start'
+    alignSelf: "flex-start",
   },
   ProductView: {
     justifyContent: "center",
     alignItems: "center",
     paddingBottom: "20%",
-    shadowColor: 'black',
+    shadowColor: "black",
     shadowOffset: 2,
-    shadowOpacity: .1,
-    shadowRadius: 10
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
   },
   consultationScreen: {
     backgroundColor: Color.colorWhite,
@@ -127,7 +129,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 15,
     borderWidth: 2,
-    alignContent: 'space-around'
+    alignContent: "space-around",
   },
   addToCartButtonText: {
     color: Color.colorBlack,
@@ -138,7 +140,6 @@ const styles = StyleSheet.create({
 
 export default ProductScreen;
 
-
 const gql = String.raw;
 export async function getProduct(handle) {
   const productQuery = gql`
@@ -148,6 +149,16 @@ export async function getProduct(handle) {
         title
         description
         tags
+        media(first: 10) {
+          edges {
+            node {
+              previewImage {
+                url
+              }
+            }
+          }
+        }
+        handle
         variants(first: 10) {
           edges {
             cursor
@@ -169,8 +180,7 @@ export async function getProduct(handle) {
     }
   `;
 
-  const { data } = await storefront(productQuery, { handle });  // Pass handle as a query variable
+  const { data } = await storefront(productQuery, { handle }); // Pass handle as a query variable
   const product = data.product;
   return product;
 }
-
