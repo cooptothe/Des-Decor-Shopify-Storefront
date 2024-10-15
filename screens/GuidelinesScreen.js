@@ -83,8 +83,6 @@ const styles = StyleSheet.create({
   },
   rentalGuidelinesAnd: {
     fontSize: FontSize.size_lgi,
-    letterSpacing: -0.2,
-    lineHeight: 50,
     fontWeight: "500",
     fontFamily: FontFamily.interMedium,
     color: Color.colorGray,
@@ -92,7 +90,7 @@ const styles = StyleSheet.create({
   },
   rentIcon: {
     width: 342,
-    height: 98,
+    height: 93,
   },
   rentButton: {
     paddingHorizontal: Padding.p_11xl,

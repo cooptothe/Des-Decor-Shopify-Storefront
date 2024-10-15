@@ -23,7 +23,7 @@ const MainMenuPhone = () => {
           source={require("../assets/logo3x.png")}
         />
       </View>
-      <Text style={styles.mainMenu}>{`MAIN MENU  `}</Text>
+      <Text style={styles.mainMenu}>{`MAIN MENU`}</Text>
       <TouchableOpacity
         style={styles.button}
         onPress={() => navigation.navigate("BundlesScreen")}
@@ -103,14 +103,12 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   button: {
-    justifyContent: "center",
     paddingHorizontal: Padding.p_11xl,
     paddingVertical: 0,
-    alignItems: "center",
   },
   icon: {
-    width: 333,
-    height: 80,
+    width: 342,
+    height: 93,
   },
   mainMenuPhone: {
     backgroundColor: Color.colorWhite,

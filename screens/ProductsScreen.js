@@ -9,8 +9,8 @@ import {
   View,
   ScrollView,
 } from "react-native";
-import { Color, Padding } from "../GlobalStyles";
 import { storefront } from "../api";
+import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
 
 const ProductsScreen = ({ route }) => {
   const navigation = useNavigation();
@@ -99,17 +99,26 @@ const styles = StyleSheet.create({
   },
   collectionTitle: {
     fontSize: 24,
-    fontWeight: "bold",
+    fontWeight: "500",
+    fontFamily: FontFamily.interMedium,
+    color: Color.colorGray,
     textAlign: "center",
-    marginBottom: 20,
+    padding: 10
   },
   scrollViewContainer: {
     paddingHorizontal: 16,
     paddingBottom: 20,
   },
   productContainer: {
-    marginBottom: 20,
+    marginTop: 20,
+    alignSelf: "center",
     alignItems: "center",
+    height: 300,
+    width: 300,
+    shadowColor: 'black',
+    shadowOffset: 2,
+    shadowOpacity: .1,
+    shadowRadius: 10
   },
   productImage: {
     width: 200,

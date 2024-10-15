@@ -108,6 +108,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingBottom: "20%",
+    shadowColor: 'black',
+    shadowOffset: 2,
+    shadowOpacity: .1,
+    shadowRadius: 10
   },
   consultationScreen: {
     backgroundColor: Color.colorWhite,

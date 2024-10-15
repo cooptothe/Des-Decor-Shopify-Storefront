@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  SafeAreaView
 } from "react-native";
 import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
 import { WebView } from "react-native-webview";
@@ -33,13 +34,15 @@ const ConsultationScreen = () => {
       <Text style={styles.bookAConsultation}>BOOK A CONSULTATION</Text>
 
       {/* Calendly WebView */}
-
-      <WebView
-        style={styles.bookingView}
-        source={{
-          uri: "https://calendly.com/d/y7c-k84-q9w/",
-        }}
-      />
+      <SafeAreaView style={{ flex: 1 }}>
+        <WebView
+          style={{ flex: 1 }}
+          originWhitelist={["*"]}
+          source={{
+            html: '<h1>jvwjijeivjijeiji</h1>'
+          }}
+        />
+      </SafeAreaView>
 
       {/* Decorative Images */}
       <View style={styles.imgs}>
@@ -75,19 +78,16 @@ const styles = StyleSheet.create({
   },
   bookAConsultation: {
     fontSize: FontSize.size_lgi,
-    letterSpacing: -0.2,
-    lineHeight: 37,
     fontWeight: "500",
     fontFamily: FontFamily.interMedium,
     color: Color.colorGray,
     textAlign: "center",
-    alignSelf: "stretch",
   },
   bookingView: {
     flex: 1,
-    width: "100%",
-    justifyContent: "center",
+    justifyContent: 'flex-end',
     alignItems: "center",
+    color: 'black'
   },
   frameIcon: {
     width: 175,
