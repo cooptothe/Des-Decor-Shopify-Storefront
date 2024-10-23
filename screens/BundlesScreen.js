@@ -30,8 +30,6 @@ const BundlesScreen = () => {
     fetchBundles();
   }, []);
 
-  console.log(bundle.products);
-
   return (
     <View style={styles.screen}>
       {/* Logo */}
