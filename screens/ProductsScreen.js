@@ -15,7 +15,7 @@ import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
 const ProductsScreen = ({ route }) => {
   const navigation = useNavigation();
   const [collection, setCollection] = useState(null);
-  const { handle } = route.params;  // Get collection handle from route params
+  const { handle } = route.params; // Get collection handle from route params
 
   // handle method to navigate to ProductScreen with a product handle
   const onHandle = (productHandle) => {
@@ -24,7 +24,7 @@ const ProductsScreen = ({ route }) => {
 
   useEffect(() => {
     const fetchCollection = async () => {
-      const fetchedCollection = await getCollection(handle);  // Fetch the collection by handle
+      const fetchedCollection = await getCollection(handle); // Fetch the collection by handle
       setCollection(fetchedCollection);
     };
 
@@ -56,7 +56,7 @@ const ProductsScreen = ({ route }) => {
           <TouchableOpacity
             key={product.id}
             style={styles.productContainer}
-            onPress={() => onHandle(product.handle)}  // Navigate with the product's handle
+            onPress={() => onHandle(product.handle)} // Navigate with the product's handle
           >
             {/* Product Image */}
             <Image
@@ -64,7 +64,7 @@ const ProductsScreen = ({ route }) => {
               contentFit="contain"
               source={{ uri: product.images.edges[0]?.node.url }}
             />
-            
+
             {/* Product Title */}
             <Text style={styles.productTitle}>{product.title}</Text>
 
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.interMedium,
     color: Color.colorGray,
     textAlign: "center",
-    padding: 10
+    padding: 10,
   },
   scrollViewContainer: {
     paddingHorizontal: 16,
@@ -115,10 +115,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     height: 300,
     width: 300,
-    shadowColor: 'black',
+    shadowColor: "black",
     shadowOffset: 2,
-    shadowOpacity: .1,
-    shadowRadius: 10
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
   },
   productImage: {
     width: 200,
@@ -140,49 +140,47 @@ const styles = StyleSheet.create({
 
 export default ProductsScreen;
 
-
 const gql = String.raw;
 export async function getCollection(handle) {
   const productsQuery = gql`
-query getProductsInCollection($handle: String!) {
-	collection(handle: $handle) {
-		id
-		title
-		products(first: 50, sortKey: BEST_SELLING) {
-			edges {
-				node {
-					id
-					title
-					vendor
-                    handle
-					availableForSale
-					images(first: 1) {
-						edges {
-							node {
-								id
-								url
-								width
-								height
-								altText
-							}
-						}
-					}
-					priceRange {
-						minVariantPrice {
-							amount
-							currencyCode
-						}
-						maxVariantPrice {
-							amount
-							currencyCode
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
+    query getProductsInCollection($handle: String!) {
+      collection(handle: $handle) {
+        id
+        title
+        products(first: 50, sortKey: BEST_SELLING) {
+          edges {
+            node {
+              id
+              title
+              vendor
+              handle
+              availableForSale
+              images(first: 1) {
+                edges {
+                  node {
+                    id
+                    url
+                    width
+                    height
+                    altText
+                  }
+                }
+              }
+              priceRange {
+                minVariantPrice {
+                  amount
+                  currencyCode
+                }
+                maxVariantPrice {
+                  amount
+                  currencyCode
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   `;
 
   const { data } = await storefront(productsQuery, { handle }); // Pass handle as a query variable

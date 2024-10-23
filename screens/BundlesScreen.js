@@ -1,27 +1,40 @@
 import { useNavigation } from "@react-navigation/native";
 import { Image } from "expo-image";
-import * as React from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ImageBackground,
-  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
+  ScrollView,
 } from "react-native";
+import { storefront } from "../api";
 import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
 
 const BundlesScreen = () => {
   const navigation = useNavigation();
+  const [bundle, setBundles] = useState(null);
 
-  // handle method to navigate to ProductScreen with a handle
-  const onHandle = (str) => {
-    navigation.navigate("ProductScreen", { handle: str });
+  // handle method to navigate to ProductScreen with a product handle
+  const onHandle = (productHandle) => {
+    navigation.navigate("ProductScreen", { handle: productHandle });
   };
 
+  useEffect(() => {
+    const fetchBundles = async () => {
+      const fetchedBundles = await getBundles(); // Fetch the bundles
+      setBundles(fetchedBundles);
+    };
+
+    fetchBundles();
+  }, []);
+
+  console.log(bundle.products);
+
   return (
-    <View style={styles.bundlesScreen}>
+    <View style={styles.screen}>
+      {/* Logo */}
       <TouchableOpacity
         style={[styles.logo, styles.logoFlexBox]}
         onPress={() => navigation.navigate("MainMenuPhone")}
@@ -32,121 +45,36 @@ const BundlesScreen = () => {
           source={require("../assets/logo3x.png")}
         />
       </TouchableOpacity>
-      <Text style={styles.decorToGo}>DECOR TO GO BUNDLES</Text>
-      <ScrollView>
-        <TouchableOpacity
-          onPress={() => onHandle("signature-cake-table-bundle")}
-        >
-          <View style={[styles.signButton, styles.logoFlexBox]}>
-            <Image
-              style={styles.sigCakeIcon}
-              resizeMethod="scale"
-              contentFit="contain"
-              source={require("../assets/sig-cake3x.png")}
-            />
-          </View>
-        </TouchableOpacity>
 
-        <TouchableOpacity
-          onPress={() => onHandle("mix-and-match-cake-table-bundle")}
-        >
-          <View style={[styles.signButton, styles.logoFlexBox]}>
-            <Image
-              style={styles.sigCakeIcon}
-              resizeMethod="scale"
-              contentFit="contain"
-              source={require("../assets/mix-table3x.png")}
-            />
-          </View>
-        </TouchableOpacity>
+      {/* Collection Title */}
+      <Text style={styles.collectionTitle}>
+        {bundle ? bundle.title : "Loading..."}
+      </Text>
 
-        <TouchableOpacity onPress={() => onHandle("dinner-bundle")}>
-          <View style={[styles.signButton, styles.logoFlexBox]}>
+      {/* ScrollView for displaying products */}
+      <ScrollView contentContainerStyle={styles.scrollViewContainer}>
+        {bundle?.edges.map(({ node: product }) => (
+          <TouchableOpacity
+            key={product.id}
+            style={styles.productContainer}
+            onPress={() => onHandle(product.handle)} // Navigate with the product's handle
+          >
+            {/* Product Image */}
             <Image
-              style={styles.sigCakeIcon}
-              resizeMethod="scale"
+              style={styles.productImage}
               contentFit="contain"
-              source={require("../assets/dinn-party3x.png")}
+              source={{ uri: product.images.edges[0]?.node.url }}
             />
-          </View>
-        </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => onHandle("kids-party-bundle")}>
-          <View style={[styles.signButton, styles.logoFlexBox]}>
-            <Image
-              style={styles.sigCakeIcon}
-              resizeMethod="scale"
-              contentFit="contain"
-              source={require("../assets/kids-party3x.png")}
-            />
-          </View>
-        </TouchableOpacity>
+            {/* Product Title */}
+            <Text style={styles.productTitle}>{product.title}</Text>
 
-        <TouchableOpacity onPress={() => onHandle("bridal-bundle")}>
-          <View style={[styles.signButton, styles.logoFlexBox]}>
-            <Image
-              style={styles.sigCakeIcon}
-              resizeMethod="scale"
-              contentFit="contain"
-              source={require("../assets/stndrd-bundle3x.png")}
-            />
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={() => onHandle("corporate-events-bundle")}>
-          <View style={[styles.signButton, styles.logoFlexBox]}>
-            <Image
-              style={styles.sigCakeIcon}
-              resizeMethod="scale"
-              contentFit="contain"
-              source={require("../assets/corp-events3x.png")}
-            />
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={() => onHandle("holiday-bundle")}>
-          <View style={[styles.signButton, styles.logoFlexBox]}>
-            <Image
-              style={styles.sigCakeIcon}
-              resizeMethod="scale"
-              contentFit="contain"
-              source={require("../assets/hol-bundle3x.png")}
-            />
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={() => onHandle("picnic-table")}>
-          <View style={[styles.signButton, styles.logoFlexBox]}>
-            <Image
-              style={styles.sigCakeIcon}
-              resizeMethod="scale"
-              contentFit="contain"
-              source={require("../assets/pic-bundle3x.png")}
-            />
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={() => onHandle("zodiac-bundle")}>
-          <View style={[styles.signButton, styles.logoFlexBox]}>
-            <Image
-              style={styles.sigCakeIcon}
-              resizeMethod="scale"
-              contentFit="contain"
-              source={require("../assets/zod-bundle3x.png")}
-            />
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={() => onHandle("premium-bridal-bundle")}>
-          <View style={[styles.signButton, styles.logoFlexBox]}>
-            <Image
-              style={styles.sigCakeIcon}
-              resizeMethod="scale"
-              contentFit="contain"
-              source={require("../assets/prem-bundle3x.png")}
-            />
-          </View>
-        </TouchableOpacity>
+            {/* Product Price */}
+            <Text style={styles.productPrice}>
+              {`$${product.priceRange.minVariantPrice.amount} ${product.priceRange.minVariantPrice.currencyCode}`}
+            </Text>
+          </TouchableOpacity>
+        ))}
       </ScrollView>
     </View>
   );
@@ -164,28 +92,84 @@ const styles = StyleSheet.create({
   logo: {
     alignSelf: "stretch",
   },
-  decorToGo: {
-    fontSize: FontSize.size_lgi,
+  screen: {
+    backgroundColor: Color.colorWhite,
+    flex: 1,
+    height: "100%",
+    paddingTop: Padding.p_xl,
+  },
+  collectionTitle: {
+    fontSize: 24,
     fontWeight: "500",
     fontFamily: FontFamily.interMedium,
     color: Color.colorGray,
     textAlign: "center",
+    padding: 10,
   },
-  sigCakeIcon: {
-    width: 342,
-    height: 93,
+  scrollViewContainer: {
+    paddingHorizontal: 16,
+    paddingBottom: 20,
   },
-  signButton: {
-    paddingHorizontal: Padding.p_11xl,
-    paddingVertical: 20,
+  productContainer: {
+    marginTop: 20,
+    alignSelf: "center",
+    alignItems: "center",
+    height: 300,
+    width: 300,
+    shadowColor: "black",
+    shadowOffset: 2,
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
   },
-  bundlesScreen: {
-    backgroundColor: Color.colorWhite,
-    flex: 1,
-    height: 852,
-    gap: 45,
-    width: "100%",
+  productImage: {
+    width: 200,
+    height: 200,
+    marginBottom: 10,
+  },
+  productTitle: {
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginBottom: 5,
+  },
+  productPrice: {
+    fontSize: 16,
+    color: Color.colorBlack,
+    textAlign: "center",
   },
 });
 
 export default BundlesScreen;
+
+const gql = String.raw;
+export async function getBundles() {
+  const bundlesQuery = gql`
+    query getProductsAndVariants {
+      products(first: 100, query: "product_type:'bundle'") {
+        edges {
+          node {
+            id
+            title
+            handle
+            images(first: 1) {
+              edges {
+                node {
+                  url
+                }
+              }
+            }
+            priceRange {
+              minVariantPrice {
+                amount
+                currencyCode
+              }
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  const { data } = await storefront(bundlesQuery); // No need to pass handle
+  return data.products; // Return the list of products
+}

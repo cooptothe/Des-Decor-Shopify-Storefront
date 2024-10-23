@@ -25,7 +25,7 @@ const ConsultationScreen = () => {
         <div class="calendly-inline-widget" style="width: 100%; height:100%;" data-auto-load="true"></div>
         <script type="text/javascript">
           Calendly.initInlineWidget({
-            url: "https://calendly.com/d/y7c-k84-q9w/30min?month=2024-10",
+            url: "https://calendly.com/d/y7c-k84-q9w/",
             parentElement: document.querySelector('.calendly-inline-widget')
           });
         </script>

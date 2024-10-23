@@ -29,7 +29,7 @@ const ProductScreen = ({ route }) => {
     alert("Product added to cart!");
   };
 
-  console.log(product);
+  //console.log(product.handle);
 
   return (
     <View style={styles.consultationScreen}>
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
   addToCartButton: {
     padding: 10,
     borderRadius: 15,
-    borderWidth: 2,
+    borderWidth: 1,
     alignContent: "space-around",
   },
   addToCartButtonText: {
