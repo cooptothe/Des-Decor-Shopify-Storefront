@@ -78,7 +78,7 @@ const ProductScreen = ({ route }) => {
           />
 
           {/* Render HTML description */}
-          <View style={{ padding: 40 }}>
+          <View style={{ padding: 15 }}>
           <RenderHtml
             contentWidth={screenWidth}
             source={{ html: product.descriptionHtml }}
@@ -164,6 +164,7 @@ export async function getProduct(handle) {
       product(handle: $handle) {
         id
         title
+        tags
         descriptionHtml
         media(first: 10) {
           edges {

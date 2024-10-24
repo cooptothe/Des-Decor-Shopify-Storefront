@@ -74,8 +74,6 @@ const BridalScreen = () => {
 const styles = StyleSheet.create({
   bridal: {
     fontSize: FontSize.size_lgi,
-    letterSpacing: -0.2,
-    lineHeight: 49,
     fontWeight: "500",
     fontFamily: FontFamily.interMedium,
     color: Color.colorGray,
