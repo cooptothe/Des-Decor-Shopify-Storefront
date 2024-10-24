@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { WebView } from "react-native-webview";
 import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
+import BackButton from '../components/BackButton';
 
 const ConsultationScreen = () => {
   const navigation = useNavigation();
@@ -35,19 +36,6 @@ const ConsultationScreen = () => {
 
   return (
     <View style={styles.consultationScreen}>
-      {/* Logo */}
-      <TouchableOpacity
-        style={styles.logo}
-        onPress={() => navigation.navigate("MainMenuPhone")}
-      >
-        <ImageBackground
-          style={styles.logoIcon}
-          resizeMethod="scale"
-          resizeMode="contain"
-          source={require("../assets/logo3x.png")}
-        />
-      </TouchableOpacity>
-
       {/* Title */}
       <Text style={styles.bookAConsultation}>BOOK A CONSULTATION</Text>
 
@@ -80,16 +68,6 @@ const ConsultationScreen = () => {
 const styles = StyleSheet.create({
   frameIconFlexBox: {
     overflow: "hidden",
-    alignItems: "center",
-  },
-  logoIcon: {
-    alignSelf: "stretch",
-    flex: 1,
-  },
-  logo: {
-    height: 300,
-    justifyContent: "center",
-    alignSelf: "stretch",
     alignItems: "center",
   },
   bookAConsultation: {

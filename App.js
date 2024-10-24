@@ -1,4 +1,4 @@
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import * as React from "react";
 import BridalScreen from "./screens/BridalScreen";
@@ -13,6 +13,13 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AsyncStorage from '@react-native-async-storage/async-storage'; // For saving cart ID locally
 import { useEffect, useState } from "react";
 import { storefront } from "./api";  // Import storefront function
+import {
+  ImageBackground,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+
+} from "react-native";
 
 const Stack = createNativeStackNavigator();
 
@@ -37,12 +44,12 @@ const createCartMutation = `
 `;
 
 const App = () => {
+  //const navigation = useNavigation();
   const [cartId, setCartId] = useState(null);
   const [hideSplashScreen, setHideSplashScreen] = React.useState(true);
   const [fontsLoaded, error] = useFonts({
     "Inter-Medium": require("./assets/fonts/Inter-Medium.ttf"),
   });
-
   // Function to create a new cart
   const createCart = async () => {
     try {
@@ -63,17 +70,23 @@ const App = () => {
   // Load cart on app startup
   useEffect(() => {
     const initializeCart = async () => {
-      const storedCartId = await AsyncStorage.getItem("cartId");
-      if (!storedCartId) {
-        await createCart(); // Create a new cart if none exists
-      } else {
-        setCartId(storedCartId); // Use the existing cart
-        console.log("Cart loaded from storage:", storedCartId);
+      try {
+        const storedCartId = await AsyncStorage.getItem("cartId");
+        if (!storedCartId) {
+          await createCart(); // Create a new cart if none exists
+        } else {
+          setCartId(storedCartId); // Use the existing cart
+          console.log("Cart loaded from storage:", storedCartId);
+        }
+      } catch (error) {
+        console.error("Error initializing cart:", error);
+      } finally {
+        setHideSplashScreen(true); // Hide splash screen after initialization
       }
     };
-
+  
     initializeCart();
-  }, []);
+  }, []);  
 
   if (!fontsLoaded && !error) {
     return null;
@@ -81,7 +94,18 @@ const App = () => {
 
   return (
     <>
+
       <NavigationContainer>
+      <TouchableOpacity
+        style={styles.logo}
+      >
+        <ImageBackground
+          style={styles.logoIcon}
+          resizeMethod="scale"
+          resizeMode="contain"
+          source={require("./assets/logo3x.png")}
+        />
+      </TouchableOpacity>
         {hideSplashScreen ? (
           <Stack.Navigator
             initialRouteName="MainMenuPhone"
@@ -133,5 +157,18 @@ const App = () => {
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  logoIcon: {
+    alignSelf: "stretch",
+    flex: 1,
+  },
+  logo: {
+    height: 300,
+    justifyContent: "center",
+    alignSelf: "stretch",
+    alignItems: "center",
+  },
+});
 
 export default App;

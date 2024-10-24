@@ -9,6 +9,7 @@ import {
   View,
 } from "react-native";
 import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
+import BackButton from '../components/BackButton';
 
 const BridalScreen = () => {
   const navigation = useNavigation();
@@ -20,17 +21,6 @@ const BridalScreen = () => {
 
   return (
     <View style={styles.bridalScreen}>
-      <TouchableOpacity
-        style={styles.logoFlexBox}
-        onPress={() => navigation.navigate("MainMenuPhone")}
-      >
-        <ImageBackground
-          style={styles.logoIcon}
-          resizeMethod="scale"
-          resizeMode="contain"
-          source={require("../assets/logo3x.png")}
-        />
-      </TouchableOpacity>
       <Text style={styles.bridal}>{`BRIDAL`}</Text>
       <TouchableOpacity onPress={() => onHandle("bridal-bundle")}>
       <View style={[styles.bridalButton, styles.logoFlexBox]}>
@@ -81,14 +71,6 @@ const BridalScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  logoFlexBox: {
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  logoIcon: {
-    width: 400,
-    height: 300,
-  },
   bridal: {
     fontSize: FontSize.size_lgi,
     letterSpacing: -0.2,

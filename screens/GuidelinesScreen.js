@@ -9,6 +9,7 @@ import {
   View,
 } from "react-native";
 import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
+import BackButton from '../components/BackButton';
 
 const GuidelinesScreen = () => {
   const navigation = useNavigation();
@@ -19,17 +20,6 @@ const GuidelinesScreen = () => {
 
   return (
     <View style={styles.guidelinesScreen}>
-      <TouchableOpacity
-        style={[styles.logo, styles.logoFlexBox]}
-        onPress={() => navigation.navigate("MainMenuPhone")}
-      >
-        <ImageBackground
-          style={styles.logoIcon}
-          resizeMethod="scale"
-          resizeMode="contain"
-          source={require("../assets/logo3x.png")}
-        />
-      </TouchableOpacity>
       <Text
         style={styles.rentalGuidelinesAnd}
       >{`RENTAL GUIDELINES AND POLICIES`}</Text>
@@ -106,14 +96,6 @@ NJ Resident/Pick up orders: $200
 };
 
 const styles = StyleSheet.create({
-  logoFlexBox: {
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  logoIcon: {
-    width: 400,
-    height: 300,
-  },
   rentalGuidelinesAnd: {
     fontSize: FontSize.size_lgi,
     fontWeight: "500",

@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { storefront } from "../api";
 import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
+import BackButton from '../components/BackButton';
 
 const BundlesScreen = () => {
   const navigation = useNavigation();
@@ -32,18 +33,6 @@ const BundlesScreen = () => {
 
   return (
     <View style={styles.screen}>
-      {/* Logo */}
-      <TouchableOpacity
-        style={[styles.logo, styles.logoFlexBox]}
-        onPress={() => navigation.navigate("MainMenuPhone")}
-      >
-        <ImageBackground
-          style={styles.logoIcon}
-          resizeMode="contain"
-          source={require("../assets/logo3x.png")}
-        />
-      </TouchableOpacity>
-
       {/* Collection Title */}
       <Text style={styles.collectionTitle}>
         {bundle ? bundle.title : "Loading..."}
@@ -79,22 +68,10 @@ const BundlesScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  logoFlexBox: {
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  logoIcon: {
-    width: 400,
-    height: 300,
-  },
-  logo: {
-    alignSelf: "stretch",
-  },
   screen: {
     backgroundColor: Color.colorWhite,
     flex: 1,
     height: "100%",
-    paddingTop: Padding.p_xl,
   },
   collectionTitle: {
     fontSize: 24,

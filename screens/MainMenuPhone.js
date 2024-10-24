@@ -9,20 +9,13 @@ import {
   View,
 } from "react-native";
 import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
+import BackButton from '../components/BackButton';
 
 const MainMenuPhone = () => {
   const navigation = useNavigation();
 
   return (
     <View style={[styles.mainMenuPhone, styles.logoFlexBox]}>
-      <View style={[styles.logo, styles.logoFlexBox]}>
-        <ImageBackground
-          style={styles.logoIcon}
-          resizeMethod="scale"
-          resizeMode="contain"
-          source={require("../assets/logo3x.png")}
-        />
-      </View>
       <Text style={styles.mainMenu}>{`MAIN MENU`}</Text>
       <TouchableOpacity
         style={styles.button}
@@ -84,17 +77,6 @@ const MainMenuPhone = () => {
 };
 
 const styles = StyleSheet.create({
-  logoFlexBox: {
-    overflow: "hidden",
-    alignItems: "center",
-  },
-  logoIcon: {
-    width: 400,
-    height: 300,
-  },
-  logo: {
-    alignItems: "center",
-  },
   mainMenu: {
     fontSize: FontSize.size_lgi,
     fontWeight: "500",

@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
 import { storefront } from "../api";
+import BackButton from '../components/BackButton';
 
 const Contact = ({ route }) => {
   const navigation = useNavigation();
@@ -27,18 +28,6 @@ const Contact = ({ route }) => {
 
   return (
     <View style={styles.consultationScreen}>
-      <TouchableOpacity
-        style={styles.logo}
-        onPress={() => navigation.navigate("MainMenuPhone")}
-      >
-        <ImageBackground
-          style={styles.logoIcon}
-          resizeMethod="scale"
-          resizeMode="contain"
-          source={require("../assets/logo3x.png")}
-        />
-      </TouchableOpacity>
-
       {product ? (
         <View style={styles.ProductView}>
           <Text style={styles.productTitle}>{product.title}</Text>
@@ -65,16 +54,6 @@ const Contact = ({ route }) => {
 };
 
 const styles = StyleSheet.create({
-  logoIcon: {
-    alignSelf: "stretch",
-    flex: 1,
-  },
-  logo: {
-    height: 300,
-    justifyContent: "center",
-    alignSelf: "stretch",
-    alignItems: "center",
-  },
   ProductIcon: {
     width: 402,
     height: 361,

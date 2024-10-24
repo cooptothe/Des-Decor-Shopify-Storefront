@@ -9,6 +9,7 @@ import {
   View,
 } from "react-native";
 import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
+import BackButton from '../components/BackButton';
 
 const InventoryScreen = () => {
   const navigation = useNavigation();
@@ -20,16 +21,6 @@ const InventoryScreen = () => {
 
   return (
     <View style={styles.inventoryScreen}>
-      <TouchableOpacity
-        style={styles.logoFlexBox}
-        onPress={() => navigation.navigate("MainMenuPhone")}
-      >
-        <ImageBackground
-          style={styles.logoIcon}
-          resizeMode="contain"
-          source={require("../assets/logo3x.png")}
-        />
-      </TouchableOpacity>
       <Text style={styles.inventory}>{`INVENTORY`}</Text>
       <TouchableOpacity onPress={() => onHandle2("walls")} >
         <View style={[styles.wallButton, styles.logoFlexBox]}>
@@ -84,14 +75,6 @@ const InventoryScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  logoFlexBox: {
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  logoIcon: {
-    width: 400,
-    height: 300,
-  },
   inventory: {
     fontSize: FontSize.size_lgi,
     fontWeight: "500",

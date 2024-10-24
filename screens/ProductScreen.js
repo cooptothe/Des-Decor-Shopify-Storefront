@@ -7,9 +7,16 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Dimensions,
+  ScrollView
 } from "react-native";
+import Carousel from "react-native-snap-carousel";
 import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
 import { storefront } from "../api";
+import RenderHtml from "react-native-render-html";
+import BackButton from '../components/BackButton';
+
+const { width: screenWidth } = Dimensions.get("window");
 
 const ProductScreen = ({ route }) => {
   const navigation = useNavigation();
@@ -29,10 +36,19 @@ const ProductScreen = ({ route }) => {
     alert("Product added to cart!");
   };
 
-  //console.log(product.handle);
+  const renderCarouselItem = ({ item }) => (
+    <View style={styles.carouselItem}>
+      <Image
+        style={styles.carouselImage}
+        contentFit="contain"
+        source={{ uri: item.node.previewImage.url }}
+      />
+    </View>
+  );
 
   return (
-    <View style={styles.consultationScreen}>
+    <ScrollView style={styles.consultationScreen}>
+      <BackButton />
       <TouchableOpacity
         style={styles.logo}
         onPress={() => navigation.navigate("MainMenuPhone")}
@@ -49,14 +65,23 @@ const ProductScreen = ({ route }) => {
         <View style={styles.ProductView}>
           <Text style={styles.productTitle}>{product.title}</Text>
           <Text style={styles.productPrice}>
-            {`$${product.variants.edges[0].node.price.amount}0 ${product.variants.edges[0].node.price.currencyCode}`}
+            {`$${product.variants.edges[0].node.price.amount} ${product.variants.edges[0].node.price.currencyCode}`}
           </Text>
-          <Image
-            style={styles.ProductIcon}
-            contentFit="contain"
-            source={{ uri: product.variants.edges[0]?.node.image.url }}
+
+          {/* Image Carousel */}
+          <Carousel
+            data={product.media.edges}
+            renderItem={renderCarouselItem}
+            sliderWidth={screenWidth}
+            itemWidth={screenWidth - 60} // Adjust item width
+            loop={true}
           />
-          <Text style={styles.productDescription}>{product.description}</Text>
+
+          {/* Render HTML description */}
+          <RenderHtml
+            contentWidth={screenWidth}
+            source={{ html: product.descriptionHtml }}
+          />
 
           {/* Add to Cart Button */}
           <TouchableOpacity style={styles.addToCartButton} onPress={addToCart}>
@@ -66,46 +91,11 @@ const ProductScreen = ({ route }) => {
       ) : (
         <Text>Loading...</Text>
       )}
-    </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  logoIcon: {
-    alignSelf: "stretch",
-    flex: 1,
-  },
-  logo: {
-    height: 300,
-    justifyContent: "center",
-    alignSelf: "stretch",
-    alignItems: "center",
-  },
-  ProductIcon: {
-    width: 402,
-    height: 361,
-  },
-  productTitle: {
-    fontSize: 34,
-    fontWeight: "bold",
-    paddingLeft: "4%",
-    alignSelf: "flex-start",
-  },
-  productDescription: {
-    fontSize: 16,
-    color: Color.colorGray,
-    padding: "5%",
-    textAlign: "center",
-  },
-  productPrice: {
-    fontSize: 20,
-    fontWeight: "500",
-    color: Color.colorBlack,
-    paddingLeft: 40,
-    paddingBottom: 20,
-    paddingTop: 5,
-    alignSelf: "flex-start",
-  },
   ProductView: {
     justifyContent: "center",
     alignItems: "center",
@@ -119,11 +109,35 @@ const styles = StyleSheet.create({
     backgroundColor: Color.colorWhite,
     width: "100%",
     height: 874,
-    justifyContent: "space-between",
     paddingHorizontal: 0,
     paddingVertical: Padding.p_xl,
-    alignItems: "center",
     flex: 1,
+  },
+  productTitle: {
+    fontSize: 34,
+    fontWeight: "bold",
+    paddingLeft: "4%",
+    alignSelf: "flex-start",
+  },
+  productPrice: {
+    fontSize: 20,
+    fontWeight: "500",
+    color: Color.colorBlack,
+    paddingLeft: 40,
+    paddingBottom: 20,
+    paddingTop: 5,
+    alignSelf: "flex-start",
+  },
+  carouselItem: {
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 8,
+    overflow: "hidden",
+    width: screenWidth - 60,
+  },
+  carouselImage: {
+    width: screenWidth - 60,
+    height: 400,
   },
   addToCartButton: {
     padding: 10,
@@ -147,8 +161,7 @@ export async function getProduct(handle) {
       product(handle: $handle) {
         id
         title
-        description
-        tags
+        descriptionHtml
         media(first: 10) {
           edges {
             node {
@@ -158,17 +171,9 @@ export async function getProduct(handle) {
             }
           }
         }
-        handle
         variants(first: 10) {
           edges {
-            cursor
             node {
-              id
-              title
-              image {
-                url
-              }
-              quantityAvailable
               price {
                 amount
                 currencyCode
@@ -180,7 +185,7 @@ export async function getProduct(handle) {
     }
   `;
 
-  const { data } = await storefront(productQuery, { handle }); // Pass handle as a query variable
+  const { data } = await storefront(productQuery, { handle });
   const product = data.product;
   return product;
 }
