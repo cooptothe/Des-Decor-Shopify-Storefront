@@ -34,6 +34,7 @@ const ProductsScreen = ({ route }) => {
 
   return (
     <View style={styles.screen}>
+      <BackButton />
       {/* Collection Title */}
       <Text style={styles.collectionTitle}>
         {collection ? collection.title : "Loading..."}

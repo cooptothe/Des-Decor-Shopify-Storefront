@@ -21,6 +21,7 @@ const BridalScreen = () => {
 
   return (
     <View style={styles.bridalScreen}>
+      <BackButton />
       <Text style={styles.bridal}>{`BRIDAL`}</Text>
       <TouchableOpacity onPress={() => onHandle("bridal-bundle")}>
       <View style={[styles.bridalButton, styles.logoFlexBox]}>

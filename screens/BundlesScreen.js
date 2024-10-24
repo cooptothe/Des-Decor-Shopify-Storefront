@@ -33,6 +33,10 @@ const BundlesScreen = () => {
 
   return (
     <View style={styles.screen}>
+      <BackButton />
+      <Text
+        style={styles.screenTitle}
+      >{`BUNDLES`}</Text>
       {/* Collection Title */}
       <Text style={styles.collectionTitle}>
         {bundle ? bundle.title : "Loading..."}
@@ -112,6 +116,13 @@ const styles = StyleSheet.create({
     color: Color.colorBlack,
     textAlign: "center",
   },
+  screenTitle : {
+    fontSize: FontSize.size_lgi,
+    fontWeight: "500",
+    fontFamily: FontFamily.interMedium,
+    color: Color.colorGray,
+    textAlign: "center",
+  }
 });
 
 export default BundlesScreen;

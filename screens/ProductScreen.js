@@ -78,10 +78,12 @@ const ProductScreen = ({ route }) => {
           />
 
           {/* Render HTML description */}
+          <View style={{ padding: 40 }}>
           <RenderHtml
             contentWidth={screenWidth}
             source={{ html: product.descriptionHtml }}
           />
+          </View>
 
           {/* Add to Cart Button */}
           <TouchableOpacity style={styles.addToCartButton} onPress={addToCart}>
@@ -118,12 +120,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     paddingLeft: "4%",
     alignSelf: "flex-start",
+    marginTop: 15,
   },
   productPrice: {
     fontSize: 20,
     fontWeight: "500",
     color: Color.colorBlack,
-    paddingLeft: 40,
+    paddingLeft: 50,
     paddingBottom: 20,
     paddingTop: 5,
     alignSelf: "flex-start",

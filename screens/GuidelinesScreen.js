@@ -20,6 +20,7 @@ const GuidelinesScreen = () => {
 
   return (
     <View style={styles.guidelinesScreen}>
+      <BackButton />
       <Text
         style={styles.rentalGuidelinesAnd}
       >{`RENTAL GUIDELINES AND POLICIES`}</Text>

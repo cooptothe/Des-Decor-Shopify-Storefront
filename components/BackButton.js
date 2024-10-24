@@ -17,12 +17,12 @@ const BackButton = () => {
 const styles = StyleSheet.create({
   button: {
     padding: 12,
-    alignSelf: "flex-end",
+    alignSelf: "flex-start",
     borderRadius: 15,
     borderWidth: 1,
     height: 45,
     width: 75,
-    right: 50
+    left: 25,
   },
   buttonText: {
     color: Color.colorBlack,

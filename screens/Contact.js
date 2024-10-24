@@ -28,6 +28,7 @@ const Contact = ({ route }) => {
 
   return (
     <View style={styles.consultationScreen}>
+      <BackButton />
       {product ? (
         <View style={styles.ProductView}>
           <Text style={styles.productTitle}>{product.title}</Text>

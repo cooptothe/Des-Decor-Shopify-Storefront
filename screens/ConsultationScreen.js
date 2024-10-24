@@ -36,6 +36,7 @@ const ConsultationScreen = () => {
 
   return (
     <View style={styles.consultationScreen}>
+      <BackButton />
       {/* Title */}
       <Text style={styles.bookAConsultation}>BOOK A CONSULTATION</Text>
 

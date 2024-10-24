@@ -21,6 +21,7 @@ const InventoryScreen = () => {
 
   return (
     <View style={styles.inventoryScreen}>
+      <BackButton />
       <Text style={styles.inventory}>{`INVENTORY`}</Text>
       <TouchableOpacity onPress={() => onHandle2("walls")} >
         <View style={[styles.wallButton, styles.logoFlexBox]}>
