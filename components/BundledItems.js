@@ -13,7 +13,7 @@ const BundleItems = ({ bundleItems }) => {
         renderItem={({ item }) => (
           <Text style={styles.item}>
             {item.quantity_in_bundle} x {item.product_title}
-            {item.variant_title !== 'Default Title' ? ` - ${item.variant_title}` : ''}
+            {item.variant_title !== 'Option' ? ` - ${item.variant_title}` : ''}
           </Text>
         )}
       />
@@ -24,9 +24,10 @@ const BundleItems = ({ bundleItems }) => {
 const styles = StyleSheet.create({
   container: {
     padding: 6,
+    alignItems: "center"
   },
   header: {
-    fontWeight: 'bold',
+    fontWeight: 'light',
     marginBottom: 4,
   },
   item: {

@@ -15,18 +15,24 @@ import Carousel from "react-native-snap-carousel";
 import { Color, Padding } from "../GlobalStyles";
 import { storefront } from "../api";
 import BackButton from "../components/BackButton";
+import BundleOptionSelect from "../components/BundleOptionSelect"; // Import the new component
 
 const { width: screenWidth } = Dimensions.get("window");
 
-const ProductScreen = ({ route }) => {
+const BundleScreen = ({ route }) => {
   const navigation = useNavigation();
-  const [product, setProduct] = useState(null);
+  const [bundle, setBundle] = useState(null);
   const { handle } = route.params; // Get handle from route params
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const fetchedProduct = await getProduct(handle); // Pass handle to getProduct
-      setProduct(fetchedProduct);
+      try {
+        const fetchedBundle = await getBundle(handle);
+        setBundle(fetchedBundle);
+      } catch (error) {
+        console.error("Error fetching product:", error);
+        alert("There was an issue loading the product details. Please try again.");
+      }
     };
 
     fetchProduct();
@@ -46,6 +52,11 @@ const ProductScreen = ({ route }) => {
     </View>
   );
 
+  const handleBundleChange = (bundleString, options) => {
+    console.log("Bundle selection:", bundleString);
+    console.log("Selected options:", options);
+  };
+
   return (
     <ScrollView style={styles.consultationScreen}>
       <BackButton />
@@ -61,16 +72,16 @@ const ProductScreen = ({ route }) => {
         />
       </TouchableOpacity>
 
-      {product ? (
+      {bundle ? (
         <View style={styles.ProductView}>
-          <Text style={styles.productTitle}>{product.title}</Text>
+          <Text style={styles.productTitle}>{bundle.title}</Text>
           <Text style={styles.productPrice}>
-            {`$${product.variants.edges[0].node.price.amount} ${product.variants.edges[0].node.price.currencyCode}`}
+            {`$${bundle.variants.edges[0].node.price.amount}0 ${bundle.variants.edges[0].node.price.currencyCode}`}
           </Text>
 
           {/* Image Carousel */}
           <Carousel
-            data={product.media.edges}
+            data={bundle.media.edges}
             renderItem={renderCarouselItem}
             sliderWidth={screenWidth}
             itemWidth={screenWidth - 60} // Adjust item width
@@ -81,12 +92,30 @@ const ProductScreen = ({ route }) => {
           <View style={{ padding: 15 }}>
             <RenderHtml
               contentWidth={screenWidth}
-              source={{ html: product.descriptionHtml }}
+              source={{ html: bundle.descriptionHtml }}
             />
           </View>
 
+          {/* Conditionally render BundleOptionSelect */}
+          {bundle.productType === "bundle" && (
+            <BundleOptionSelect
+              voMetafield={
+                bundle.variants.edges[0].node.variantOptionsMetafield?.value
+              }
+              voMetafieldv2={
+                bundle.variants.edges[0].node.variantOptionsv2Metafield?.value
+              }
+              handleBundleChange={handleBundleChange}
+            />
+          )}
+
           {/* Add to Cart Button */}
-          <TouchableOpacity style={styles.addToCartButton} onPress={addToCart}>
+          <TouchableOpacity
+            style={styles.addToCartButton}
+            onPress={addToCart}
+            accessibilityLabel="Add this product to your cart"
+            accessibilityRole="button"
+          >
             <Text style={styles.addToCartButtonText}>Add to Cart</Text>
           </TouchableOpacity>
         </View>
@@ -158,11 +187,11 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProductScreen;
+export default BundleScreen;
 
 const gql = String.raw;
-export async function getProduct(handle) {
-  const productQuery = gql`
+export async function getBundle(handle) {
+  const bundleQuery = gql`
     query getProductByHandle($handle: String!) {
       product(handle: $handle) {
         id
@@ -220,7 +249,38 @@ export async function getProduct(handle) {
     }
   `;
 
-  const { data } = await storefront(productQuery, { handle });
-  const product = data.product;
-  return product;
+  const { data } = await storefront(bundleQuery, { handle });
+  const bundle = data.product;
+
+  if (bundle.variants.edges.length > 0) {
+    const variant = bundle.variants.edges[0].node;
+    
+    const parseMetafield = (metafield) => {
+      if (metafield && metafield.value) {
+        try {
+          return JSON.parse(metafield.value);
+        } catch (error) {
+          console.error("Error parsing metafield value:", metafield.value);
+          return null; // Return null or handle error as needed
+        }
+      }
+      return null;
+    };
+    
+
+    variant.variantOptionsMetafield.value = parseMetafield(variant.variantOptionsMetafield);
+    variant.variantOptionsv2Metafield.value = parseMetafield(variant.variantOptionsv2Metafield);
+  }
+
+  console.log("Product Type:", bundle.productType);
+  console.log(
+    "variantOptionsMetafield:",
+    bundle.variants.edges[0].node.variantOptionsMetafield?.value
+  );
+  console.log(
+    "variantOptionsv2Metafield:",
+    bundle.variants.edges[0].node.variantOptionsv2Metafield?.value
+  );
+
+  return bundle;
 }

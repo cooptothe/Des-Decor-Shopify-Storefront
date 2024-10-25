@@ -17,9 +17,9 @@ const BundlesScreen = () => {
   const navigation = useNavigation();
   const [bundle, setBundles] = useState(null);
 
-  // handle method to navigate to ProductScreen with a product handle
+  // handle method to navigate to BundleScreen with a product handle
   const onHandle = (productHandle) => {
-    navigation.navigate("ProductScreen", { handle: productHandle });
+    navigation.navigate("BundleScreen", { handle: productHandle });
   };
 
   useEffect(() => {
@@ -62,7 +62,7 @@ const BundlesScreen = () => {
 
             {/* Product Price */}
             <Text style={styles.productPrice}>
-              {`$${product.priceRange.minVariantPrice.amount} ${product.priceRange.minVariantPrice.currencyCode}`}
+              {`$${product.priceRange.minVariantPrice.amount}0 ${product.priceRange.minVariantPrice.currencyCode}`}
             </Text>
           </TouchableOpacity>
         ))}

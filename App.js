@@ -10,16 +10,16 @@ import MainMenuPhone from "./screens/MainMenuPhone";
 import ProductScreen from "./screens/ProductScreen";
 import ProductsScreen from "./screens/ProductsScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import AsyncStorage from '@react-native-async-storage/async-storage'; // For saving cart ID locally
+import AsyncStorage from "@react-native-async-storage/async-storage"; // For saving cart ID locally
 import { useEffect, useState } from "react";
-import { storefront } from "./api";  // Import storefront function
+import { storefront } from "./api"; // Import storefront function
 import {
   ImageBackground,
   StyleSheet,
   Text,
   TouchableOpacity,
-
 } from "react-native";
+import BundleScreen from "./screens/BundleScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -84,9 +84,9 @@ const App = () => {
         setHideSplashScreen(true); // Hide splash screen after initialization
       }
     };
-  
+
     initializeCart();
-  }, []);  
+  }, []);
 
   if (!fontsLoaded && !error) {
     return null;
@@ -94,18 +94,15 @@ const App = () => {
 
   return (
     <>
-
       <NavigationContainer>
-      <TouchableOpacity
-        style={styles.logo}
-      >
-        <ImageBackground
-          style={styles.logoIcon}
-          resizeMethod="scale"
-          resizeMode="contain"
-          source={require("./assets/logo3x.png")}
-        />
-      </TouchableOpacity>
+        <TouchableOpacity style={styles.logo}>
+          <ImageBackground
+            style={styles.logoIcon}
+            resizeMethod="scale"
+            resizeMode="contain"
+            source={require("./assets/logo3x.png")}
+          />
+        </TouchableOpacity>
         {hideSplashScreen ? (
           <Stack.Navigator
             initialRouteName="MainMenuPhone"
@@ -149,6 +146,11 @@ const App = () => {
             <Stack.Screen
               name="ProductsScreen"
               component={ProductsScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="BundleScreen"
+              component={BundleScreen}
               options={{ headerShown: false }}
             />
           </Stack.Navigator>

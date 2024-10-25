@@ -60,7 +60,7 @@ const BundleOptionSelect = ({ selectedVariant, voMetafield, voMetafieldv2, handl
   };
 
   return (
-    <View>
+    <View style={{ alignSelf: "flex-start", width: "90%", left: 10 }}>
       {voMetafieldv2 && voMetafieldv2.map((optionGroup, index) => (
         <View key={index}>
           {optionGroup.map((option, subIndex) => {
@@ -75,7 +75,7 @@ const BundleOptionSelect = ({ selectedVariant, voMetafield, voMetafieldv2, handl
 
             return (
               <View key={`${index}-${subIndex}`} style={styles.optionContainer}>
-                <Text>{optionName}</Text>
+                <Text style={{ alignSelf: "flex-start" }}>{optionName}</Text>
                 <Picker
                   selectedValue={selectedOptions[optionName]}
                   onValueChange={(value) => handleSelectChange(value, optionName)}
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     marginBottom: 1,
   },
   hiddenField: {
-    display: 'none', // Note: This won't actually hide in React Native, but can be logged or handled elsewhere
+    fontSize: 1, // Note: This won't actually hide in React Native, but can be logged or handled elsewhere
   },
 });
 
