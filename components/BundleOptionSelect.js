@@ -105,7 +105,7 @@ const BundleOptionSelect = ({ selectedVariant, voMetafield, voMetafieldv2, handl
 
 const styles = StyleSheet.create({
   optionContainer: {
-    marginBottom: 16,
+    marginBottom: 1,
   },
   hiddenField: {
     display: 'none', // Note: This won't actually hide in React Native, but can be logged or handled elsewhere

@@ -23,15 +23,15 @@ const BundleItems = ({ bundleItems }) => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 16,
+    padding: 6,
   },
   header: {
     fontWeight: 'bold',
-    marginBottom: 8,
+    marginBottom: 4,
   },
   item: {
-    fontSize: 16,
-    marginVertical: 4,
+    fontSize: 12,
+    marginVertical: 1,
   },
 });
 

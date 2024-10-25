@@ -51,9 +51,9 @@ const ProductForm = ({
   }
 
   return (
-    <View style={{ flex: 1, alignSelf: 'flex-start', padding: 6, width: "90%" }}>
+    <View style={{ flex: 1, alignSelf: "stretch", padding: 10, width: "90%" }}>
       {/* Render Picker for variant selection */}
-      <Text style={{ fontSize: 12, marginBottom: 2 }}>Select a Variant:</Text>
+      <Text style={{ fontSize: 16, marginBottom: 2 }}>Options:</Text>
       <Picker
         selectedValue={selectedOptions}
         onValueChange={(itemValue) => {
@@ -67,7 +67,6 @@ const ProductForm = ({
             key={variant.id}
             label={variant.title}
             value={variant.id} // Use the variant ID as the value
-            style={{fontSize: 10 }}
           />
         ))}
       </Picker>
