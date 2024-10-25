@@ -6,15 +6,18 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
+  Dimensions,
   View
 } from "react-native";
 import { WebView } from "react-native-webview";
 import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
 import BackButton from '../components/BackButton';
+import RenderHtml from "react-native-render-html";
 
 const ConsultationScreen = () => {
   const navigation = useNavigation();
 
+  const { width: screenWidth } = Dimensions.get("window");
   // HTML and JavaScript to inject into WebView
   const calendlyHtml = `
     <!DOCTYPE html>
@@ -26,7 +29,7 @@ const ConsultationScreen = () => {
         <div class="calendly-inline-widget" style="width: 100%; height:100%;" data-auto-load="true"></div>
         <script type="text/javascript">
           Calendly.initInlineWidget({
-            url: "https://calendly.com/d/y7c-k84-q9w/",
+            url: "https://calendly.com/d/y7c-k84-q9w/?month=2024-10",
             parentElement: document.querySelector('.calendly-inline-widget')
           });
         </script>
@@ -42,9 +45,9 @@ const ConsultationScreen = () => {
 
       {/* Calendly WebView */}
       <SafeAreaView style={styles.bookingView}>
-        <WebView
+        <RenderHtml
           style={{ flex: 1 }}
-          originWhitelist={["*"]}
+          contentWidth={screenWidth}
           source={{ html: calendlyHtml }}
         />
       </SafeAreaView>

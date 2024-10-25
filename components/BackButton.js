@@ -16,19 +16,23 @@ const BackButton = () => {
 
 const styles = StyleSheet.create({
   button: {
-    padding: 12,
+    padding: 5,
     alignSelf: "flex-start",
     borderRadius: 15,
     borderWidth: 1,
-    height: 45,
-    width: 75,
+    height: 30,
+    width: 60,
     left: 25,
+    opacity: "100%",
+    backgroundColor: Color.themeColor
   },
   buttonText: {
     color: Color.colorBlack,
-    fontSize: 16,
-    fontWeight: "bold",
-    alignSelf: "center"
+    fontSize: 14,
+    fontWeight: 
+    "500",
+    alignSelf: "center",
+    paddingTop: 1
   },
 });
 

@@ -73,8 +73,6 @@ const styles = StyleSheet.create({
   screen: {
     backgroundColor: Color.colorWhite,
     flex: 1,
-    height: "100%",
-    paddingTop: Padding.p_xl,
   },
   collectionTitle: {
     fontSize: 24,
