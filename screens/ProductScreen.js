@@ -15,6 +15,7 @@ import Carousel from "react-native-snap-carousel";
 import { Color, Padding } from "../GlobalStyles";
 import { storefront } from "../api";
 import BackButton from "../components/BackButton";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const { width: screenWidth } = Dimensions.get("window");
 
@@ -32,8 +33,23 @@ const ProductScreen = ({ route }) => {
     fetchProduct();
   }, [handle]);
 
-  const addToCart = () => {
-    alert("Product added to cart!");
+  const addToCart = async () => {
+    const cartId = await AsyncStorage.getItem('cartId'); // Get cart ID from storage
+    console.log("Cart loaded from storage:", cartId);
+    const lines = [
+      {
+        merchandiseId: product.variants.edges[0].node.id,
+        quantity: 1,
+      },
+    ];
+  
+    const result = await addCartLines(cartId, lines);
+  
+    if (result.error) {
+      alert("Error adding to cart: " + result.error[0]?.message);
+    } else {
+      alert("Item added to cart successfully!");
+    }
   };
 
   const renderCarouselItem = ({ item }) => (
@@ -222,5 +238,73 @@ export async function getProduct(handle) {
 
   const { data } = await storefront(productQuery, { handle });
   const product = data.product;
+  console.log("PRODUCT", product, "VARIANT_ID:", product.variants.edges[0].node.id);
   return product;
+}
+
+export async function addCartLines(cartId, lines) {
+  const addCartQuery = gql`
+  mutation addCartLines($cartId: ID!, $lines: [CartLineInput!]!) {
+    cartLinesAdd(cartId: $cartId, lines: $lines) {
+      cart {
+        id
+        lines(first: 10) {
+          edges {
+            node {
+              quantity
+              merchandise {
+                ... on ProductVariant {
+                  id
+                }
+              }
+            }
+          }
+        }
+        cost {
+          totalAmount {
+            amount
+            currencyCode
+          }
+          subtotalAmount {
+            amount
+            currencyCode
+          }
+          totalTaxAmount {
+            amount
+            currencyCode
+          }
+          totalDutyAmount {
+            amount
+            currencyCode
+          }
+        }
+      }
+
+      userErrors {
+        field
+        message
+      }
+    }
+  }
+`;
+  try {
+    const variables = {
+      cartId,
+      lines,
+    };
+
+    const response = await storefront(addCartQuery, variables);
+    const { cartLinesAdd } = response.data;
+
+    if (cartLinesAdd.userErrors.length > 0) {
+      console.error("Errors:", cartLinesAdd.userErrors);
+      return { error: cartLinesAdd.userErrors };
+    }
+
+    console.log("Updated cart:", cartLinesAdd.cart);
+    return { cart: cartLinesAdd.cart };
+  } catch (error) {
+    console.error("Network or server error:", error);
+    return { error };
+  }
 }

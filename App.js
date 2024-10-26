@@ -76,7 +76,7 @@ const App = () => {
           await createCart(); // Create a new cart if none exists
         } else {
           setCartId(storedCartId); // Use the existing cart
-          console.log("Cart loaded from storage:", storedCartId);
+         // console.log("Cart loaded from storage:", storedCartId);
         }
       } catch (error) {
         console.error("Error initializing cart:", error);
@@ -91,6 +91,7 @@ const App = () => {
   if (!fontsLoaded && !error) {
     return null;
   }
+  <ProductScreen cartId={cartId} />
 
   return (
     <>
