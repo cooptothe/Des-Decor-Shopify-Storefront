@@ -18,12 +18,13 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View
+  View,
 } from "react-native";
 import BundleScreen from "./screens/BundleScreen";
 import CartScreen from "./screens/Cart";
 
 const Stack = createNativeStackNavigator();
+const navigationRef = React.createRef();
 
 // Define the cart creation mutation
 const createCartMutation = `
@@ -52,6 +53,7 @@ const App = () => {
   const [fontsLoaded, error] = useFonts({
     "Inter-Medium": require("./assets/fonts/Inter-Medium.ttf"),
   });
+  
   // Function to create a new cart
   const createCart = async () => {
     try {
@@ -78,7 +80,7 @@ const App = () => {
           await createCart(); // Create a new cart if none exists
         } else {
           setCartId(storedCartId); // Use the existing cart
-         // console.log("Cart loaded from storage:", storedCartId);
+          // console.log("Cart loaded from storage:", storedCartId);
         }
       } catch (error) {
         console.error("Error initializing cart:", error);
@@ -96,17 +98,20 @@ const App = () => {
 
   return (
     <>
-      <NavigationContainer>
+      <NavigationContainer ref={navigationRef}>
         <View>
-        <TouchableOpacity style={styles.cart}>
+          <TouchableOpacity
+            style={styles.cart}
+            onPress={() => navigationRef.current?.navigate("CartScreen")}
+          >
+            <ImageBackground
+              style={styles.cartButton}
+              resizeMethod="scale"
+              resizeMode="contain"
+              source={require("./assets/shopping-cart.png")}
+            />
+          </TouchableOpacity>
           <ImageBackground
-            style={styles.cartButton}
-            resizeMethod="scale"
-            resizeMode="contain"
-            source={require("./assets/shopping-cart.png")}
-          />
-        </TouchableOpacity>
-        <ImageBackground
             style={styles.logo}
             resizeMethod="scale"
             resizeMode="contain"
@@ -163,6 +168,11 @@ const App = () => {
               name="BundleScreen"
               component={BundleScreen}
               options={{ headerShown: false }}
+            />
+            <Stack.Screen 
+            name="CartScreen" 
+            component={CartScreen} 
+            options={{ headerShown: false }}
             />
           </Stack.Navigator>
         ) : null}
