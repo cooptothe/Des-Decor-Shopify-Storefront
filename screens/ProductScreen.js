@@ -238,7 +238,7 @@ export async function getProduct(handle) {
 
   const { data } = await storefront(productQuery, { handle });
   const product = data.product;
-  console.log("PRODUCT", product, "VARIANT_ID:", product.variants.edges[0].node.id);
+  console.log("VARIANT_ID:", product.variants.edges[0].node.id);
   return product;
 }
 

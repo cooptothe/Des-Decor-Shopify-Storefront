@@ -18,8 +18,10 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
+  View
 } from "react-native";
 import BundleScreen from "./screens/BundleScreen";
+import CartScreen from "./screens/Cart";
 
 const Stack = createNativeStackNavigator();
 
@@ -91,19 +93,27 @@ const App = () => {
   if (!fontsLoaded && !error) {
     return null;
   }
-  <ProductScreen cartId={cartId} />
 
   return (
     <>
       <NavigationContainer>
-        <TouchableOpacity style={styles.logo}>
+        <View>
+        <TouchableOpacity style={styles.cart}>
           <ImageBackground
-            style={styles.logoIcon}
+            style={styles.cartButton}
+            resizeMethod="scale"
+            resizeMode="contain"
+            source={require("./assets/shopping-cart.png")}
+          />
+        </TouchableOpacity>
+        <ImageBackground
+            style={styles.logo}
             resizeMethod="scale"
             resizeMode="contain"
             source={require("./assets/logo3x.png")}
           />
-        </TouchableOpacity>
+        </View>
+
         {hideSplashScreen ? (
           <Stack.Navigator
             initialRouteName="MainMenuPhone"
@@ -162,14 +172,22 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
-  logoIcon: {
-    alignSelf: "stretch",
+  cart: {
+    alignSelf: "flex-end",
+    right: 25,
+    top: 50,
+    padding: 10,
     flex: 1,
+  },
+  cartButton: {
+    height: 35,
+    width: 35,
   },
   logo: {
     height: 200,
+    width: 300,
     justifyContent: "center",
-    alignSelf: "stretch",
+    alignSelf: "center",
     alignItems: "center",
   },
 });
