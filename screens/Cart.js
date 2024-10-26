@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { storefront } from "../api"; // Replace with your actual API function
+import BackButton from "../components/BackButton";
 
 const CartScreen = () => {
   const [cart, setCart] = useState(null);
@@ -79,6 +80,7 @@ const CartScreen = () => {
 
   return (
     <View style={styles.container}>
+      <BackButton />
       <Text style={styles.header}>Your Cart</Text>
       {cart ? (
         <>
