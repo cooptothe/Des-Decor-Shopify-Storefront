@@ -1,6 +1,13 @@
 // CartScreen.js
 import React, { useState, useEffect } from "react";
-import { View, Text, Button, FlatList, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  Button,
+  FlatList,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { storefront } from "../api"; // Replace with your actual API function
 
@@ -14,6 +21,7 @@ const CartScreen = () => {
       const CART_QUERY = `
         query getCart($cartId: ID!) {
           cart(id: $cartId) {
+          checkoutUrl
             lines(first: 10) {
               edges {
                 node {
@@ -22,6 +30,9 @@ const CartScreen = () => {
                     ... on ProductVariant {
                       id
                       title
+                      							product {
+								title
+							}
                       price {
                         amount
                         currencyCode
@@ -57,10 +68,11 @@ const CartScreen = () => {
   // Render cart items
   const renderCartItem = ({ item }) => (
     <View style={styles.cartItem}>
-      <Text>{item.node.merchandise.title}</Text>
+      <Text>{item.node.merchandise.product.title}</Text>
       <Text>Quantity: {item.node.quantity}</Text>
       <Text>
-        Price: {item.node.merchandise.price.amount} {item.node.merchandise.price.currencyCode}
+        Price: ${item.node.merchandise.price.amount}0{" "}
+        {item.node.merchandise.price.currencyCode}
       </Text>
     </View>
   );
@@ -75,7 +87,10 @@ const CartScreen = () => {
             keyExtractor={(item) => item.node.merchandise.id}
             renderItem={renderCartItem}
           />
-          <Text style={styles.total}>Total: {cart.cost.totalAmount.amount} {cart.cost.totalAmount.currencyCode}</Text>
+          <Text style={styles.total}>
+            Total: ${cart.cost.totalAmount.amount}0{" "}
+            {cart.cost.totalAmount.currencyCode}
+          </Text>
           <TouchableOpacity style={styles.checkoutButton}>
             <Text style={styles.checkoutText}>Proceed to Checkout</Text>
           </TouchableOpacity>
