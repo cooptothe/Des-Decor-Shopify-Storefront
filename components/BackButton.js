@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     height: 30,
     width: 60,
-    left: 10,
+    left: 5,
     marginBottom: 10,
     opacity: "100%",
     backgroundColor: Color.themeColor

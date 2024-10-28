@@ -89,14 +89,14 @@ const CartScreen = () => {
   // Render cart items
   const renderCartItem = ({ item }) => (
     <View style={styles.cartItem}>
-      <Text>{item.node.merchandise.product.title}</Text>
-      <Text>Quantity: {item.node.quantity}</Text>
+      <Text style={{ fontWeight: "bold"}}>{item.node.merchandise.product.title}</Text>
+      <Text style={{ fontWeight: "300"}}>Quantity: {item.node.quantity}</Text>
       <TouchableOpacity onPress={() => removeItem(item.node.id)}>
         <Text style={{ alignSelf: "flex-end", bottom: 10, fontWeight: "400", fontSize: 24, right: 10 }}>-</Text>
       </TouchableOpacity>
-      <Text>
+      <Text style={{ fontWeight: "500"}}>
         Price: ${item.node.merchandise.price.amount}0{" "}
-        {item.node.id}
+        {item.node.merchandise.price.currencyCode}
       </Text>
     </View>
   );
