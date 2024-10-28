@@ -12,9 +12,12 @@ import {
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { storefront } from "../api";
 import BackButton from "../components/BackButton";
+import { useNavigation } from "@react-navigation/core";
 
 const CartScreen = () => {
   const [cart, setCart] = useState(null);
+  const navigation = useNavigation();
+
 
   // Define a function to fetch the cart details
   const fetchCart = async () => {
@@ -86,6 +89,10 @@ const CartScreen = () => {
     }
   }
 
+  const handleCheckout = async () => {
+    navigation.navigate("CheckoutScreen", { checkoutURL: cart.checkoutUrl });
+  }
+
   // Render cart items
   const renderCartItem = ({ item }) => (
     <View style={styles.cartItem}>
@@ -116,7 +123,7 @@ const CartScreen = () => {
             Total: ${cart.cost.totalAmount.amount}0{" "}
             {cart.cost.totalAmount.currencyCode}
           </Text>
-          <TouchableOpacity style={styles.checkoutButton}>
+          <TouchableOpacity style={styles.checkoutButton} onPress={() => handleCheckout()}>
             <Text style={styles.checkoutText}>Proceed to Checkout</Text>
           </TouchableOpacity>
         </>

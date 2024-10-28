@@ -9,6 +9,7 @@ import InventoryScreen from "./screens/InventoryScreen";
 import MainMenuPhone from "./screens/MainMenuPhone";
 import ProductScreen from "./screens/ProductScreen";
 import ProductsScreen from "./screens/ProductsScreen";
+import CheckoutScreen from "./screens/CheckoutScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AsyncStorage from "@react-native-async-storage/async-storage"; // For saving cart ID locally
 import { useEffect, useState } from "react";
@@ -53,7 +54,7 @@ const App = () => {
   const [fontsLoaded, error] = useFonts({
     "Inter-Medium": require("./assets/fonts/Inter-Medium.ttf"),
   });
-  
+
   // Function to create a new cart
   const createCart = async () => {
     try {
@@ -117,7 +118,7 @@ const App = () => {
             resizeMode="contain"
             source={require("./assets/logo3x.png")}
           />
-                    <TouchableOpacity
+          <TouchableOpacity
             style={styles.home}
             onPress={() => navigationRef.current?.navigate("MainMenuPhone")}
           >
@@ -180,10 +181,15 @@ const App = () => {
               component={BundleScreen}
               options={{ headerShown: false }}
             />
-            <Stack.Screen 
-            name="CartScreen" 
-            component={CartScreen} 
-            options={{ headerShown: false }}
+            <Stack.Screen
+              name="CartScreen"
+              component={CartScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="CheckoutScreen"
+              component={CheckoutScreen}
+              options={{ headerShown: false }}
             />
           </Stack.Navigator>
         ) : null}
