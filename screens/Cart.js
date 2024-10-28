@@ -7,9 +7,10 @@ import {
   FlatList,
   StyleSheet,
   TouchableOpacity,
+  TouchableHighlight
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { storefront } from "../api"; // Replace with your actual API function
+import { storefront } from "../api";
 import BackButton from "../components/BackButton";
 
 const CartScreen = () => {
@@ -26,6 +27,7 @@ const CartScreen = () => {
             lines(first: 10) {
               edges {
                 node {
+                id
                   quantity
                   merchandise {
                     ... on ProductVariant {
@@ -69,20 +71,18 @@ const CartScreen = () => {
     fetchCart();
   }, []);
 
-  const removeItem = async () => {
-    const cartId = cart.id; // Get cart ID from storage
-    console.log("Cart loaded from storage:", cartId);
-    const line = [
-      {
-        id: cart.lines.edges[0].node.id,
-      },
+  const removeItem = async (lineId) => {
+    const cartId = await AsyncStorage.getItem("cartId"); // Get cart ID from storage
+    const lineIds = [
+      lineId
     ];
 
-    const result = await removeCartLines(cartId, line);
+    const result = await removeCartLines(cartId, lineIds);
     if (result.error) {
-      alert("Error removing to cart: " + result.error[0]?.message);
+      alert("Error removing from cart: " + result.error[0]?.message);
     } else {
       alert("Item removed successfully!");
+      fetchCart();
     }
   }
 
@@ -91,9 +91,12 @@ const CartScreen = () => {
     <View style={styles.cartItem}>
       <Text>{item.node.merchandise.product.title}</Text>
       <Text>Quantity: {item.node.quantity}</Text>
+      <TouchableOpacity onPress={() => removeItem(item.node.id)}>
+        <Text style={{ alignSelf: "flex-end", bottom: 10, fontWeight: "400", fontSize: 24, right: 10 }}>-</Text>
+      </TouchableOpacity>
       <Text>
         Price: ${item.node.merchandise.price.amount}0{" "}
-        {item.node.merchandise.price.currencyCode}
+        {item.node.id}
       </Text>
     </View>
   );
@@ -162,7 +165,7 @@ const styles = StyleSheet.create({
 export default CartScreen;
 const gql = String.raw;
 
-export async function removeCartLines(cartId, line) {
+export async function removeCartLines(cartId, lineIds) {
   const removeItemQuery = gql`
   mutation removeCartLines($cartId: ID!, $lineIds: [ID!]!) {
   cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
@@ -204,4 +207,19 @@ export async function removeCartLines(cartId, line) {
   }
 }
   `
+  try {
+    const variables = {
+      cartId,
+      lineIds,
+    };
+
+    const response = await storefront(removeItemQuery, variables);
+    const { removeCartLine } = response.data;
+
+    console.log("Updated cart:", removeCartLine);
+    return { cart: removeCartLine };
+  } catch (error) {
+    console.error("Network or server error:", error);
+    return { error };
+  }
 }
