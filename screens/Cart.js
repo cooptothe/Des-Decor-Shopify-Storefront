@@ -31,9 +31,12 @@ const CartScreen = () => {
                     ... on ProductVariant {
                       id
                       title
-                      							product {
-								title
-							}
+                      selectedOptions {
+								      value
+							        }
+                      product {
+								      title
+							        }
                       price {
                         amount
                         currencyCode
@@ -65,6 +68,23 @@ const CartScreen = () => {
   useEffect(() => {
     fetchCart();
   }, []);
+
+  const removeItem = async () => {
+    const cartId = cart.id; // Get cart ID from storage
+    console.log("Cart loaded from storage:", cartId);
+    const line = [
+      {
+        id: cart.lines.edges[0].node.id,
+      },
+    ];
+
+    const result = await removeCartLines(cartId, line);
+    if (result.error) {
+      alert("Error removing to cart: " + result.error[0]?.message);
+    } else {
+      alert("Item removed successfully!");
+    }
+  }
 
   // Render cart items
   const renderCartItem = ({ item }) => (
@@ -140,3 +160,48 @@ const styles = StyleSheet.create({
 });
 
 export default CartScreen;
+const gql = String.raw;
+
+export async function removeCartLines(cartId, line) {
+  const removeItemQuery = gql`
+  mutation removeCartLines($cartId: ID!, $lineIds: [ID!]!) {
+  cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
+    cart {
+      id
+        lines(first: 10){
+            edges
+            {
+                node{
+                    quantity
+                    merchandise{
+                        ... on ProductVariant {   
+                            id
+                        }
+                    }
+                }
+            }
+        }
+        cost {
+        totalAmount {
+          amount
+          currencyCode
+        }
+        subtotalAmount {
+          amount
+          currencyCode
+        }
+        totalTaxAmount {
+          amount
+          currencyCode
+        }
+      }   
+    }
+    
+    userErrors {
+      field
+      message
+    }
+  }
+}
+  `
+}
