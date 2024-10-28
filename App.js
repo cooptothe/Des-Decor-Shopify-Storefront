@@ -117,6 +117,17 @@ const App = () => {
             resizeMode="contain"
             source={require("./assets/logo3x.png")}
           />
+                    <TouchableOpacity
+            style={styles.home}
+            onPress={() => navigationRef.current?.navigate("MainMenuPhone")}
+          >
+            <ImageBackground
+              style={styles.homeButton}
+              resizeMethod="scale"
+              resizeMode="contain"
+              source={require("./assets/house.png")}
+            />
+          </TouchableOpacity>
         </View>
 
         {hideSplashScreen ? (
@@ -189,8 +200,16 @@ const styles = StyleSheet.create({
     padding: 10,
     flex: 1,
   },
+  home: {
+    alignSelf: "center",
+    bottom: 20,
+  },
   cartButton: {
-    height: 35,
+    height: 30,
+    width: 35,
+  },
+  homeButton: {
+    height: 30,
     width: 35,
   },
   logo: {

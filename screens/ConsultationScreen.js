@@ -38,34 +38,8 @@ const ConsultationScreen = () => {
   `;
 
   return (
-    <View style={styles.consultationScreen}>
-      <BackButton />
-      {/* Title */}
-      <Text style={styles.bookAConsultation}>BOOK A CONSULTATION</Text>
+    <WebView style={{ flex: 1 }} source={{ uri: "https://calendly.com/d/y7c-k84-q9w/?month=2024-10" }}/>
 
-      {/* Calendly WebView */}
-      <SafeAreaView style={styles.bookingView}>
-        <RenderHtml
-          style={{ flex: 1 }}
-          contentWidth={screenWidth}
-          source={{ html: calendlyHtml }}
-        />
-      </SafeAreaView>
-
-      {/* Decorative Images */}
-      <View style={styles.imgs}>
-        <ImageBackground
-          style={[styles.frameIcon, styles.frameIconFlexBox]}
-          resizeMode="contain"
-          source={require("../assets/frame1x.png")}
-        />
-        <ImageBackground
-          style={[styles.frameIcon1, styles.frameIconFlexBox]}
-          resizeMode="contain"
-          source={require("../assets/frame11x.png")}
-        />
-      </View>
-    </View>
   );
 };
 
