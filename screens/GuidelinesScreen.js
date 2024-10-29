@@ -61,7 +61,7 @@ NJ Resident/Pick up orders: $200
           />
         </View>
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("RefundScreen")}>
         <View style={[styles.rentButton, styles.logoFlexBox]}>
           <Image
             style={styles.rentIcon}
@@ -72,7 +72,7 @@ NJ Resident/Pick up orders: $200
         </View>
       </TouchableOpacity>
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("ContactScreen")}>
         <View style={[styles.rentButton, styles.logoFlexBox]}>
           <Image
             style={styles.rentIcon}

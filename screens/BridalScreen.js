@@ -60,6 +60,7 @@ const BridalScreen = () => {
           source={require("../assets/fronts3x.png")}
         />
       </View>
+      <TouchableOpacity onPress={() => navigation.navigate("GalleryScreen")}>
       <View style={[styles.bridalButton, styles.logoFlexBox]}>
         <Image
           style={styles.bridalIcon}
@@ -67,6 +68,8 @@ const BridalScreen = () => {
           source={require("../assets/galler3x.png")}
         />
       </View>
+      </TouchableOpacity>
+
     </View>
   );
 };

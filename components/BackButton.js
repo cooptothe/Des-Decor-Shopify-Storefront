@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     left: 10,
     marginBottom: 10,
     opacity: "100%",
-    backgroundColor: Color.themeColor
+    backgroundColor: Color.themeColor,
   },
   buttonText: {
     color: Color.colorBlack,

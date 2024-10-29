@@ -16,6 +16,7 @@ import { Color, Padding } from "../GlobalStyles";
 import { storefront } from "../api";
 import BackButton from "../components/BackButton";
 import BundleOptionSelect from "../components/BundleOptionSelect"; // Import the new component
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const { width: screenWidth } = Dimensions.get("window");
 
@@ -23,6 +24,8 @@ const BundleScreen = ({ route }) => {
   const navigation = useNavigation();
   const [bundle, setBundle] = useState(null);
   const { handle } = route.params; // Get handle from route params
+  const [bundleString, setBundleString] = useState("");
+  const [selectedOptions, setSelectedOptions] = useState([]);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -31,16 +34,15 @@ const BundleScreen = ({ route }) => {
         setBundle(fetchedBundle);
       } catch (error) {
         console.error("Error fetching product:", error);
-        alert("There was an issue loading the product details. Please try again.");
+        alert(
+          "There was an issue loading the product details. Please try again."
+        );
       }
     };
 
     fetchProduct();
   }, [handle]);
 
-  const addToCart = () => {
-    alert("Product added to cart!");
-  };
 
   const renderCarouselItem = ({ item }) => (
     <View style={styles.carouselItem}>
@@ -52,10 +54,43 @@ const BundleScreen = ({ route }) => {
     </View>
   );
 
-  const handleBundleChange = (bundleString, options) => {
-    console.log("Bundle selection:", bundleString);
-    console.log("Selected options:", options);
+  const handleBundleChange = (newBundleString, options) => {
+    setBundleString(newBundleString);
+    setSelectedOptions(options);
+    console.log(selectedOptions)
   };
+
+  const addToCart = async () => {
+    const cartId = await AsyncStorage.getItem("cartId");
+    if (!cartId) {
+      alert("Cart ID not found. Please try again.");
+      return;
+    }
+  
+    const attributes = [
+      ...Object.keys(selectedOptions).map((key) => ({
+        key: key,
+        value: selectedOptions[key],
+      })),
+      { key: "_bundle_selection", value: bundleString },
+    ];
+  
+    const lines = [
+      {
+        merchandiseId: bundle.variants.edges[0].node.id,
+        quantity: 1,
+        attributes: attributes,
+      },
+    ];
+  
+    const result = await addCartLines(cartId, lines);
+    if (result.error) {
+      alert("Error adding to cart: " + result.error[0]?.message);
+    } else {
+      alert("Product added to cart!");
+    }
+  };
+  
 
   return (
     <ScrollView style={styles.consultationScreen}>
@@ -254,7 +289,7 @@ export async function getBundle(handle) {
 
   if (bundle.variants.edges.length > 0) {
     const variant = bundle.variants.edges[0].node;
-    
+
     const parseMetafield = (metafield) => {
       if (metafield && metafield.value) {
         try {
@@ -266,21 +301,86 @@ export async function getBundle(handle) {
       }
       return null;
     };
-    
 
-    variant.variantOptionsMetafield.value = parseMetafield(variant.variantOptionsMetafield);
-    variant.variantOptionsv2Metafield.value = parseMetafield(variant.variantOptionsv2Metafield);
+    variant.variantOptionsMetafield.value = parseMetafield(
+      variant.variantOptionsMetafield
+    );
+    variant.variantOptionsv2Metafield.value = parseMetafield(
+      variant.variantOptionsv2Metafield
+    );
   }
 
-  console.log("Product Type:", bundle.productType);
-  console.log(
-    "variantOptionsMetafield:",
-    bundle.variants.edges[0].node.variantOptionsMetafield?.value
-  );
-  console.log(
-    "variantOptionsv2Metafield:",
-    bundle.variants.edges[0].node.variantOptionsv2Metafield?.value
-  );
-
   return bundle;
+}
+
+export async function addCartLines(cartId, lines) {
+  const addCartQuery = gql`
+    mutation addCartLines($cartId: ID!, $lines: [CartLineInput!]!) {
+      cartLinesAdd(cartId: $cartId, lines: $lines) {
+        cart {
+          id
+          lines(first: 10) {
+            edges {
+              node {
+                id
+                attributes {
+                  key
+                  value
+                }
+                quantity
+                merchandise {
+                  ... on ProductVariant {
+                    id
+                  }
+                }
+              }
+            }
+          }
+          cost {
+            totalAmount {
+              amount
+              currencyCode
+            }
+            subtotalAmount {
+              amount
+              currencyCode
+            }
+            totalTaxAmount {
+              amount
+              currencyCode
+            }
+            totalDutyAmount {
+              amount
+              currencyCode
+            }
+          }
+        }
+
+        userErrors {
+          field
+          message
+        }
+      }
+    }
+  `;
+  try {
+    const variables = {
+      cartId,
+      lines,
+    };
+
+    const response = await storefront(addCartQuery, variables);
+    const { cartLinesAdd } = response.data;
+
+    if (cartLinesAdd.userErrors.length > 0) {
+      console.error("Errors:", cartLinesAdd.userErrors);
+      return { error: cartLinesAdd.userErrors };
+    }
+
+    console.log("Updated cart:", cartLinesAdd.cart);
+    return { cart: cartLinesAdd.cart };
+  } catch (error) {
+    console.error("Network or server error:", error);
+    return { error };
+  }
 }
