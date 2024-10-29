@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  ScrollView
 } from "react-native";
 import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
 import BackButton from '../components/BackButton';
@@ -20,7 +21,8 @@ const InventoryScreen = () => {
   };
 
   return (
-    <View style={styles.inventoryScreen}>
+    <ScrollView style={styles.inventoryScreen}
+    contentContainerStyle={{ justifyContent: "space-between", alignItems: "center" }}>
       <BackButton />
       <Text style={styles.inventory}>{`INVENTORY`}</Text>
       <TouchableOpacity onPress={() => onHandle2("walls")} >
@@ -71,7 +73,7 @@ const InventoryScreen = () => {
           />
         </View>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -96,10 +98,8 @@ const styles = StyleSheet.create({
     flex: 1,
     width: "100%",
     height: 874,
-    justifyContent: "space-between",
     paddingHorizontal: 0,
     paddingVertical: Padding.p_xl,
-    alignItems: "center",
   },
 });
 

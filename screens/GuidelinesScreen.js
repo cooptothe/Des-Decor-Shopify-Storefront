@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  ScrollView
 } from "react-native";
 import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
 import BackButton from '../components/BackButton';
@@ -19,7 +20,8 @@ const GuidelinesScreen = () => {
   };
 
   return (
-    <View style={styles.guidelinesScreen}>
+    <ScrollView style={styles.guidelinesScreen}
+    contentContainerStyle={{ justifyContent: "space-between", alignItems: "center" }}>
       <BackButton />
       <Text
         style={styles.rentalGuidelinesAnd}
@@ -92,7 +94,7 @@ NJ Resident/Pick up orders: $200
           />
         </View>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -116,10 +118,8 @@ const styles = StyleSheet.create({
     backgroundColor: Color.colorWhite,
     width: "100%",
     height: 874,
-    justifyContent: "space-between",
     paddingHorizontal: 0,
     paddingVertical: Padding.p_xl,
-    alignItems: "center",
     flex: 1,
   },
 });
