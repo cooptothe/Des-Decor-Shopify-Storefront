@@ -222,8 +222,7 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end",
     right: 25,
     top: 50,
-    padding: 10,
-    flex: 1,
+    padding: 5,
   },
   home: {
     alignSelf: "center",
@@ -239,7 +238,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     height: 200,
-    width: 300,
+    width: 250,
     justifyContent: "center",
     alignSelf: "center",
     alignItems: "center",

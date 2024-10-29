@@ -22,7 +22,13 @@ const BridalScreen = () => {
 
   return (
     <ScrollView style={styles.bridalScreen}
-    contentContainerStyle={{ justifyContent: "space-between", alignItems: "center" }}>
+    contentContainerStyle={{
+      justifyContent: "space-around",
+      alignItems: "center",
+      width: "100%",
+      height: "100%",
+      resizeMode: "stretch",
+    }}>
       <BackButton />
       <Text style={styles.bridal}>{`BRIDAL`}</Text>
       <TouchableOpacity onPress={() => onHandle("bridal-bundle")}>
@@ -95,10 +101,6 @@ const styles = StyleSheet.create({
   bridalScreen: {
     backgroundColor: Color.colorWhite,
     flex: 1,
-    width: "100%",
-    height: 874,
-    paddingHorizontal: 0,
-    paddingVertical: Padding.p_xl,
   },
 });
 

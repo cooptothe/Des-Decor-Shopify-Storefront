@@ -21,7 +21,13 @@ const GuidelinesScreen = () => {
 
   return (
     <ScrollView style={styles.guidelinesScreen}
-    contentContainerStyle={{ justifyContent: "space-between", alignItems: "center" }}>
+    contentContainerStyle={{
+      justifyContent: "space-around",
+      alignItems: "center",
+      width: "100%",
+      height: "100%",
+      resizeMode: "stretch",
+      }}>
       <BackButton />
       <Text
         style={styles.rentalGuidelinesAnd}
@@ -116,11 +122,6 @@ const styles = StyleSheet.create({
   },
   guidelinesScreen: {
     backgroundColor: Color.colorWhite,
-    width: "100%",
-    height: 874,
-    paddingHorizontal: 0,
-    paddingVertical: Padding.p_xl,
-    flex: 1,
   },
 });
 

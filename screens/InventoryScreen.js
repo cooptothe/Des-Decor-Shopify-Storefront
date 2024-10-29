@@ -22,7 +22,13 @@ const InventoryScreen = () => {
 
   return (
     <ScrollView style={styles.inventoryScreen}
-    contentContainerStyle={{ justifyContent: "space-between", alignItems: "center" }}>
+    contentContainerStyle={{
+      justifyContent: "space-around",
+      alignItems: "center",
+      width: "100%",
+      height: "100%",
+      resizeMode: "stretch",
+       }}>
       <BackButton />
       <Text style={styles.inventory}>{`INVENTORY`}</Text>
       <TouchableOpacity onPress={() => onHandle2("walls")} >
@@ -95,11 +101,6 @@ const styles = StyleSheet.create({
   },
   inventoryScreen: {
     backgroundColor: Color.colorWhite,
-    flex: 1,
-    width: "100%",
-    height: 874,
-    paddingHorizontal: 0,
-    paddingVertical: Padding.p_xl,
   },
 });
 
