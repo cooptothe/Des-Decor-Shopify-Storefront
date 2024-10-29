@@ -23,6 +23,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  ScrollView
 } from "react-native";
 import BundleScreen from "./screens/BundleScreen";
 import CartScreen from "./screens/Cart";

@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  ScrollView
 } from "react-native";
 import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
 import BackButton from '../components/BackButton';
@@ -15,7 +16,10 @@ const MainMenuPhone = () => {
   const navigation = useNavigation();
 
   return (
-    <View style={[styles.mainMenuPhone, styles.logoFlexBox]}>
+<ScrollView 
+  style={styles.mainMenuPhone} 
+  contentContainerStyle={{ justifyContent: "space-between", alignItems: "center" }}
+>
       <Text style={styles.mainMenu}>{`MAIN MENU`}</Text>
       <TouchableOpacity
         style={styles.button}
@@ -72,7 +76,7 @@ const MainMenuPhone = () => {
           source={require("../assets/consult3x.png")}
         />
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -96,8 +100,6 @@ const styles = StyleSheet.create({
     backgroundColor: Color.colorWhite,
     flex: 1,
     width: "100%",
-    justifyContent: "space-between",
-    alignItems: "center",
     paddingBottom: "10%"
   },
 });
