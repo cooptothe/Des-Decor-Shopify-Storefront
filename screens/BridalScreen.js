@@ -16,7 +16,7 @@ const BridalScreen = () => {
 
     // handle method to navigate to ProductScreen with a handle
     const onHandle = (str) => {
-      navigation.navigate("ProductScreen", { handle: str });
+      navigation.navigate("BundleScreen", { handle: str });
     };
 
   return (
