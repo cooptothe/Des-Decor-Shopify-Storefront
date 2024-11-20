@@ -7,77 +7,82 @@ import {
   Text,
   TouchableOpacity,
   View,
-  ScrollView
+  ScrollView,
 } from "react-native";
 import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
-import BackButton from '../components/BackButton';
+import BackButton from "../components/BackButton";
 
 const BridalScreen = () => {
   const navigation = useNavigation();
 
-    // handle method to navigate to ProductScreen with a handle
-    const onHandle = (str) => {
-      navigation.navigate("BundleScreen", { handle: str });
-    };
+  // handle method to navigate to ProductScreen with a handle
+  const onHandle = (str) => {
+    navigation.navigate("BundleScreen", { handle: str });
+  };
 
   return (
-    <ScrollView style={styles.bridalScreen}
-    contentContainerStyle={{
-      justifyContent: "space-around",
-      alignItems: "center",
-      width: "100%",
-      height: "100%",
-      resizeMode: "stretch",
-    }}>
+    <ScrollView
+      style={styles.bridalScreen}
+      contentContainerStyle={{
+        justifyContent: "space-around",
+        alignItems: "center",
+        width: "100%",
+        height: "100%",
+        resizeMode: "stretch",
+      }}
+    >
       <BackButton />
       <Text style={styles.bridal}>{`BRIDAL`}</Text>
       <TouchableOpacity onPress={() => onHandle("bridal-bundle")}>
-      <View style={[styles.bridalButton, styles.logoFlexBox]}>
-        <Image
-          style={styles.bridalIcon}
-          resizeMethod="scale"
-          contentFit="contain"
-          source={require("../assets/bridal13x.png")}
-        />
-      </View>
+        <View style={[styles.bridalButton, styles.logoFlexBox]}>
+          <Image
+            style={styles.bridalIcon}
+            resizeMethod="scale"
+            contentFit="contain"
+            source={require("../assets/bridal13x.png")}
+          />
+        </View>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => onHandle("premium-bridal-bundle")}>
-      <View style={[styles.bridalButton, styles.logoFlexBox]}>
-        <Image
-          style={styles.bridalIcon}
-          resizeMethod="scale"
-          contentFit="contain"
-          source={require("../assets/premi3x.png")}
-        />
-      </View>
+      {/* <TouchableOpacity onPress={() => onHandle("premium-bridal-bundle")}>
+        <View style={[styles.bridalButton, styles.logoFlexBox]}>
+          <Image
+            style={styles.bridalIcon}
+            resizeMethod="scale"
+            contentFit="contain"
+            source={require("../assets/premi3x.png")}
+          />
+        </View>
+      </TouchableOpacity> */}
+      <TouchableOpacity onPress={() => navigation.navigate("StoreScreen")}>
+        <View style={[styles.bridalButton, styles.logoFlexBox]}>
+          <Image
+            style={styles.bridalIcon}
+            resizeMethod="scale"
+            contentFit="contain"
+            source={require("../assets/store3x.png")}
+          />
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("StorefrontScreen")}>
+        <View style={[styles.bridalButton, styles.logoFlexBox]}>
+          <Image
+            style={styles.bridalIcon}
+            resizeMethod="scale"
+            contentFit="contain"
+            source={require("../assets/fronts3x.png")}
+          />
+        </View>
       </TouchableOpacity>
 
-      <View style={[styles.bridalButton, styles.logoFlexBox]}>
-        <Image
-          style={styles.bridalIcon}
-          resizeMethod="scale"
-          contentFit="contain"
-          source={require("../assets/store3x.png")}
-        />
-      </View>
-      <View style={[styles.bridalButton, styles.logoFlexBox]}>
-        <Image
-          style={styles.bridalIcon}
-          resizeMethod="scale"
-          contentFit="contain"
-          source={require("../assets/fronts3x.png")}
-        />
-      </View>
       <TouchableOpacity onPress={() => navigation.navigate("GalleryScreen")}>
-      <View style={[styles.bridalButton, styles.logoFlexBox]}>
-        <Image
-          style={styles.bridalIcon}
-          contentFit="contain"
-          source={require("../assets/galler3x.png")}
-        />
-      </View>
+        <View style={[styles.bridalButton, styles.logoFlexBox]}>
+          <Image
+            style={styles.bridalIcon}
+            contentFit="contain"
+            source={require("../assets/galler3x.png")}
+          />
+        </View>
       </TouchableOpacity>
-
     </ScrollView>
   );
 };

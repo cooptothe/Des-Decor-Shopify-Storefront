@@ -40,6 +40,8 @@ const BundleScreen = ({ route }) => {
       }
     };
 
+    console.log(handle)
+
     fetchProduct();
   }, [handle]);
 
@@ -231,6 +233,7 @@ export async function getBundle(handle) {
       product(handle: $handle) {
         id
         title
+        handle
         descriptionHtml
         tags
         totalInventory
