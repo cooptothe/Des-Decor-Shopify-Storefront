@@ -1,105 +1,102 @@
-# Decor Shopify Storefront App
+# 🎉 Decor Shopify Storefront 
 
-## A modern e-commerce app for a party rental decor supplies store.
+An **ecommerce app** for party decor rental supplies, built with **React Native** and **Shopify's Storefront API**. This app allows users to browse a wide selection of party supplies, create bundles, and customize their options before making a purchase.
 
-## Table of Contents
-1. Features
-2. Technology Stack
-3. Installation and Setup
-4. Screenshots
-5. Future Enhancements
-6. Challenges and Solutions
-7. Skills Demonstrated
-8. Contact
-9. Features
+---
 
-## 1. Modern E-Commerce Functionality
-- Product Display: Showcases detailed product information, including images, prices, and descriptions.
-- Customizable Bundles: Supports infinite bundle combinations. Includes interactive selection components for variant options.
-- Add-to-Cart Experience: Integration with Shopify's cart API for real-time updates. Attribute-based cart lines for flexibility (e.g., special notes, bundle selections).
-## 2. User-Centric Design
-- Image Carousel: Interactive carousel for browsing product images.
-- Accessibility: Built to ensure inclusivity.
-- Responsive Layout: Optimized for various screen sizes and orientations.
-## 3. Backend Integration
-- Shopify Storefront API: Advanced GraphQL queries and mutations for seamless data handling.
-- Async Storage: Local storage management for cart persistence and user sessions.
-- Error Handling: User-friendly alerts for network/API-related issues.
+## 🖼️ Screenshots
 
-# Technology Stack
-## Frontend
-- Framework: React Native (JavaScript)
-- Libraries:
-react-native-render-html for HTML content rendering.
-react-native-snap-carousel for interactive image carousels.
-@react-navigation/native for navigation.
-## Backend
-- API: Shopify Storefront API (GraphQL)
-- State Management: Local state with React Hooks.
-- Storage: Async Storage for persistent cart functionality.
-## Development Tools
-- Platform: macOS
-- IDE: VSCode
-- Build Tools: Expo, npm, Xcode (iOS), Android Studio (Android)
-## Installation and Setup
-Prerequisites
-Node.js v16 or higher.
-npm or Yarn package manager.
-- Expo CLI installed globally:
-bash
-Copy code
-npm install -g expo-cli
-Shopify API credentials (Storefront access token and endpoint).
-Steps to Run
-- Clone the repository:
-bash
-Copy code
-git clone https://github.com/your-repo/decor-shopify-storefront.git
-cd decor-shopify-storefront
-- Install dependencies:
-bash
-Copy code
+| Home Screen                          | Product Screen                        | Bundle Screen                        |
+|--------------------------------------|---------------------------------------|--------------------------------------|
+| ![Home Screen](screenshots/home.png) | ![Product Screen](screenshots/product.png) | ![Bundle Screen](screenshots/bundle.png) |
+
+---
+
+## 📚 Features
+
+- **Dynamic Product Display**: Fetch and display product data using Shopify's GraphQL API.
+- **Customizable Bundles**: Enable users to select and modify bundle options.
+- **Shopping Cart Integration**: Persistent cart functionality via AsyncStorage.
+- **Mobile-First UI/UX**: Responsive design optimized for iOS and Android.
+
+---
+
+## 🔧 Tech Stack
+
+- **Frontend**: React Native, Expo
+- **Backend**: Shopify Storefront API
+- **State Management**: React hooks and context
+- **Storage**: AsyncStorage for persistent data
+- **Styling**: Custom styles with responsive layout
+
+---
+
+## 🚀 Setup & Installation
+
+Follow these steps to set up the app locally:
+
+1. **Clone the Repository**:
+   ```
+   git clone https://github.com/your-username/decor-shopify-storefront.git
+   cd decor-shopify-storefront
+2. **Install Dependencies**:
+
+```bash
 npm install
-Set up environment variables:
-Create an .env file and add your Shopify Storefront API credentials:
-plaintext
-Copy code
-SHOPIFY_API_URL=https://your-shopify-store.myshopify.com/api/2023-01/graphql.json
-SHOPIFY_ACCESS_TOKEN=your-access-token
-- Start the development server:
-bash
-Copy code
-npm start
-- Launch the app on your device/emulator:
-For iOS: Use Xcode or Expo Go.
-- For Android: Use Android Studio or Expo Go.
-Screenshots
-Product Screen
-Displays product details, images, and price.
+```
 
-## Bundle Selection
-Interactive fields for customizing bundle options.
+3. **Set Up Shopify API**:
+- Obtain API credentials from your Shopify store.
+- Create a .env file in the root directory and add the following:
+```
+SHOPIFY_STORE_URL=your-shopify-store-url
+SHOPIFY_STOREFRONT_ACCESS_TOKEN=your-storefront-access-token
+```
+- Start the App:
 
-## Cart Integration
-Real-time cart updates with Shopify integration.
+```
+expo start
+```
+- Run on a Device:
 
-## Future Enhancements
-- Authentication: Add user accounts and saved preferences.
-- Payment Integration: Enable checkout using Shopify's Payments API.
-- Offline Mode: Cache product data for offline browsing.
-- Enhanced UI/UX: Add animations and refine layout for better engagement.
-- Challenges and Solutions
-- Challenge: Managing complex bundle options in a React Native environment.
-- Solution: Developed a reusable component (BundleOptionSelect) to dynamically render options based on metafield data.
+Scan the QR code for iOS/Android or run the app on an emulator.
 
-- Challenge: Handling cart line attributes with Shopify's GraphQL API.
-- Solution: Built a robust mutation function (addCartLines) to support custom attributes seamlessly.
+# ⚙️ Key Components
+**Bundle Screen**
+- Allows users to select custom bundle options and add them to the cart.
+```javascript
+const handleBundleChange = (newBundleString, options) => {
+  setBundleString(newBundleString);
+  setSelectedOptions(options);
+};
+```
+**Cart Integration**
+- Adds selected items to a persistent cart.
+```javascript
+const addToCart = async () => {
+  const cartId = await AsyncStorage.getItem("cartId");
+  const result = await addCartLines(cartId, lines);
+  if (result.error) {
+    alert("Error adding to cart: " + result.error[0]?.message);
+  } else {
+    alert("Product added to cart!");
+  }
+};
+```
+🛠️ Development Notes
+API Errors: Use the alert() function to handle and debug API errors.
+Image Carousel: Implemented with react-native-snap-carousel.
+HTML Rendering: Handled with react-native-render-html.
+📜 License
+This project is licensed under the MIT License. See the LICENSE file for details.
 
-## Skills Demonstrated
-- Frontend Development:
-Mastery of React Native and third-party libraries.
-Mobile-first design principles.
-- API Integration:
-Advanced use of GraphQL with Shopify Storefront API.
-- Problem-Solving:
-Debugging build/runtime errors and handling async operations.
+🙌 Acknowledgements
+Shopify: For providing the Storefront API.
+React Native Community: For their excellent libraries and documentation.
+✨ About the Author
+## Edward Cooper
+A passionate developer with experience in building user-focused mobile applications.
+
+[Portfolio](https://edwardcoopers-portfolio.netlify.app/)
+[LinkedIn](https://www.linkedin.com/in/edwardcooperii/)
+
