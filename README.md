@@ -2,13 +2,7 @@
 
 An **ecommerce app** for party decor rental supplies, built with **React Native** and **Shopify's Storefront API**. This app allows users to browse a wide selection of party supplies, create bundles, and customize their options before making a purchase.
 
----
-
-## 🖼️ Screenshots
-
-| Home Screen                          | Product Screen                        | Bundle Screen                        |
-|--------------------------------------|---------------------------------------|--------------------------------------|
-| ![Home Screen](screenshots/home.png) | ![Product Screen](screenshots/product.png) | ![Bundle Screen](screenshots/bundle.png) |
+--
 
 ---
 
