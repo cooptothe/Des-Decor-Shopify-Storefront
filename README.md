@@ -1,49 +1,47 @@
-Decor Shopify Storefront App
+## Decor Shopify Storefront App
 
-A modern e-commerce app for a party rental decor supplies store.
+# A modern e-commerce app for a party rental decor supplies store.
 
-Table of Contents
-Features
-Technology Stack
-Installation and Setup
-Screenshots
-Future Enhancements
-Challenges and Solutions
-Skills Demonstrated
-Contact
-Features
-1. Modern E-Commerce Functionality
-Product Display: Showcases detailed product information, including images, prices, and descriptions.
-Customizable Bundles:
-Supports infinite bundle combinations.
-Includes interactive selection components for variant options.
-Add-to-Cart Experience:
-Integration with Shopify's cart API for real-time updates.
-Attribute-based cart lines for flexibility (e.g., special notes, bundle selections).
-2. User-Centric Design
-Image Carousel: Interactive carousel for browsing product images.
-Accessibility: Built to ensure inclusivity.
-Responsive Layout: Optimized for various screen sizes and orientations.
-3. Backend Integration
-Shopify Storefront API: Advanced GraphQL queries and mutations for seamless data handling.
-Async Storage: Local storage management for cart persistence and user sessions.
-Error Handling: User-friendly alerts for network/API-related issues.
-Technology Stack
-Frontend
-Framework: React Native (JavaScript)
-Libraries:
+# Table of Contents
+1. Features
+2. Technology Stack
+3. Installation and Setup
+4. Screenshots
+5. Future Enhancements
+6. Challenges and Solutions
+7. Skills Demonstrated
+8. Contact
+9. Features
+
+# 1. Modern E-Commerce Functionality
+- Product Display: Showcases detailed product information, including images, prices, and descriptions.
+- Customizable Bundles: Supports infinite bundle combinations. Includes interactive selection components for variant options.
+- Add-to-Cart Experience: Integration with Shopify's cart API for real-time updates. Attribute-based cart lines for flexibility (e.g., special notes, bundle selections).
+# 2. User-Centric Design
+- Image Carousel: Interactive carousel for browsing product images.
+- Accessibility: Built to ensure inclusivity.
+- Responsive Layout: Optimized for various screen sizes and orientations.
+# 3. Backend Integration
+- Shopify Storefront API: Advanced GraphQL queries and mutations for seamless data handling.
+- Async Storage: Local storage management for cart persistence and user sessions.
+- Error Handling: User-friendly alerts for network/API-related issues.
+
+## Technology Stack
+# Frontend
+- Framework: React Native (JavaScript)
+- Libraries:
 react-native-render-html for HTML content rendering.
 react-native-snap-carousel for interactive image carousels.
 @react-navigation/native for navigation.
-Backend
-API: Shopify Storefront API (GraphQL)
-State Management: Local state with React Hooks.
-Storage: Async Storage for persistent cart functionality.
-Development Tools
-Platform: macOS
-IDE: VSCode
-Build Tools: Expo, npm, Xcode (iOS), Android Studio (Android)
-Installation and Setup
+# Backend
+- API: Shopify Storefront API (GraphQL)
+- State Management: Local state with React Hooks.
+- Storage: Async Storage for persistent cart functionality.
+# Development Tools
+- Platform: macOS
+- IDE: VSCode
+- Build Tools: Expo, npm, Xcode (iOS), Android Studio (Android)
+# Installation and Setup
 Prerequisites
 Node.js v16 or higher.
 npm or Yarn package manager.
