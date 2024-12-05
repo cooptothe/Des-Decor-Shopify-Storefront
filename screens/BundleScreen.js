@@ -184,7 +184,7 @@ const styles = StyleSheet.create({
   productTitle: {
     fontSize: 34,
     fontWeight: "bold",
-    paddingLeft: "4%",
+    paddingLeft: "2%",
     alignSelf: "flex-start",
     marginTop: 15,
   },

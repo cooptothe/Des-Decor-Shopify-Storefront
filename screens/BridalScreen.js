@@ -20,6 +20,10 @@ const BridalScreen = () => {
     navigation.navigate("BundleScreen", { handle: str });
   };
 
+  const onHandle2 = (str) => {
+    navigation.navigate("ProductsScreen", { handle: str });
+  };
+
   return (
     <ScrollView
       style={styles.bridalScreen}
@@ -32,8 +36,20 @@ const BridalScreen = () => {
       }}
     >
       <BackButton />
+
+
+
+
+
+
+
+
+
+
+
+
       <Text style={styles.bridal}>{`BRIDAL`}</Text>
-      <TouchableOpacity onPress={() => onHandle("bridal-bundle")}>
+      <TouchableOpacity onPress={() => onHandle2("bridal-collection")}>
         <View style={[styles.bridalButton, styles.logoFlexBox]}>
           <Image
             style={styles.bridalIcon}
@@ -43,16 +59,9 @@ const BridalScreen = () => {
           />
         </View>
       </TouchableOpacity>
-      {/* <TouchableOpacity onPress={() => onHandle("premium-bridal-bundle")}>
-        <View style={[styles.bridalButton, styles.logoFlexBox]}>
-          <Image
-            style={styles.bridalIcon}
-            resizeMethod="scale"
-            contentFit="contain"
-            source={require("../assets/premi3x.png")}
-          />
-        </View>
-      </TouchableOpacity> */}
+
+
+
       <TouchableOpacity onPress={() => navigation.navigate("StoreScreen")}>
         <View style={[styles.bridalButton, styles.logoFlexBox]}>
           <Image
@@ -73,6 +82,32 @@ const BridalScreen = () => {
           />
         </View>
       </TouchableOpacity>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       <TouchableOpacity onPress={() => navigation.navigate("GalleryScreen")}>
         <View style={[styles.bridalButton, styles.logoFlexBox]}>
