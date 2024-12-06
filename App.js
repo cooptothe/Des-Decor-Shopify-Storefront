@@ -13,6 +13,8 @@ import CheckoutScreen from "./screens/CheckoutScreen";
 import GalleryScreen from "./screens/GalleryScreen";
 import RefundScreen from "./screens/RefundScreen";
 import ContactScreen from "./screens/ContactScreen";
+import StoreScreen from "./screens/StoreScreen";
+import StorefrontScreen from "./screens/StorefrontScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AsyncStorage from "@react-native-async-storage/async-storage"; // For saving cart ID locally
 import { useEffect, useState } from "react";
@@ -23,7 +25,7 @@ import {
   Text,
   TouchableOpacity,
   View,
-  ScrollView
+  ScrollView,
 } from "react-native";
 import BundleScreen from "./screens/BundleScreen";
 import CartScreen from "./screens/Cart";
@@ -208,6 +210,16 @@ const App = () => {
             <Stack.Screen
               name="ContactScreen"
               component={ContactScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="StorefrontScreen"
+              component={StorefrontScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="StoreScreen"
+              component={StoreScreen}
               options={{ headerShown: false }}
             />
           </Stack.Navigator>

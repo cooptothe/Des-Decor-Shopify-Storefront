@@ -37,17 +37,6 @@ const BridalScreen = () => {
     >
       <BackButton />
 
-
-
-
-
-
-
-
-
-
-
-
       <Text style={styles.bridal}>{`BRIDAL`}</Text>
       <TouchableOpacity onPress={() => onHandle2("bridal-collection")}>
         <View style={[styles.bridalButton, styles.logoFlexBox]}>
@@ -59,8 +48,6 @@ const BridalScreen = () => {
           />
         </View>
       </TouchableOpacity>
-
-
 
       <TouchableOpacity onPress={() => navigation.navigate("StoreScreen")}>
         <View style={[styles.bridalButton, styles.logoFlexBox]}>
@@ -82,32 +69,6 @@ const BridalScreen = () => {
           />
         </View>
       </TouchableOpacity>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
       <TouchableOpacity onPress={() => navigation.navigate("GalleryScreen")}>
         <View style={[styles.bridalButton, styles.logoFlexBox]}>
