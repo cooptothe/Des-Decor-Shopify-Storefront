@@ -2,7 +2,7 @@
   "expo": {
     "name": "Des Decor Party Rentals",
     "slug": "des_decor_shopify_storefront",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/logo3x.png",
     "userInterfaceStyle": "light",
