@@ -13,7 +13,6 @@ pids
 
 # Directory used by npm for globally installed node modules
 node_modules
-keys
 
 # Yarn Integrity file
 .yarn-integrity
@@ -42,4 +41,6 @@ Thumbs.db
 
 # Turtle
 turtle-build/
-  
+
+# Private Key
+/keys/
