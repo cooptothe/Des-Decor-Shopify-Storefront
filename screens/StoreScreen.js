@@ -8,7 +8,7 @@ const StoreScreen = () => {
       <View style={styles.container}>
         <BackButton />
         <ImageBackground
-          source={require("/Users/student/Des-Decor-Shopify-Storefront/assets/comingsoon.png")}
+          source={require("../assets/comingsoon.png")}
           style={styles.imageBackground}
         >
         </ImageBackground>
