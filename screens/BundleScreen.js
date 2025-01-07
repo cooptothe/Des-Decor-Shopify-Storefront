@@ -64,6 +64,7 @@ const BundleScreen = ({ route }) => {
 
   const addToCart = async () => {
     const cartId = await AsyncStorage.getItem("cartId");
+    console.log(cartId);
     if (!cartId) {
       alert("Cart ID not found. Please try again.");
       return;
