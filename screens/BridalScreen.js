@@ -70,7 +70,7 @@ const BridalScreen = () => {
         </View>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.navigate("GalleryScreen")}>
+      {/* <TouchableOpacity onPress={() => navigation.navigate("GalleryScreen")}>
         <View style={[styles.bridalButton, styles.logoFlexBox]}>
           <Image
             style={styles.bridalIcon}
@@ -78,7 +78,7 @@ const BridalScreen = () => {
             source={require("../assets/galler3x.png")}
           />
         </View>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </ScrollView>
   );
 };
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
   },
   bridalButton: {
     paddingHorizontal: Padding.p_11xl,
-    paddingVertical: 0,
+    paddingVertical: 15,
   },
   bridalScreen: {
     backgroundColor: Color.colorWhite,
