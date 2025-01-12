@@ -1,107 +1,121 @@
 import { useNavigation } from "@react-navigation/native";
 import { Image } from "expo-image";
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import {
-  ImageBackground,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
-  ScrollView
+  ScrollView,
 } from "react-native";
-import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
-import BackButton from '../components/BackButton';
+import { storefront } from "../api";
+import { Color, FontFamily, FontSize } from "../GlobalStyles";
+import BackButton from "../components/BackButton";
 
 const InventoryScreen = () => {
   const navigation = useNavigation();
+  const [collections, setCollections] = useState(null);
 
-  // handle method to navigate to collectionScreen with a handle
-  const onHandle2 = (str) => {
-    navigation.navigate("ProductsScreen", { handle: str });
-  };
+  useEffect(() => {
+    const fetchCollections = async () => {
+      try {
+        const fetchedCollections = await getCollections();
+        setCollections(fetchedCollections);
+      } catch (error) {
+        console.error("Error fetching collections:", error);
+      }
+    };
+
+    fetchCollections();
+  }, []);
 
   return (
-    <ScrollView style={styles.inventoryScreen}
-    contentContainerStyle={{
-      justifyContent: "space-around",
-      alignItems: "center",
-      width: "100%",
-      height: "100%",
-      resizeMode: "stretch",
-       }}>
+    <View style={styles.screen}>
       <BackButton />
-      <Text style={styles.inventory}>{`INVENTORY`}</Text>
-      <TouchableOpacity onPress={() => onHandle2("walls")} >
-        <View style={[styles.wallButton, styles.logoFlexBox]}>
-          <Image
-            style={styles.wallsIcon}
-            resizeMethod="scale"
-            contentFit="contain"
-            source={require("../assets/walls3x.png")}
-          />
-        </View>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => onHandle2("tables")}>
-        <View style={[styles.wallButton, styles.logoFlexBox]}>
-          <Image
-            style={styles.wallsIcon}
-            resizeMethod="scale"
-            contentFit="contain"
-            source={require("../assets/tables3x.png")}
-          />
-        </View>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => onHandle2("centerpieces")}>
-        <View style={[styles.wallButton, styles.logoFlexBox]}>
-          <Image
-            style={styles.wallsIcon}
-            contentFit="contain"
-            source={require("../assets/acc3x.png")}
-          />
-        </View>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => onHandle2("balloons")}>
-        <View style={[styles.wallButton, styles.logoFlexBox]}>
-          <Image
-            style={styles.wallsIcon}
-            contentFit="contain"
-            source={require("../assets/ball3x.png")}
-          />
-        </View>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => onHandle2("customs")}>
-        <View style={[styles.wallButton, styles.logoFlexBox]}>
-          <Image
-            style={styles.wallsIcon}
-            resizeMethod="scale"
-            contentFit="contain"
-            source={require("../assets/cust3x.png")}
-          />
-        </View>
-      </TouchableOpacity>
-    </ScrollView>
+      <Text style={styles.screenTitle}>{`INVENTORY`}</Text>
+
+      {/* ScrollView for displaying collections */}
+      <ScrollView contentContainerStyle={styles.scrollViewContainer}>
+        {collections?.edges.map(({ node: collection }) => (
+          <TouchableOpacity
+            key={collection.id}
+            style={styles.collectionContainer}
+            onPress={() =>
+              navigation.navigate("ProductScreen", { handle: collection.id })
+            } // Navigate to detailed collection screen
+          >
+            {/* Collection Image */}
+            <Image
+              style={styles.collectionImage}
+              source={{ uri: collection.image?.url }}
+              contentFit="cover"
+            />
+
+            {/* Collection Title */}
+            <Text style={styles.collectionName}>{collection.title}</Text>
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  inventory: {
+  screen: {
+    backgroundColor: Color.colorWhite,
+    flex: 1,
+    height: "100%",
+  },
+  scrollViewContainer: {
+    paddingHorizontal: 16,
+    paddingBottom: 20,
+  },
+  collectionContainer: {
+    marginBottom: 30,
+    alignItems: "center",
+  },
+  collectionImage: {
+    width: "100%",
+    height: 200,
+    borderRadius: 10,
+  },
+  collectionName: {
+    fontSize: 20,
+    fontWeight: "600",
+    marginTop: 10,
+    textAlign: "center",
+  },
+  screenTitle: {
     fontSize: FontSize.size_lgi,
     fontWeight: "500",
     fontFamily: FontFamily.interMedium,
     color: Color.colorGray,
     textAlign: "center",
-  },
-  wallsIcon: {
-    width: 342,
-    height: 93,
-  },
-  wallButton: {
-    paddingHorizontal: Padding.p_11xl,
-    paddingVertical: 0,
-  },
-  inventoryScreen: {
-    backgroundColor: Color.colorWhite,
+    marginBottom: 10,
   },
 });
 
 export default InventoryScreen;
+
+const gql = String.raw;
+
+export async function getCollections() {
+  const collectionsQuery = gql`
+    query {
+      collections(first: 100) {
+        edges {
+          node {
+            id
+            title
+            image {
+              url
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  const { data } = await storefront(collectionsQuery);
+  return data.collections; // Return the list of collections
+}

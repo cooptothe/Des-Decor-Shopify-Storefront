@@ -121,7 +121,6 @@ const App = () => {
           <ImageBackground
             style={styles.logo}
             resizeMethod="scale"
-            resizeMode="contain"
             source={require("./assets/logo3x.png")}
           />
           <TouchableOpacity
