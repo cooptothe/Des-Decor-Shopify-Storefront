@@ -90,7 +90,7 @@ NJ Resident/Pick up orders: $200
           />
         </View>
       </TouchableOpacity>
-      <TouchableOpacity>
+      {/* <TouchableOpacity>
         <View style={[styles.rentButton, styles.logoFlexBox]}>
           <Image
             style={styles.rentIcon}
@@ -99,7 +99,7 @@ NJ Resident/Pick up orders: $200
             source={require("../assets/mission3x.png")}
           />
         </View>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </ScrollView>
   );
 };

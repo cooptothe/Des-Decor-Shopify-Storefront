@@ -82,6 +82,17 @@ const MainMenuPhone = () => {
           source={require("../assets/consult3x.png")}
         />
       </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate("ConsultationScreen")}
+      >
+        <Image
+          style={styles.icon}
+          resizeMethod="scale"
+          contentFit="contain"
+          source={require("../assets/consult3x.png")}
+        />
+      </TouchableOpacity>
     </ScrollView>
   );
 };
