@@ -84,7 +84,7 @@ const MainMenuPhone = () => {
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate("ConsultationScreen")}
+        onPress={() => navigation.navigate("AboutUs")}
       >
         <Image
           style={styles.icon}
