@@ -79,7 +79,7 @@ const MainMenuPhone = () => {
           style={styles.icon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/consult3x.png")}
+          source={require("../assets/services.png")}
         />
       </TouchableOpacity>
       <TouchableOpacity
@@ -90,9 +90,20 @@ const MainMenuPhone = () => {
           style={styles.icon}
           resizeMethod="scale"
           contentFit="contain"
-          source={require("../assets/consult3x.png")}
+          source={require("../assets/mission3x.png")}
         />
       </TouchableOpacity>
+      {/* <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate("ConsultationScreen")}
+      >
+        <Image
+          style={styles.icon}
+          resizeMethod="scale"
+          contentFit="contain"
+          source={require("../assets/consult3x.png")}
+        />
+      </TouchableOpacity> */}
     </ScrollView>
   );
 };
@@ -110,12 +121,11 @@ const styles = StyleSheet.create({
     paddingVertical: 0,
   },
   icon: {
-    width: 342,
-    height: 93,
+    width: 320,
+    height: 100,
   },
   mainMenuPhone: {
     backgroundColor: Color.colorWhite,
-
   },
 });
 
