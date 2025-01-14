@@ -41,7 +41,7 @@ const InventoryScreen = () => {
             key={collection.id}
             style={styles.collectionContainer}
             onPress={() =>
-              navigation.navigate("ProductScreen", { handle: collection.id })
+              navigation.navigate("ProductsScreen", { handle: collection.handle })
             } // Navigate to detailed collection screen
           >
             {/* Collection Image */}
@@ -107,6 +107,7 @@ export async function getCollections() {
           node {
             id
             title
+            handle
             image {
               url
             }

@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     bottom: -10,   // or 0 if you want it exactly at the edge
     left: 195,    // or 0 if you want it exactly at the edge
     width: 300,    // set width & height as needed
-    height: 300,
+    height: 285,
     zIndex: 999,  // ensure it's on top if needed
   },
 });
