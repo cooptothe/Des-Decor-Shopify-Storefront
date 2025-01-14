@@ -18,6 +18,8 @@ import StorefrontScreen from "./screens/StorefrontScreen";
 import AboutUs from "./screens/AboutUs";
 import Rent from "./screens/Rent";
 import Concierge from "./screens/Concierge";
+import EventScreen from "./screens/EventScreen";
+import Process from "./screens/Process";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AsyncStorage from "@react-native-async-storage/async-storage"; // For saving cart ID locally
 import { useEffect, useState } from "react";
@@ -119,6 +121,17 @@ const App = () => {
               resizeMethod="scale"
               resizeMode="contain"
               source={require("./assets/shopping-cart.png")}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.ig}
+            onPress={() => navigationRef.current?.navigate("GalleryScreen")}
+          >
+            <ImageBackground
+              style={styles.igButton}
+              resizeMethod="scale"
+              resizeMode="contain"
+              source={require("./assets/ig.png")}
             />
           </TouchableOpacity>
           <ImageBackground
@@ -239,6 +252,16 @@ const App = () => {
               component={Concierge}
               options={{ headerShown: false }}
             />
+            <Stack.Screen
+              name="EventScreen"
+              component={EventScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Process"
+              component={Process}
+              options={{ headerShown: false }}
+            />
           </Stack.Navigator>
         ) : null}
       </NavigationContainer>
@@ -253,6 +276,12 @@ const styles = StyleSheet.create({
     top: 50,
     padding: 5,
   },
+  ig: {
+    alignSelf: "flex-start",
+    left: 25,
+    top: 10,
+    padding: 5,
+  },
   home: {
     alignSelf: "center",
     bottom: 20,
@@ -260,6 +289,10 @@ const styles = StyleSheet.create({
   cartButton: {
     height: 30,
     width: 35,
+  },
+  igButton: {
+    height: 30,
+    width: 30,
   },
   homeButton: {
     height: 30,

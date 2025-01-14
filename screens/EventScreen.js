@@ -12,7 +12,7 @@ import {
 import { Color, FontFamily, FontSize, Padding } from "../GlobalStyles";
 import BackButton from "../components/BackButton";
 
-const GuidelinesScreen = () => {
+const EventScreen = () => {
   const navigation = useNavigation();
 
   return (
@@ -24,20 +24,22 @@ const GuidelinesScreen = () => {
       >
         <BackButton />
         <Text style={styles.rentalGuidelinesAnd}>
-          RENTAL GUIDELINES AND POLICIES
+        EVENT CONCIERGE SERVICES
         </Text>
 
-        <TouchableOpacity onPress={() => navigation.navigate("Rent")}>
-          <View style={[styles.rentButton]}>
-            <Image
-              style={styles.rentIcon}
-              source={require("../assets/rent3x.png")}
-              contentFit="contain"
-            />
-          </View>
-        </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.rentButton}
+        onPress={() => navigation.navigate("ConsultationScreen")}
+      >
+        <Image
+          style={styles.rentIcon}
+          resizeMethod="scale"
+          contentFit="contain"
+          source={require("../assets/consult3x.png")}
+        />
+      </TouchableOpacity>
 
-        {/* <TouchableOpacity onPress={() => navigation.navigate("Concierge")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Concierge")}>
           <View style={[styles.rentButton]}>
             <Image
               style={styles.rentIcon}
@@ -45,23 +47,13 @@ const GuidelinesScreen = () => {
               contentFit="contain"
             />
           </View>
-        </TouchableOpacity> */}
-
-        <TouchableOpacity onPress={() => navigation.navigate("RefundScreen")}>
-          <View style={[styles.rentButton]}>
-            <Image
-              style={styles.rentIcon}
-              source={require("../assets/deposits3x.png")}
-              contentFit="contain"
-            />
-          </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigation.navigate("ContactScreen")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Process")}>
           <View style={[styles.rentButton]}>
             <Image
               style={styles.rentIcon}
-              source={require("../assets/contact3x.png")}
+              source={require("../assets/processes.png")}
               contentFit="contain"
             />
           </View>
@@ -70,7 +62,7 @@ const GuidelinesScreen = () => {
 
       {/* 2) Absolutely position the des.png logo at the bottom-right */}
       <Image
-        source={require("../assets/des.png")}
+        source={require("../assets/stef.png")}
         style={styles.desLogo}
         contentFit="contain"
       />
@@ -78,7 +70,7 @@ const GuidelinesScreen = () => {
   );
 };
 
-export default GuidelinesScreen;
+export default EventScreen;
 
 const styles = StyleSheet.create({
   screenContainer: {
@@ -114,7 +106,7 @@ const styles = StyleSheet.create({
   desLogo: {
     position: "absolute",
     bottom: -10,   // or 0 if you want it exactly at the edge
-    left: 225,    // or 0 if you want it exactly at the edge
+    left: 195,    // or 0 if you want it exactly at the edge
     width: 300,    // set width & height as needed
     height: 300,
     zIndex: 999,  // ensure it's on top if needed

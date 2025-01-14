@@ -73,7 +73,7 @@ const MainMenuPhone = () => {
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate("ConsultationScreen")}
+        onPress={() => navigation.navigate("EventScreen")}
       >
         <Image
           style={styles.icon}
@@ -93,17 +93,6 @@ const MainMenuPhone = () => {
           source={require("../assets/mission3x.png")}
         />
       </TouchableOpacity>
-      {/* <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate("ConsultationScreen")}
-      >
-        <Image
-          style={styles.icon}
-          resizeMethod="scale"
-          contentFit="contain"
-          source={require("../assets/consult3x.png")}
-        />
-      </TouchableOpacity> */}
     </ScrollView>
   );
 };
