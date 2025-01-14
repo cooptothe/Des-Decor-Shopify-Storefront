@@ -16,6 +16,8 @@ import ContactScreen from "./screens/ContactScreen";
 import StoreScreen from "./screens/StoreScreen";
 import StorefrontScreen from "./screens/StorefrontScreen";
 import AboutUs from "./screens/AboutUs";
+import Rent from "./screens/Rent";
+import Concierge from "./screens/Concierge";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AsyncStorage from "@react-native-async-storage/async-storage"; // For saving cart ID locally
 import { useEffect, useState } from "react";
@@ -225,6 +227,16 @@ const App = () => {
             <Stack.Screen
               name="AboutUs"
               component={AboutUs}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Rent"
+              component={Rent}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Concierge"
+              component={Concierge}
               options={{ headerShown: false }}
             />
           </Stack.Navigator>
