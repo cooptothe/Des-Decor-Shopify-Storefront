@@ -299,7 +299,7 @@ const styles = StyleSheet.create({
     width: 35,
   },
   logo: {
-    height: 200,
+    height: 150,
     width: 250,
     justifyContent: "center",
     alignSelf: "center",
