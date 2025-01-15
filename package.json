@@ -1,6 +1,6 @@
 {
-  "name": "des_decor_shopify_storefront",
-  "version": "1.0.0",
+  "name": "des_decor_on_the_go",
+  "version": "1.0.1",
   "main": "expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
