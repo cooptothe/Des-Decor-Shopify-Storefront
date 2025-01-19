@@ -6,7 +6,7 @@ const Process = () => {
   return (
     <>
     <BackButton />
-     <WebView style={{ flex: 1 }} source={{ uri: "https://jumpshare.com/s/qHoy2yKFuW8rkOzOgfqB" }} />   
+     <WebView style={{ flex: 1 }} source={{ uri: "https://coral-tony-19.tiiny.site" }} />   
     </>
 
   );

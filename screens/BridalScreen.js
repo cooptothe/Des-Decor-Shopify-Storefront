@@ -92,8 +92,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   bridalIcon: {
-    width: 342,
-    height: 101,
+    width: 300,
+    height: 100,
   },
   bridalButton: {
     paddingHorizontal: Padding.p_11xl,

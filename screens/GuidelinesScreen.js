@@ -107,8 +107,8 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   rentIcon: {
-    width: 342,
-    height: 93,
+    width: 300,
+    height: 100,
   },
   // This is the key style for positioning the image
   desLogo: {

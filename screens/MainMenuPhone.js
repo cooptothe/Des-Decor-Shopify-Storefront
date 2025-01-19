@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     paddingVertical: 0,
   },
   icon: {
-    width: 320,
+    width: 300,
     height: 100,
   },
   mainMenuPhone: {
