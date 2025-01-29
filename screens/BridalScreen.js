@@ -38,6 +38,16 @@ const BridalScreen = () => {
       <BackButton />
 
       <Text style={styles.bridal}>{`BRIDAL`}</Text>
+      <TouchableOpacity onPress={() => onHandle("bridal-bundle")}>
+        <View style={[styles.bridalButton, styles.logoFlexBox]}>
+          <Image
+            style={styles.bridalIcon}
+            contentFit="contain"
+            source={require("../assets/galler3x.png")}
+          />
+        </View>
+      </TouchableOpacity>
+
       <TouchableOpacity onPress={() => onHandle2("bridal-collection")}>
         <View style={[styles.bridalButton, styles.logoFlexBox]}>
           <Image
@@ -69,16 +79,6 @@ const BridalScreen = () => {
           />
         </View>
       </TouchableOpacity>
-
-      {/* <TouchableOpacity onPress={() => navigation.navigate("GalleryScreen")}>
-        <View style={[styles.bridalButton, styles.logoFlexBox]}>
-          <Image
-            style={styles.bridalIcon}
-            contentFit="contain"
-            source={require("../assets/galler3x.png")}
-          />
-        </View>
-      </TouchableOpacity> */}
     </ScrollView>
   );
 };
