@@ -6,7 +6,9 @@ An **ecommerce app** for party decor rental supplies, built with **React Native*
 
 ## 🖼️ DEMO
 
-https://github.com/user-attachments/assets/fcce8017-1689-4613-afd4-47851334c9f9
+
+https://github.com/user-attachments/assets/cc615226-ff3e-499b-9865-70e60c488412
+
 
 ---
 
