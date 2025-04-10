@@ -40,8 +40,6 @@ const BundleScreen = ({ route }) => {
       }
     };
 
-    console.log(handle)
-
     fetchProduct();
   }, [handle]);
 
@@ -313,6 +311,8 @@ export async function getBundle(handle) {
       variant.variantOptionsv2Metafield
     );
   }
+
+  console.log(handle, "-------> GRAPHQLBUNDLE")
 
   return bundle;
 }

@@ -67,11 +67,13 @@ const BundleOptionSelect = ({ selectedVariant, voMetafield, voMetafieldv2, handl
             const optionName = option.optionName;
             const optionValues = option.optionValues.split(',');
 
-            let inventories = [];
-            if (voMetafield) {
-              const matchingInventory = voMetafield.find(item => item.optionName === optionName);
-              inventories = matchingInventory ? matchingInventory.optionInventories.split(',') : [];
-            }
+            // let inventories = [];
+            // if (voMetafield) {
+            //   const matchingInventory = voMetafield.find(item => item.optionName === optionName);
+            //   inventories = matchingInventory ? matchingInventory.optionInventories.split(',') : [];
+            // }
+            const inventories = voMetafield?.find(item => item.optionName === optionName)?.optionValues?.split(',') || [];
+
 
             return (
               <View key={`${index}-${subIndex}`} style={styles.optionContainer}>
