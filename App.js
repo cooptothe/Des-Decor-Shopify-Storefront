@@ -75,8 +75,8 @@ const App = () => {
       if (cart) {
         // Store the cart ID in AsyncStorage for persistent storage
         await AsyncStorage.setItem("cartId", cart.id);
+        //console.log("Cart ID stored in AsyncStorage:", cart.id);        
         setCartId(cart.id);
-        console.log("Cart created:", cart);
       }
     } catch (error) {
       console.error("Error creating cart:", error);
@@ -92,7 +92,7 @@ const App = () => {
           await createCart(); // Create a new cart if none exists
         } else {
           setCartId(storedCartId); // Use the existing cart
-          // console.log("Cart loaded from storage:", storedCartId);
+          //console.log("Cart loaded from storage:", storedCartId);
         }
       } catch (error) {
         console.error("Error initializing cart:", error);
@@ -103,6 +103,11 @@ const App = () => {
 
     initializeCart();
   }, []);
+
+  // useEffect(() => {
+  //   createCart(); // TEMPORARY - to force test
+  // }, []);
+  
 
   if (!fontsLoaded && !error) {
     return null;
