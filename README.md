@@ -4,11 +4,11 @@ An **ecommerce app** for party decor rental supplies, built with **React Native*
 
 ---
 
-## 🖼️ Screenshots
+## 🖼️ DEMO
 
-| Home Screen                          | Product Screen                        | Bundle Screen                        |
-|--------------------------------------|---------------------------------------|--------------------------------------|
-| ![Home Screen](Media/des_dec0r_iphone/home-iphone.png) | ![Product Screen](Media/des_dec0r_iphone/product_iphone.png) | ![Bundle Screen](Media/des_dec0r_iphone/bundles_iphone.png) |
+
+https://github.com/user-attachments/assets/cc615226-ff3e-499b-9865-70e60c488412
+
 
 ---
 
